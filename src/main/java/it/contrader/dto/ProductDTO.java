@@ -11,7 +11,7 @@ public class ProductDTO {
 		
 	}
 
-	public ProductDTO (String productName, int price, String usertype) {
+	public ProductDTO (String productName, int price) {
 		
 		this.productName = productName;
 		
