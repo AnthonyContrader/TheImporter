@@ -18,7 +18,7 @@ public class ProductDTO {
 		this.price = price;
 	}
 
-	public ProductDTO (int id, String productName, int price, String usertype) {
+	public ProductDTO (int id, String productName, int price) {
 		this.id = id;
 		this.productName = productName;
 		this.price = price;
