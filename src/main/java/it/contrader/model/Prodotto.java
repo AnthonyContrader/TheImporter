@@ -2,16 +2,16 @@ package it.contrader.model;
 
 public class Prodotto {
 	private int id;
-	private String nomeProdotto;
-	private int costo;
+	private String productName;
+	private int price;
 	
 	public Prodotto() {}
 	
 	public Prodotto(int id, String nomeProdotto, int costo) {
 		super();
 		this.id = id;
-		this.nomeProdotto = nomeProdotto;
-		this.costo = costo;
+		this.productName = nomeProdotto;
+		this.price = costo;
 	}
 
 	public int getId() {
@@ -23,24 +23,24 @@ public class Prodotto {
 	}
 
 	public String getNomeProdotto() {
-		return nomeProdotto;
+		return productName;
 	}
 
 	public void setNomeProdotto(String nomeProdotto) {
-		this.nomeProdotto = nomeProdotto;
+		this.productName = nomeProdotto;
 	}
 
 	public int getCosto() {
-		return costo;
+		return price;
 	}
 
 	public void setCosto(int costo) {
-		this.costo = costo;
+		this.price = costo;
 	}
 
 	@Override
 	public String toString() {
-		return "Prodotto [id=" + id + ", nomeProdotto=" + nomeProdotto + ", costo=" + costo + "]";
+		return "Prodotto [id=" + id + ", nomeProdotto=" + productName + ", costo=" + price + "]";
 	}
 	
 	
