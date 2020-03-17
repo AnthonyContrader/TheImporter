@@ -36,8 +36,6 @@ public class ProductUpdateView extends AbstractView {
 	@Override
 	public void showOptions() {
 		try {
-			System.out.println("Inserisci id del prodotto:");
-			id = Integer.parseInt(getInput());
 			System.out.println("Inserisci nome del prodotto:");
 			productName = getInput();
 			System.out.println("Inserisci prezzo prodotto:");

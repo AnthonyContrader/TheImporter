@@ -33,7 +33,7 @@ public class ProductInsertView extends AbstractView{
 	public void showOptions() {
 			System.out.println("Inserisci il nome del prodotto:");
 			productName = getInput();
-			System.out.println("Inserisci password dell'utente:");
+			System.out.println("Inserisci il prezzo del prodotto:");
 			price = Integer.parseInt(getInput());
 			
 	}
