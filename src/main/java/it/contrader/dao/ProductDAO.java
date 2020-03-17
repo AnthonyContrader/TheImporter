@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import it.contrader.main.ConnectionSingleton;
 import it.contrader.model.Product;
+import it.contrader.model.User;
 
 
 /**
@@ -51,8 +52,8 @@ public class ProductDAO {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {	
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_CREATE);
-			preparedStatement.setString(1, productToInsert.getproductName());
-			preparedStatement.setInt(2, productToInsert.getprice());
+			preparedStatement.setString(2, productToInsert.getproductName());
+			preparedStatement.setInt(3, productToInsert.getprice());
 			preparedStatement.execute();
 			return true;
 		} catch (SQLException e) {
@@ -88,32 +89,8 @@ public class ProductDAO {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_UPDATE);
-			preparedStatement.setString(1, productNameUpdated);
-			preparedStatement.setInt(2, productPriceUPdated);
-			preparedStatement.setInt(3, productID);
-			ResultSet resultSet = preparedStatement.executeQuery();
-			
-			resultSet.next();
-			String productName;
-			int price;
-
-			productName = resultSet.getString("productName");
-			price = resultSet.getInt("price");
-			
-			Product product = new Product(productID, productName, price);
-			product.setId(resultSet.getInt("id"));
-
-			return product;
-		} catch (SQLException e) {
-			return null;
-		}
-
-	}
-	
-	public Product delete(int productID) {
-		Connection connection = ConnectionSingleton.getInstance();
-		try {
-			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_DELETE);
+			preparedStatement.setString(2, productNameUpdated);
+			preparedStatement.setInt(3, productPriceUPdated);
 			preparedStatement.setInt(1, productID);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			
@@ -131,6 +108,61 @@ public class ProductDAO {
 		} catch (SQLException e) {
 			return null;
 		}
-	
+
 	}
+	
+	public boolean update(Product productToUpdate) {
+		Connection connection = ConnectionSingleton.getInstance();
+
+		// Check if id is present
+		if (productToUpdate.getId() == 0)
+			return false;
+
+		Product productRead = read(productToUpdate.getId());
+		if (!productRead.equals(productToUpdate)) {
+			try {
+				// Fill the userToUpdate object
+				if (productToUpdate.getproductName() == null || productToUpdate.getproductName().equals("")) {
+					productToUpdate.setproductName(productRead.getproductName());
+				}
+
+				if (productToUpdate.getprice() == 0) {
+					productToUpdate.setprice(productRead.getprice());
+				}
+
+				// Update the user
+				PreparedStatement preparedStatement = connection.prepareStatement(QUERY_UPDATE); //qui c'è un cast che non ho messo @lorenzo
+				preparedStatement.setString(2, productToUpdate.getproductName());
+				preparedStatement.setInt(3, productToUpdate.getprice());
+				preparedStatement.setInt(1, productToUpdate.getId());
+				int a =  preparedStatement.executeUpdate();
+				if (a > 0)
+					return true;
+				else
+					return false;
+
+			} catch (SQLException e) {
+				return false;
+			}
+		}
+
+		return false;
+
+	}
+	
+	public boolean delete(int id) {
+		Connection connection = ConnectionSingleton.getInstance();
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_DELETE);
+			preparedStatement.setInt(1, id);
+			int n = preparedStatement.executeUpdate();
+			if (n != 0)
+				return true;
+
+		} catch (SQLException e) {
+		}
+		return false;
+	}
+	
+	
 }
