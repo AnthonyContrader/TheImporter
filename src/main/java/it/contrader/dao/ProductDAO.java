@@ -18,7 +18,7 @@ public class ProductDAO {
 	private final String QUERY_ALL = "SELECT * FROM excel";
 	private final String QUERY_CREATE = "INSERT INTO excel (productName, price) VALUES (?,?)";
 	private final String QUERY_READ = "SELECT * FROM excel WHERE id=?";
-	private final String QUERY_UPDATE = "UPDATE excel SET id=?, productName=?, price=? WHERE id=?";
+	private final String QUERY_UPDATE = "UPDATE excel SET productName=?, price=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE FROM excel WHERE id=?";
 
 	public ProductDAO() {
@@ -84,4 +84,53 @@ public class ProductDAO {
 
 	}
 	
+	public Product update(int productID,String productNameUpdated,int productPriceUPdated) {
+		Connection connection = ConnectionSingleton.getInstance();
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_UPDATE);
+			preparedStatement.setString(1, productNameUpdated);
+			preparedStatement.setInt(2, productPriceUPdated);
+			preparedStatement.setInt(3, productID);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			resultSet.next();
+			String productName;
+			int price;
+
+			productName = resultSet.getString("productName");
+			price = resultSet.getInt("price");
+			
+			Product product = new Product(productID, productName, price);
+			product.setId(resultSet.getInt("id"));
+
+			return product;
+		} catch (SQLException e) {
+			return null;
+		}
+
+	}
+	
+	public Product delete(int productID) {
+		Connection connection = ConnectionSingleton.getInstance();
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_DELETE);
+			preparedStatement.setInt(1, productID);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			
+			resultSet.next();
+			String productName;
+			int price;
+
+			productName = resultSet.getString("productName");
+			price = resultSet.getInt("price");
+			
+			Product product = new Product(productID, productName, price);
+			product.setId(resultSet.getInt("id"));
+
+			return product;
+		} catch (SQLException e) {
+			return null;
+		}
+	
+	}
 }
