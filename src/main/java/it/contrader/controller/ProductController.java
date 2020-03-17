@@ -74,7 +74,7 @@ public class ProductController implements Controller {
 			
 		case "PRODUCTLIST":
 			List<ProductDTO> productsDTO=productService.getAll();
-			request.put("product", productsDTO);
+			request.put("products", productsDTO);
 			MainDispatcher.getInstance().callView("Product", request);
 			break;
 		case"GETCHOICE":

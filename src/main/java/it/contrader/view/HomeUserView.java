@@ -35,18 +35,19 @@ public class HomeUserView extends AbstractView{
 
 	@Override
 	public void submit() {
-
+        request = new Request();
 		switch (choice) {
 
 		case "p":
-			MainDispatcher.getInstance().callAction("Product", "doControl", null);
+			this.request.put("mode", "PRODUCTLIST");
+			MainDispatcher.getInstance().callAction("Product", "doControl", request);
 			break;
 		 case "e":
 	        	MainDispatcher.getInstance().callAction("Login", "doControl", null);
 	        break;
 		default:
 			request.put("choice", choice);
-			MainDispatcher.getInstance().callAction("Login", "doControl", null);
+			MainDispatcher.getInstance().callAction("Login", "doControl", request);
 		}
 	}
 

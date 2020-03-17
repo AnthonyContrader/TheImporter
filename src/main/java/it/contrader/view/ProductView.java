@@ -33,7 +33,7 @@ public class ProductView extends AbstractView {
 			System.out.println("----------------------------------------------------\n");
 			
 			@SuppressWarnings("unchecked")
-			List<ProductDTO> users = (List<ProductDTO>) request.get("users");
+			List<ProductDTO> users = (List<ProductDTO>) request.get("products");
 			for (ProductDTO u: users)
 				System.out.println(u);
 			System.out.println();
