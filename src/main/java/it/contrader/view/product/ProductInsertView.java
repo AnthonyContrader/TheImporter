@@ -46,6 +46,7 @@ public class ProductInsertView extends AbstractView{
 		request = new Request();
 		request.put("productName", productName);
 		request.put("price", price);
+		request.put("mode", mode);
 		MainDispatcher.getInstance().callAction("Product", "doControl", request);
 	}
 

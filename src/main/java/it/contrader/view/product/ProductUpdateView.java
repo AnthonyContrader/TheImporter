@@ -58,6 +58,7 @@ public class ProductUpdateView extends AbstractView {
 		request.put("id", id);
 		request.put("productName", productName);
 		request.put("price", price);
+		request.put("mode", mode);
 		MainDispatcher.getInstance().callAction("Product", "doControl", request);
 	}
 

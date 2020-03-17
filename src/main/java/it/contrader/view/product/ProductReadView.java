@@ -54,6 +54,7 @@ public class ProductReadView extends AbstractView {
 	public void submit() {
 		request = new Request();
 		request.put("id", id);
+		request.put("mode", mode);
 		MainDispatcher.getInstance().callAction("Product", "doControl", request);
 	}
 
