@@ -36,12 +36,11 @@ public class LoginDAO {
 				resultSet.next();
 				usertype = resultSet.getString("usertype");
 			}
-
 			return usertype;
 		}
 		
 		catch (SQLException e) {
-			
+			e.getStackTrace();
 			return null;
 		}
 	}
