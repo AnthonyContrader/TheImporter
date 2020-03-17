@@ -5,8 +5,8 @@ import it.contrader.main.MainDispatcher;
 import it.contrader.view.AbstractView;
 
 public class ProductInsertView extends AbstractView{
+	
 	private Request request;
-
 	private String productName;
 	private int price;
 	private final String mode = "INSERT";

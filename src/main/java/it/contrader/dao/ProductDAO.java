@@ -52,8 +52,8 @@ public class ProductDAO {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {	
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_CREATE);
-			preparedStatement.setString(2, productToInsert.getproductName());
-			preparedStatement.setInt(3, productToInsert.getprice());
+			preparedStatement.setString(1, productToInsert.getproductName());
+			preparedStatement.setInt(2, productToInsert.getprice());
 			preparedStatement.execute();
 			return true;
 		} catch (SQLException e) {
