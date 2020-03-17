@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import it.contrader.main.ConnectionSingleton;
 import it.contrader.model.Product;
-import it.contrader.model.User;
 
 
 /**
@@ -17,7 +16,7 @@ import it.contrader.model.User;
 public class ProductDAO {
 
 	private final String QUERY_ALL = "SELECT * FROM excel";
-	private final String QUERY_CREATE = "INSERT INTO excel (id, productName, price) VALUES (?,?,?)";
+	private final String QUERY_CREATE = "INSERT INTO excel (productName, price) VALUES (?,?)";
 	private final String QUERY_READ = "SELECT * FROM excel WHERE id=?";
 	private final String QUERY_UPDATE = "UPDATE excel SET id=?, productName=?, price=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE FROM excel WHERE id=?";
