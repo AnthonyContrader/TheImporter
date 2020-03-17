@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import it.contrader.main.ConnectionSingleton;
 import it.contrader.model.Product;
+import it.contrader.model.User;
 
 
 /**
@@ -60,4 +61,28 @@ public class ProductDAO {
 		}
 
 	}
+	
+	public Product read(int productID) {
+		Connection connection = ConnectionSingleton.getInstance();
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_READ);
+			preparedStatement.setInt(1, productID);
+			ResultSet resultSet = preparedStatement.executeQuery();
+			resultSet.next();
+			String productName;
+			int price;
+
+			productName = resultSet.getString("productName");
+			price = resultSet.getInt("price");
+			
+			Product product = new Product(productID, productName, price);
+			product.setId(resultSet.getInt("id"));
+
+			return product;
+		} catch (SQLException e) {
+			return null;
+		}
+
+	}
+	
 }
