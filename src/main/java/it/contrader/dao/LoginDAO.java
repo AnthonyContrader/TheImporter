@@ -40,7 +40,6 @@ public class LoginDAO {
 		}
 		
 		catch (SQLException e) {
-			e.getStackTrace();
 			return null;
 		}
 	}

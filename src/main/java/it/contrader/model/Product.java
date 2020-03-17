@@ -1,13 +1,13 @@
 package it.contrader.model;
 
-public class Prodotto {
+public class Product {
 	private int id;
 	private String productName;
 	private int price;
 	
-	public Prodotto() {}
+	public Product() {}
 	
-	public Prodotto(int id, String nomeProdotto, int costo) {
+	public Product(int id, String nomeProdotto, int costo) {
 		super();
 		this.id = id;
 		this.productName = nomeProdotto;
@@ -22,25 +22,25 @@ public class Prodotto {
 		this.id = id;
 	}
 
-	public String getNomeProdotto() {
+	public String getproductName() {
 		return productName;
 	}
 
-	public void setNomeProdotto(String nomeProdotto) {
+	public void setproductName(String nomeProdotto) {
 		this.productName = nomeProdotto;
 	}
 
-	public int getCosto() {
+	public int getprice() {
 		return price;
 	}
 
-	public void setCosto(int costo) {
+	public void setprice(int costo) {
 		this.price = costo;
 	}
 
 	@Override
 	public String toString() {
-		return "Prodotto [id=" + id + ", nomeProdotto=" + productName + ", costo=" + price + "]";
+		return "product [id=" + id + ", productName=" + productName + ", price=" + price + "]";
 	}
 	
 	
