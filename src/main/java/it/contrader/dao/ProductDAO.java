@@ -85,31 +85,6 @@ public class ProductDAO {
 
 	}
 	
-	public Product update(int productID,String productNameUpdated,int productPriceUPdated) {
-		Connection connection = ConnectionSingleton.getInstance();
-		try {
-			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_UPDATE);
-			preparedStatement.setString(2, productNameUpdated);
-			preparedStatement.setInt(3, productPriceUPdated);
-			preparedStatement.setInt(1, productID);
-			ResultSet resultSet = preparedStatement.executeQuery();
-			
-			resultSet.next();
-			String productName;
-			int price;
-
-			productName = resultSet.getString("productName");
-			price = resultSet.getInt("price");
-			
-			Product product = new Product(productID, productName, price);
-			product.setId(resultSet.getInt("id"));
-
-			return product;
-		} catch (SQLException e) {
-			return null;
-		}
-
-	}
 	
 	public boolean update(Product productToUpdate) {
 		Connection connection = ConnectionSingleton.getInstance();
@@ -131,10 +106,10 @@ public class ProductDAO {
 				}
 
 				// Update the user
-				PreparedStatement preparedStatement = connection.prepareStatement(QUERY_UPDATE); //qui c'è un cast che non ho messo @lorenzo
-				preparedStatement.setString(2, productToUpdate.getproductName());
-				preparedStatement.setInt(3, productToUpdate.getprice());
-				preparedStatement.setInt(1, productToUpdate.getId());
+				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE); //qui c'è un cast che non ho messo @lorenzo
+				preparedStatement.setString(1, productToUpdate.getproductName());
+				preparedStatement.setInt(2, productToUpdate.getprice());
+				preparedStatement.setInt(3, productToUpdate.getId());
 				int a =  preparedStatement.executeUpdate();
 				if (a > 0)
 					return true;
