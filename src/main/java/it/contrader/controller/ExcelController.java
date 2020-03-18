@@ -54,7 +54,7 @@ private static String sub_package = "product.";
 
 				
 			case "I":
-				MainDispatcher.getInstance().callView(sub_package + "ProductInsert", null);
+				MainDispatcher.getInstance().callView(sub_package + "Excel", null);
 				break;
 			default:
 				MainDispatcher.getInstance().callView("Login", null);
