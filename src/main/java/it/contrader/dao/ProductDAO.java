@@ -106,7 +106,7 @@ public class ProductDAO {
 				}
 
 				// Update the user
-				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE); //qui c'è un cast che non ho messo @lorenzo
+				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE); 
 				preparedStatement.setString(1, productToUpdate.getproductName());
 				preparedStatement.setInt(2, productToUpdate.getprice());
 				preparedStatement.setInt(3, productToUpdate.getId());
