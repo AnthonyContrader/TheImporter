@@ -40,9 +40,9 @@ private static String sub_package = "product.";
 			
 			ExcelDTO excelDTO = new ExcelDTO(directory,parUser1,parUser2);
 			
-			productService.insert(productToInsert);
+			excelService.insert(excelDTO);
 			
-			request=new Request();
+			request = new Request();
 			
 			request.put("mode", "mode");
 			
@@ -51,30 +51,11 @@ private static String sub_package = "product.";
 		
 		case"GETCHOICE":
 			switch(choice.toUpperCase()) {
-			case "L":
-				MainDispatcher.getInstance().callView(sub_package + "ProductRead", null);
-				break;
+
 				
 			case "I":
 				MainDispatcher.getInstance().callView(sub_package + "ProductInsert", null);
 				break;
-				
-			case "M":
-				MainDispatcher.getInstance().callView(sub_package + "ProductUpdate", null);
-				break;
-				
-			case "C":
-				MainDispatcher.getInstance().callView(sub_package + "ProductDelete", null);
-				break;
-				
-			case "E":
-				MainDispatcher.getInstance().callView("Login", null);
-				break;
-
-			case "B":
-				MainDispatcher.getInstance().callView("HomeUser", null);
-				break;
-				
 			default:
 				MainDispatcher.getInstance().callView("Login", null);
 			
