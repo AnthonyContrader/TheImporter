@@ -10,7 +10,7 @@ public class ExcelConverter {
 			return excelDTO;
 		}
 		
-		public Excel toModel(ExcelDTO excelDTO) {
+		public Excel toEntity(ExcelDTO excelDTO) {
 			Excel excel=new Excel(excelDTO.getDirectory(),excelDTO.getTitle1(),excelDTO.getTitle2());
 			return excel;
 		}
