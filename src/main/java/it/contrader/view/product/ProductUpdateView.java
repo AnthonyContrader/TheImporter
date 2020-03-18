@@ -22,6 +22,7 @@ public class ProductUpdateView extends AbstractView {
 	 * Se la request non � nulla (ovvero se si arriva dalla mode UPDATE del controller) mostra
 	 * l'esito dell'operazione
 	 */
+	
 	@Override
 	public void showResults(Request request) {
 		if (request!=null) {
@@ -33,6 +34,7 @@ public class ProductUpdateView extends AbstractView {
 	/**
 	 * Chiede all'utente di inserire gli attributi dell'utente da modificare
 	 */
+	
 	@Override
 	public void showOptions() {
 		try {
@@ -52,6 +54,7 @@ public class ProductUpdateView extends AbstractView {
 	/**
 	 * Impacchetta la request con i dati inseriti nel metodo showOption()
 	 */
+	
 	@Override
 	public void submit() {
 		request = new Request();

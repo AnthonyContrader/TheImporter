@@ -26,7 +26,7 @@ public class HomeUserView extends AbstractView{
 		choice = this.getInput();*/
 		 System.out.println("-------------MENU------------\n");
 	     System.out.println(" Seleziona cosa vuoi gestire:");
-	     System.out.println("[P]rodotti  [E]sci");
+	     System.out.println("[P]rodotti  [E]sci [I]nporta File");
 	        //Il metodo che salva l'input nella stringa choice.
 	        //getInput() è definito in AbstractView.
 	     choice = this.getInput();
@@ -42,6 +42,10 @@ public class HomeUserView extends AbstractView{
 			this.request.put("mode", "PRODUCTLIST");
 			MainDispatcher.getInstance().callAction("Product", "doControl", request);
 			break;
+	/*	case "i":
+			this.request.put("mode", "PRODUCTLIST");
+			MainDispatcher.getInstance().callAction("Product", "doControl", request);
+			break;*/
 		 case "e":
 	        	MainDispatcher.getInstance().callAction("Login", "doControl", null);
 	        break;
