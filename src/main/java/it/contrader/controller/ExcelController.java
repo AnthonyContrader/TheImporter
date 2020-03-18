@@ -2,19 +2,20 @@ package it.contrader.controller;
 
 import java.util.List;
 
-import it.contrader.dto.ProductDTO;
+import it.contrader.dto.ExcelDTO;
 import it.contrader.main.MainDispatcher;
-import it.contrader.service.ProductService;
+import it.contrader.service.ExcelService;
+
 
 public class ExcelController {
 
 	
 private static String sub_package = "product.";
 	
-	private ExcelService productService;
+	private ExcelService excelService;
 	
-	public ProductController() {
-		this.productService = new ProductService();
+	public ExcelController() {
+		this.excelService = new ExcelService();
 	}
 	
 	
@@ -24,24 +25,20 @@ private static String sub_package = "product.";
 		
 		String choice = (String) request.get("choice");
 		
-		int id;
-		String productName;
-		int price;
+		String directory;
+		String parUser1;
+		String parUser2;
+		
 		
 		switch(mode){
 		
-		case "READ":
-			id=Integer.parseInt(request.get("id").toString());
-			ProductDTO productDTO = productService.read(id);
-			request.put("product", productDTO);
-			MainDispatcher.getInstance().callView(sub_package+"ProductRead", request);
-			break;
-			
 		case "INSERT":
-			productName=request.get("productName").toString();
-			price=Integer.parseInt(request.get("price").toString());
 			
-			ProductDTO productToInsert= new ProductDTO(productName,price);
+			directory = request.get("directory").toString();
+			parUser1 = request.get("parUser1").toString();
+			parUser2 = request.get("parUser2").toString();
+			
+			ExcelDTO excelDTO = new ExcelDTO(directory,parUser1,parUser2);
 			
 			productService.insert(productToInsert);
 			
@@ -49,35 +46,9 @@ private static String sub_package = "product.";
 			
 			request.put("mode", "mode");
 			
-			MainDispatcher.getInstance().callView(sub_package+"ProductInsert",request);		
+			MainDispatcher.getInstance().callView(sub_package+"ExcelInsert",request);		
 			break;
-			
-		case "DELETE":
-			id=Integer.parseInt(request.get("id").toString());
-			
-			productService.delete(id);
-			request= new Request();
-			request.put("mode", "mode");
-			MainDispatcher.getInstance().callView(sub_package+"ProductDelete", request);
-			break;
-			
-		case "UPDATE":
-			id=Integer.parseInt(request.get("id").toString());
-			productName=request.get("productName").toString();
-			price=Integer.parseInt(request.get("price").toString());
-			
-			ProductDTO productToUpdate=new ProductDTO(id,productName,price);
-			productService.update(productToUpdate);
-			request=new Request();
-			request.put("mode", "mode");
-			MainDispatcher.getInstance().callView(sub_package+"ProductUpdate", request);
-			break;
-			
-		case "PRODUCTLIST":
-			List<ProductDTO> productsDTO=productService.getAll();
-			request.put("products", productsDTO);
-			MainDispatcher.getInstance().callView("Product", request);
-			break;
+		
 		case"GETCHOICE":
 			switch(choice.toUpperCase()) {
 			case "L":
