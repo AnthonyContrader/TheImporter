@@ -11,9 +11,11 @@ public class ExcelDTO {
 	public ExcelDTO() {	}
 	
 	
-	public ExcelDTO(String directory) {
+	public ExcelDTO(String directory,String title1,String title2) {
 		super();
 		this.directory = directory;
+		this.title1=title1;
+		this.title2=title2;
 	}
 	
 	public String getDirectory() {

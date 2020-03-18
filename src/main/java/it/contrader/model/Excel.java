@@ -28,9 +28,11 @@ public class Excel {
 	public Excel() {
 	}
 
-	public Excel(String directory) {
+	public Excel(String directory,String par1,String par2) {
 		super();
 		this.directory = directory;
+		this.par1=par1;
+		this.par2=par2;
 	}
 
 	public String getDirectory() {
