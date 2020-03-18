@@ -25,6 +25,10 @@ public class Excel {
 	private Map<String, List<String>> title_data = new HashMap<>();
 	private List<Product> productsList = new ArrayList<Product>();
 
+	public List<Product> getProductsList() {
+		return productsList;
+	}
+
 	public Excel() {
 	}
 
