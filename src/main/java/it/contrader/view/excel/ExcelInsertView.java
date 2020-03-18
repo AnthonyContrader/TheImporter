@@ -1,18 +1,18 @@
-package it.contrader.view;
+package it.contrader.view.excel;
 
 import java.util.List;
 
 import it.contrader.controller.Request;
-import it.contrader.dto.ExcelDTO;
-import it.contrader.dto.UserDTO;
 import it.contrader.main.MainDispatcher;
+import it.contrader.view.AbstractView;
 
-public class ExcelInsert extends AbstractView {
+public class ExcelInsertView extends AbstractView {
 	
 	private Request request;
 	private String choice;
+	private final String mode = "INSERT";
 
-	public ExcelInsert() {
+	public ExcelInsertView() {
 		
 	}
 
@@ -22,15 +22,26 @@ public class ExcelInsert extends AbstractView {
 	@Override
 	public void showResults(Request request) {
 		if (request != null) {
-			System.out.println("\n------------------- Gestione utenti ----------------\n");
+			/*System.out.println("\n------------------- Gestione utenti ----------------\n");
 			System.out.println("ID\tUsername\tPassword\tTipo Utente");
 			System.out.println("----------------------------------------------------\n");
+			*/
+			//@SuppressWarnings("unchecked")
+			System.out.println("\n------------------- Titoli Letti ----------------\n");
+			try {
+			List<String> titles=(List<String>) request.get("titleList");
 			
-			@SuppressWarnings("unchecked")
-			List<ExcelDTO> users = (List<ExcelDTO>) request.get("par");
+			for(String s: titles) {
+				System.out.print(s+"\t\t");
+			}
+					}catch (Exception e) {
+						e.getStackTrace();
+					}
+
+			/*List<ExcelDTO> users = (List<ExcelDTO>) request.get("par");
 			for (ExcelDTO u: users)
 				System.out.println(u);
-			System.out.println();
+			System.out.println();*/
 		}
 	}
 
@@ -56,7 +67,7 @@ public class ExcelInsert extends AbstractView {
 	public void submit() {
 		request = new Request();
 		request.put("choice", choice);
-		request.put("mode", "GETCHOICE");
+		request.put("mode", mode);
 		MainDispatcher.getInstance().callAction("User", "doControl", this.request);
 	}
 

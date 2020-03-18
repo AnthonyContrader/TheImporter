@@ -3,6 +3,7 @@ package it.contrader.controller;
 
 import it.contrader.dto.ExcelDTO;
 import it.contrader.main.MainDispatcher;
+import it.contrader.model.Excel;
 import it.contrader.service.ExcelService;
 
 
@@ -24,10 +25,11 @@ private static String sub_package = "product.";
 		
 		String choice = (String) request.get("choice");
 		
-		String directory;
+		String directory= request.get("directory").toString();;
 		String parUser1;
 		String parUser2;
 		
+		Excel excel=new Excel();
 		
 		switch(mode){
 		
@@ -53,7 +55,8 @@ private static String sub_package = "product.";
 
 				
 			case "I":
-				MainDispatcher.getInstance().callView(sub_package + "Excel", null);
+				request.put("titlesList", excel.readTitle());
+				MainDispatcher.getInstance().callView(sub_package + "ExcelInsert", request);
 				break;
 			default:
 				MainDispatcher.getInstance().callView("Login", null);
