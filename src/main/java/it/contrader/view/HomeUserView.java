@@ -42,10 +42,9 @@ public class HomeUserView extends AbstractView{
 			this.request.put("mode", "PRODUCTLIST");
 			MainDispatcher.getInstance().callAction("Product", "doControl", request);
 			break;
-	/*	case "i":
-			this.request.put("mode", "PRODUCTLIST");
-			MainDispatcher.getInstance().callAction("P", "doControl", request);
-			break;*/
+	    case "i":
+			MainDispatcher.getInstance().callView("Excel", null);
+			break;
 		 case "e":
 	        	MainDispatcher.getInstance().callAction("Login", "doControl", null);
 	        break;

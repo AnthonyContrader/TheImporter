@@ -5,7 +5,7 @@ import it.contrader.main.MainDispatcher;
 
 public class ExcelView extends AbstractView{
 	
-	private String phat;
+	private String directory;
 
 	public void showResults(Request request) {
 
@@ -16,7 +16,7 @@ public class ExcelView extends AbstractView{
 		System.out.println("----- .:INSERIMENTO FILE:. ----");
 
 		System.out.println(" Inserire il percorso file del file .xmlsx");
-		this.phat = getInput();
+		this.directory = getInput();
 
 	}
 
@@ -24,7 +24,9 @@ public class ExcelView extends AbstractView{
 
 		Request request = new Request();
 
-		request.put("i", phat);
+		request.put("directory", directory);
+		request.put("mode", null);
+
 
 		MainDispatcher.getInstance().callAction("Excel", "doControl", request);
 	}
