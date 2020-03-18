@@ -16,10 +16,14 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class Excel {
 
 	private String directory;
-
+	private String par1, par2; // questi sono gli attributi di prodotto
+	
 	private List<String> titleRead = new ArrayList<String>();
 	private List<String> titleSelected = new ArrayList<String>();
-	private Map<String, String> title_data = new HashMap<>();
+	
+	
+	private Map<String, List<String>> title_data = new HashMap<>();
+	private List<Product> productsList = new ArrayList<Product>();
 
 	public Excel() {
 	}
@@ -35,6 +39,21 @@ public class Excel {
 
 	public void setDirectory(String directory) {
 		this.directory = directory;
+	}
+	
+	public void setPar1(String title1) {
+		par1 = title1;
+	}
+	
+	public void setPar2(String title2) {
+		par2 = title2;
+	}
+	
+	public String getPar1() {
+		return par1;
+	}
+	public String getPar2() {
+		return par2;
 	}
 
 	private Iterator<Row> openFile() {
@@ -77,6 +96,9 @@ public class Excel {
 
 	public void readTitleSelected() {
 
+		List<String> data = new ArrayList<String>();
+		String actualTitle = new String();
+		
 		Iterator<Row> itr = openFile();
 		int check = 0;
 		if (itr != null) {
@@ -90,17 +112,37 @@ public class Excel {
 						cell = cellIterator.next();
 					} else
 						break;
-					String actualTitle;
+					
 					if (cell.getAddress().getRow() == 0 && titleSelected.contains(cell.getStringCellValue())) { // controla che il titolo sia presente nei selezionati
 						actualTitle = cell.getStringCellValue();
 						check = 1;
-					} else
-						break;
-
-					title_data.put(actualTitle, cell.getStringCellValue());
-
+					} else if(check == 1) {
+						data.add(cell.getStringCellValue());
+					}
 				} while (check == 1);
+				
+				if(check == 1) {                        //se ho trovato un titolo corretto aggiungo i dati all'hashmap
+					title_data.put(actualTitle, data);
+				}
 			}
 		}
 	}
+	
+	public void createProducts() {    //per logica del programma la lunghezza delle colonne deve essere ugale
+		
+		Product product = new Product();
+		
+		try {
+			for(int i = 0; i<title_data.get(par1).size(); i++) {
+				product.setproductName(title_data.get(par1).get(i));
+				product.setprice(Integer.parseInt(title_data.get(par2).get(i)));
+				productsList.add(product);
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 }
