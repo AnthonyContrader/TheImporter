@@ -3,7 +3,6 @@ package it.contrader.service;
 import java.util.List;
 
 import it.contrader.converter.ProductConverter;
-import it.contrader.converter.UserConverter;
 import it.contrader.dao.ProductDAO;
 import it.contrader.dto.ProductDTO;
 

@@ -44,6 +44,7 @@ public class Excel {
 			// creating Workbook instance that refers to .xlsx file
 			XSSFWorkbook wb = new XSSFWorkbook(fis);
 			XSSFSheet sheet = wb.getSheetAt(0); // creating a Sheet object to retrieve object
+			wb.close();
 			Iterator<Row> itr = sheet.iterator(); // iterating over excel file
 			return itr;
 		} catch (Exception e) {
