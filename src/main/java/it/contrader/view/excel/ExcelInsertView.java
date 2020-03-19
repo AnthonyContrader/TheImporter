@@ -46,6 +46,7 @@ public class ExcelInsertView extends AbstractView {
 				System.out.println(u);
 			System.out.println();*/
 		}
+		this.request = request;
 	}
 
 	/**
@@ -71,7 +72,7 @@ public class ExcelInsertView extends AbstractView {
 	 */
 	@Override
 	public void submit() {
-		request = new Request();
+		
 		request.put("userPar1", choice1);
 		request.put("userPar2", choice2);
 		request.put("mode", mode);

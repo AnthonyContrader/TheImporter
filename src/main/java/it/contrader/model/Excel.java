@@ -116,6 +116,10 @@ public class Excel {
 
 	public void readTitleSelected() {
 
+		System.out.println(directory);
+		System.out.println(titleSelected);
+		
+		
 		List<String> data = new ArrayList<String>();
 		String actualTitle = new String();
 		
@@ -130,14 +134,19 @@ public class Excel {
 					Cell cell;
 					if (cellIterator.hasNext()) {
 						cell = cellIterator.next();
-					} else
+					} 
+					else {
 						break;
+					}
 					
+					System.out.println(cell.getStringCellValue());
 					if (cell.getAddress().getRow() == 0 && titleSelected.contains(cell.getStringCellValue())) { // controla che il titolo sia presente nei selezionati
 						actualTitle = cell.getStringCellValue();
 						check = 1;
+						System.out.println(actualTitle);
 					} else if(check == 1) {
 						data.add(cell.getStringCellValue());
+						System.out.println(data);
 					}
 				} while (check == 1);
 				
@@ -146,6 +155,7 @@ public class Excel {
 				}
 			}
 		}
+		System.out.println(title_data+"laREad");
 	}
 	
 	public void createProducts() {    //per logica del programma la lunghezza delle colonne deve essere ugale
@@ -153,6 +163,9 @@ public class Excel {
 		Product product = new Product();
 		
 		try {
+			
+			System.out.println(title_data+"crateProduct");
+			
 			for(int i = 0; i<title_data.get(par1).size(); i++) {
 				product.setproductName(title_data.get(par1).get(i));
 				product.setprice(Integer.parseInt(title_data.get(par2).get(i)));

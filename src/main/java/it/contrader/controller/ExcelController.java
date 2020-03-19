@@ -48,12 +48,22 @@ private static String sub_package = "excel.";
 			String title1 = "";
 			String title2 = "";
 			
+			List<String> titles = (List<String>)request.get("titlesList");
+			
 			try {
 			parUser1 = request.get("userPar1").toString();					//questo è in realtà un intero di selezione, proviene da ExcelInsertView
 			parUser2 = request.get("userPar2").toString();
 			
-			title1 = excel.getTitleRead().get(Integer.parseInt(parUser1));
-			title2 = excel.getTitleRead().get(Integer.parseInt(parUser2));
+			//excel.setDirectory(direc);
+			//excel.readTitle();
+			
+			
+			
+			title1 = titles.get(Integer.parseInt(parUser1)-1);
+			title2 = titles.get(Integer.parseInt(parUser2)-1);
+			
+			System.out.println(title1+"-----------------"+title2);
+			
 			}
 			catch(Exception e) {
 				e.printStackTrace();
@@ -62,10 +72,8 @@ private static String sub_package = "excel.";
 			ExcelDTO excelDTO = new ExcelDTO(directory,title1,title2);
 			
 			//sta roba è temporanea
-			List<String> titleTemp = new ArrayList<String>();
-			titleTemp.add(title1);
-			titleTemp.add(title2);
-			excel.setTitleSelected(titleTemp);
+			excel.setTitleSelected(titles);
+			excel.setDirectory(request.get("directory").toString());
 			excel.readTitleSelected();
 			excel.createProducts();
 			
