@@ -10,13 +10,14 @@ import it.contrader.model.Excel;
 import it.contrader.service.ExcelService;
 
 
-public class ExcelController {
+public class ExcelController implements Controller{
 
 	
-private static String sub_package = "product.";
+private static String sub_package = "excel.";
 	
 	private ExcelService excelService;
 	private Excel excel;
+	private String directory;
 	
 	public ExcelController() {
 		this.excelService = new ExcelService();
@@ -30,9 +31,13 @@ private static String sub_package = "product.";
 		
 		String choice = (String) request.get("choice");
 		
-		String directory= request.get("directory").toString();;
+		if(request.get("directory") != null) {
+			directory = request.get("directory").toString();;
+		}
+		
 		String parUser1 = "";
 		String parUser2 = "";
+		
 		
 		
 		

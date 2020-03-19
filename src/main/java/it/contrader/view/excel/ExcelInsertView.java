@@ -11,6 +11,7 @@ public class ExcelInsertView extends AbstractView {
 	private Request request;
 	private String choice1, choice2;
 	private final String mode = "INSERT";
+	private List<String> titles;
 
 	public ExcelInsertView() {
 		
@@ -29,7 +30,7 @@ public class ExcelInsertView extends AbstractView {
 			//@SuppressWarnings("unchecked")
 			System.out.println("\n------------------- Titoli Letti ----------------\n");
 			try {
-			List<String> titles=(List<String>) request.get("titleList");
+			titles=(List<String>) request.get("titlesList");
 			
 			int counter = 0;
 			for(String s: titles) {
@@ -55,7 +56,7 @@ public class ExcelInsertView extends AbstractView {
 	public void showOptions() {
 		System.out.println("          Scegli quale deve essere la prima colonna:");
 		
-		List<String> titles=(List<String>) request.get("titleList");
+		
 	
 		System.out.println("scegli un numero fra 1 e"+titles.size());
 

@@ -11,7 +11,7 @@ public class HomeUserView extends AbstractView{
 
 	@Override
 	public void showResults(Request request) {
-		//System.out.println("\n-----Purtroppo in questo sample l'utente non puà fare nulla, ci scusiamo per il disagio.-----");
+		//System.out.println("\n-----Purtroppo in questo sample l'utente non puï¿½ fare nulla, ci scusiamo per il disagio.-----");
 		if(request!=null) {
 	    	System.out.println("\n Benvenuto in SAMPLE PROJECT "+request.get("username").toString() + "\n");
 	    	}
@@ -28,7 +28,7 @@ public class HomeUserView extends AbstractView{
 	     System.out.println(" Seleziona cosa vuoi gestire:");
 	     System.out.println("[P]rodotti  [E]sci [I]nporta File");
 	        //Il metodo che salva l'input nella stringa choice.
-	        //getInput() è definito in AbstractView.
+	        //getInput() ï¿½ definito in AbstractView.
 	     choice = this.getInput();
 
 	}
@@ -43,6 +43,7 @@ public class HomeUserView extends AbstractView{
 			MainDispatcher.getInstance().callAction("Product", "doControl", request);
 			break;
 	    case "i":
+	    	
 			MainDispatcher.getInstance().callView("Excel", null);
 			break;
 		 case "e":

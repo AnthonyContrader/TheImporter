@@ -25,8 +25,10 @@ public class ExcelView extends AbstractView{
 		Request request = new Request();
 
 		request.put("directory", directory);
-		request.put("mode", null);
-
+		request.put("mode", "GETCHOICE");
+		request.put("choice", "I");
+		
+		
 
 		MainDispatcher.getInstance().callAction("Excel", "doControl", request);
 	}
