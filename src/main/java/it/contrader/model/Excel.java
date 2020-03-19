@@ -46,11 +46,12 @@ public class Excel {
 	public Excel() {
 	}
 
-	public Excel(String directory,String par1,String par2) {
+	public Excel(String directory,String par1,String par2, List<Product> productList) {
 		super();
 		this.directory = directory;
 		this.par1=par1;
 		this.par2=par2;
+		this.productsList = productList;
 	}
 
 	public String getDirectory() {
@@ -114,10 +115,11 @@ public class Excel {
 			}else return null;
 		}
 
-	public void readTitleSelected() {
+	public List<Product> readTitleSelected() {
 		List<String> list1=new ArrayList<>();
 		List<String> list2=new ArrayList<>();
 
+		
 		System.out.println(directory);
 		System.out.println(titleSelected);
 		
@@ -159,13 +161,16 @@ public class Excel {
 				}
 			}
 			String temp=list1.remove(0);
-			title_data.put(temp, list1);
+			title_data.put(temp.toUpperCase(), list1);
 			temp=list2.remove(0);
-			title_data.put(temp, list2);
+			title_data.put(temp.toUpperCase(), list2);
 			System.out.println(temp);
 			
 		}
 		System.out.println(title_data+"laREad");
+		
+		createProducts();
+		return getProductsList();
 	}
 	
 	public void createProducts() {    //per logica del programma la lunghezza delle colonne deve essere ugale
@@ -174,11 +179,13 @@ public class Excel {
 		
 		try {
 			
-			System.out.println(title_data+"crateProduct");
 			
-			for(int i = 0; i<title_data.get(par1).size(); i++) {
-				product.setproductName(title_data.get(par1).get(i));
-				product.setprice(Integer.parseInt(title_data.get(par2).get(i)));
+			
+			
+			for(int i = 0; i<title_data.get(titleSelected.get(0)).size(); i++) {
+				product.setproductName(title_data.get(titleSelected.get(0)).get(i));
+				product.setprice((int)Double.parseDouble(title_data.get(titleSelected.get(1)).get(i)));
+				//product.setprice(Integer.parseInt(title_data.get(titleSelected.get(0)).get(i)));
 				productsList.add(product);
 			}
 		}
@@ -186,6 +193,7 @@ public class Excel {
 			e.printStackTrace();
 		}
 		
+		System.out.println(productsList+"crateProduct");
 	}
 	
 }

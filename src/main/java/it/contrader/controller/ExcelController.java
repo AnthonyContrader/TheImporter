@@ -7,6 +7,7 @@ import java.util.List;
 import it.contrader.dto.ExcelDTO;
 import it.contrader.main.MainDispatcher;
 import it.contrader.model.Excel;
+import it.contrader.model.Product;
 import it.contrader.service.ExcelService;
 
 
@@ -69,13 +70,15 @@ private static String sub_package = "excel.";
 				e.printStackTrace();
 			}
 			
-			ExcelDTO excelDTO = new ExcelDTO(directory,title1,title2);
+			
 			
 			//sta roba è temporanea
 			excel.setTitleSelected(titles);
 			excel.setDirectory(request.get("directory").toString());
-			excel.readTitleSelected();
-			excel.createProducts();
+			List<Product> productList = excel.readTitleSelected();
+			
+			
+			ExcelDTO excelDTO = new ExcelDTO(directory,title1,title2, productList);
 			
 			excelService.insert(excelDTO);
 			
@@ -83,7 +86,7 @@ private static String sub_package = "excel.";
 			
 			request.put("mode", "mode");
 			
-			MainDispatcher.getInstance().callView(sub_package+"Product",null);		
+			MainDispatcher.getInstance().callView(sub_package+"ExcelInsert",request);		
 			break;
 		
 		case"GETCHOICE":
