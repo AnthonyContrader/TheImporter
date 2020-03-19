@@ -168,14 +168,12 @@ public class Excel {
 	
 	public void createProducts() {    //per logica del programma la lunghezza delle colonne deve essere ugale
 		
-		Product product = new Product();
+		
 		
 		try {
 			
-			
-			
-			
 			for(int i = 0; i<title_data.get(titleSelected.get(0)).size(); i++) {
+				Product product = new Product();
 				product.setproductName(title_data.get(titleSelected.get(0)).get(i));
 				product.setprice((int)Double.parseDouble(title_data.get(titleSelected.get(1)).get(i)));
 				//product.setprice(Integer.parseInt(title_data.get(titleSelected.get(0)).get(i)));

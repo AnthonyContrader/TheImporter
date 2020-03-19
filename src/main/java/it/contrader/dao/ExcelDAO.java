@@ -45,6 +45,7 @@ public class ExcelDAO {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {	
 			for(Product p: productListToInsert){
+				
 				PreparedStatement preparedStatement = connection.prepareStatement(QUERY_CREATE);
 				preparedStatement.setString(1, p.getproductName());
 				preparedStatement.setInt(2, p.getprice());
