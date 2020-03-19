@@ -115,6 +115,8 @@ public class Excel {
 		}
 
 	public void readTitleSelected() {
+		List<String> list1=new ArrayList<>();
+		List<String> list2=new ArrayList<>();
 
 		System.out.println(directory);
 		System.out.println(titleSelected);
@@ -129,31 +131,39 @@ public class Excel {
 			while (itr.hasNext()) {
 				Row row = itr.next();
 				Iterator<Cell> cellIterator = row.cellIterator(); // iterating over each column
-				check = 0; // resetto per il prossimo titolo
-				do {
-					Cell cell;
-					if (cellIterator.hasNext()) {
-						cell = cellIterator.next();
-					} 
-					else {
+				int counter = 1;
+				while (cellIterator.hasNext()) {
+					Cell cell = cellIterator.next();
+					switch (cell.getCellType()) {
+					case Cell.CELL_TYPE_STRING: // field that represents string cell type
+						if(counter==1) {
+							list1.add(cell.getStringCellValue());
+						}
+						else {
+							list2.add(cell.getStringCellValue());
+						}
 						break;
+					case Cell.CELL_TYPE_NUMERIC: // field that represents number cell type
+						Double temp;
+						if (counter == 1) {
+							temp=cell.getNumericCellValue();
+							list1.add(temp.toString());
+						}else {
+							temp=cell.getNumericCellValue();
+							list2.add(temp.toString());
+						}
+						break;
+					default:
 					}
-					
-					System.out.println(cell.getStringCellValue());
-					if (cell.getAddress().getRow() == 0 && titleSelected.contains(cell.getStringCellValue())) { // controla che il titolo sia presente nei selezionati
-						actualTitle = cell.getStringCellValue();
-						check = 1;
-						System.out.println(actualTitle);
-					} else if(check == 1) {
-						data.add(cell.getStringCellValue());
-						System.out.println(data);
-					}
-				} while (check == 1);
-				
-				if(check == 1) {                        //se ho trovato un titolo corretto aggiungo i dati all'hashmap
-					title_data.put(actualTitle, data);
+					counter++;
 				}
 			}
+			String temp=list1.remove(0);
+			title_data.put(temp, list1);
+			temp=list2.remove(0);
+			title_data.put(temp, list2);
+			System.out.println(temp);
+			
 		}
 		System.out.println(title_data+"laREad");
 	}
