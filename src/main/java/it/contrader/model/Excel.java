@@ -116,6 +116,7 @@ public class Excel {
 			}else return null;
 		}
 
+	@SuppressWarnings("deprecation")
 	public List<Product> readTitleSelected() {
 		
 		readTitle();
@@ -126,13 +127,7 @@ public class Excel {
 		List<String> list1=new ArrayList<>();
 		List<String> list2=new ArrayList<>();
 		
-		
-		
-		List<String> data = new ArrayList<String>();
-		String actualTitle = new String();
-		
 		Iterator<Row> itr = openFile();
-		int check = 0;
 		if (itr != null) {
 			while (itr.hasNext()) {
 				Row row = itr.next();

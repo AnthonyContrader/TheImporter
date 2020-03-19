@@ -1,7 +1,6 @@
 package it.contrader.controller;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 import it.contrader.dto.ExcelDTO;
@@ -49,7 +48,7 @@ private static String sub_package = "excel.";
 			String title1 = "";
 			String title2 = "";
 			
-			List<String> titles = (List<String>)request.get("titlesList");
+			@SuppressWarnings("unchecked") List<String> titles = (List<String>)request.get("titlesList");
 			
 			try {
 			parUser1 = request.get("userPar1").toString();					//questo è in realtà un intero di selezione, proviene da ExcelInsertView

@@ -20,6 +20,7 @@ public class ExcelInsertView extends AbstractView {
 	/**
 	 * Mostra la lista utenti
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void showResults(Request request) {
 		if (request != null) {
