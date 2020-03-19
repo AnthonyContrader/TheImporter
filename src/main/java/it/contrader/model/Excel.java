@@ -19,15 +19,28 @@ public class Excel {
 	private String par1, par2; // questi sono gli attributi di prodotto
 	
 	private List<String> titleRead = new ArrayList<String>();
+	
+
 	private List<String> titleSelected = new ArrayList<String>();
-	
-	
 	private Map<String, List<String>> title_data = new HashMap<>();
 	private List<Product> productsList = new ArrayList<Product>();
 
+	
+	public List<String> getTitleRead() {
+		return titleRead;
+	}
+	
 	public List<Product> getProductsList() {
 		
 		return productsList;
+	}
+	
+	public List<String> getTitleSelected() {
+		return titleSelected;
+	}
+
+	public void setTitleSelected(List<String> titleSelected) {
+		this.titleSelected = titleSelected;
 	}
 
 	public Excel() {

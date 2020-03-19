@@ -1,6 +1,9 @@
 package it.contrader.controller;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import it.contrader.dto.ExcelDTO;
 import it.contrader.main.MainDispatcher;
 import it.contrader.model.Excel;
@@ -13,9 +16,11 @@ public class ExcelController {
 private static String sub_package = "product.";
 	
 	private ExcelService excelService;
+	private Excel excel;
 	
 	public ExcelController() {
 		this.excelService = new ExcelService();
+		excel=new Excel();
 	}
 	
 	
@@ -26,20 +31,38 @@ private static String sub_package = "product.";
 		String choice = (String) request.get("choice");
 		
 		String directory= request.get("directory").toString();;
-		String parUser1;
-		String parUser2;
+		String parUser1 = "";
+		String parUser2 = "";
 		
-		Excel excel=new Excel();
+		
 		
 		switch(mode){
 		
 		case "INSERT":
 			
-			directory = request.get("directory").toString();
-			parUser1 = request.get("parUser1").toString();
-			parUser2 = request.get("parUser2").toString();
+			String title1 = "";
+			String title2 = "";
 			
-			ExcelDTO excelDTO = new ExcelDTO(directory,parUser1,parUser2);
+			try {
+			parUser1 = request.get("userPar1").toString();					//questo è in realtà un intero di selezione, proviene da ExcelInsertView
+			parUser2 = request.get("userPar2").toString();
+			
+			title1 = excel.getTitleRead().get(Integer.parseInt(parUser1));
+			title2 = excel.getTitleRead().get(Integer.parseInt(parUser2));
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			ExcelDTO excelDTO = new ExcelDTO(directory,title1,title2);
+			
+			//sta roba è temporanea
+			List<String> titleTemp = new ArrayList<String>();
+			titleTemp.add(title1);
+			titleTemp.add(title2);
+			excel.setTitleSelected(titleTemp);
+			excel.readTitleSelected();
+			excel.createProducts();
 			
 			excelService.insert(excelDTO);
 			
@@ -47,7 +70,7 @@ private static String sub_package = "product.";
 			
 			request.put("mode", "mode");
 			
-			MainDispatcher.getInstance().callView(sub_package+"ExcelInsert",request);		
+			MainDispatcher.getInstance().callView(sub_package+"Product",null);		
 			break;
 		
 		case"GETCHOICE":
@@ -55,6 +78,7 @@ private static String sub_package = "product.";
 
 				
 			case "I":
+				excel.setDirectory(directory);
 				request.put("titlesList", excel.readTitle());
 				MainDispatcher.getInstance().callView(sub_package + "ExcelInsert", request);
 				break;

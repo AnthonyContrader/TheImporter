@@ -9,7 +9,7 @@ import it.contrader.view.AbstractView;
 public class ExcelInsertView extends AbstractView {
 	
 	private Request request;
-	private String choice;
+	private String choice1, choice2;
 	private final String mode = "INSERT";
 
 	public ExcelInsertView() {
@@ -31,8 +31,10 @@ public class ExcelInsertView extends AbstractView {
 			try {
 			List<String> titles=(List<String>) request.get("titleList");
 			
+			int counter = 0;
 			for(String s: titles) {
-				System.out.print(s+"\t\t");
+				counter++;
+				System.out.print("["+counter+"]"+s+"\t\t");
 			}
 					}catch (Exception e) {
 						e.getStackTrace();
@@ -47,17 +49,20 @@ public class ExcelInsertView extends AbstractView {
 
 	/**
 	 * Chiede all'utente un input (lettera da tastiera) per la choice (vedi UserController). 
-	 * Mette la modalità GETCHOICE nella mode.
+	 * Mette la modalitï¿½ GETCHOICE nella mode.
 	 */
 	@Override
 	public void showOptions() {
 		System.out.println("          Scegli quale deve essere la prima colonna:");
-		System.out.println("[1]  [2]");
+		
+		List<String> titles=(List<String>) request.get("titleList");
+	
+		System.out.println("scegli un numero fra 1 e"+titles.size());
 
-		this.choice = getInput();
+		this.choice1 = getInput();
 		
-		
-		
+		System.out.println("          Scegli quale deve essere la seconda colonna:");
+		this.choice2 = getInput();
 	}
 	
 	/**
@@ -66,9 +71,10 @@ public class ExcelInsertView extends AbstractView {
 	@Override
 	public void submit() {
 		request = new Request();
-		request.put("choice", choice);
+		request.put("userPar1", choice1);
+		request.put("userPar2", choice2);
 		request.put("mode", mode);
-		MainDispatcher.getInstance().callAction("User", "doControl", this.request);
+		MainDispatcher.getInstance().callAction("Excel", "doControl", this.request);
 	}
 
 }
