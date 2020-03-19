@@ -72,6 +72,9 @@ private static String sub_package = "excel.";
 			
 			
 			//sta roba è temporanea
+			titles.clear();
+			titles.add(title1);
+			titles.add(title2);
 			excel.setTitleSelected(titles);
 			excel.setDirectory(request.get("directory").toString());
 			List<Product> productList = excel.readTitleSelected();

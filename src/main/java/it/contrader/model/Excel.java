@@ -22,6 +22,7 @@ public class Excel {
 	
 
 	private List<String> titleSelected = new ArrayList<String>();
+	private Map<String, Integer> title_position = new HashMap<>();
 	private Map<String, List<String>> title_data = new HashMap<>();
 	private List<Product> productsList = new ArrayList<Product>();
 
@@ -107,7 +108,7 @@ public class Excel {
 					Cell cell = cellIterator.next();
 					if (cell.getAddress().getRow() == 0) {
 						titleRead.add(cell.getStringCellValue().trim().toUpperCase()); // qui vengono aggiunti i
-																						// titoli a lista
+						title_position.put(cell.getStringCellValue().toUpperCase(),cell.getAddress().getColumn()); //salvo la posizione del titolo																// titoli a lista
 					}
 				}
 			}
@@ -116,8 +117,16 @@ public class Excel {
 		}
 
 	public List<Product> readTitleSelected() {
+		
+		readTitle();
+		
+		int positionTitle1 = title_position.get(titleSelected.get(0)).intValue();
+		int positionTitle2 = title_position.get(titleSelected.get(1)).intValue();
+		
 		List<String> list1=new ArrayList<>();
 		List<String> list2=new ArrayList<>();
+		
+		
 		
 		List<String> data = new ArrayList<String>();
 		String actualTitle = new String();
@@ -128,24 +137,24 @@ public class Excel {
 			while (itr.hasNext()) {
 				Row row = itr.next();
 				Iterator<Cell> cellIterator = row.cellIterator(); // iterating over each column
-				int counter = 1;
+				int counter = 0;
 				while (cellIterator.hasNext()) {
 					Cell cell = cellIterator.next();
 					switch (cell.getCellType()) {
 					case Cell.CELL_TYPE_STRING: // field that represents string cell type
-						if(counter==1) {
+						if(counter == positionTitle1) {
 							list1.add(cell.getStringCellValue());
 						}
-						else {
+						else if(counter == positionTitle2) {
 							list2.add(cell.getStringCellValue());
 						}
 						break;
 					case Cell.CELL_TYPE_NUMERIC: // field that represents number cell type
 						Double temp;
-						if (counter == 1) {
+						if ((counter == positionTitle1)) {
 							temp=cell.getNumericCellValue();
 							list1.add(temp.toString());
-						}else {
+						}else if(counter==positionTitle2) {
 							temp=cell.getNumericCellValue();
 							list2.add(temp.toString());
 						}
