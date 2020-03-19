@@ -63,7 +63,6 @@ private static String sub_package = "excel.";
 			title1 = titles.get(Integer.parseInt(parUser1)-1);
 			title2 = titles.get(Integer.parseInt(parUser2)-1);
 			
-			System.out.println(title1+"-----------------"+title2);
 			
 			}
 			catch(Exception e) {
@@ -86,7 +85,9 @@ private static String sub_package = "excel.";
 			
 			request.put("mode", "mode");
 			
-			MainDispatcher.getInstance().callView(sub_package+"ExcelInsert",request);		
+			System.out.println("inserimento andato a buon fine");
+			
+			MainDispatcher.getInstance().callView("HomeUser",null);		
 			break;
 		
 		case"GETCHOICE":

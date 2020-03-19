@@ -118,11 +118,6 @@ public class Excel {
 	public List<Product> readTitleSelected() {
 		List<String> list1=new ArrayList<>();
 		List<String> list2=new ArrayList<>();
-
-		
-		System.out.println(directory);
-		System.out.println(titleSelected);
-		
 		
 		List<String> data = new ArrayList<String>();
 		String actualTitle = new String();
@@ -164,10 +159,8 @@ public class Excel {
 			title_data.put(temp.toUpperCase(), list1);
 			temp=list2.remove(0);
 			title_data.put(temp.toUpperCase(), list2);
-			System.out.println(temp);
 			
 		}
-		System.out.println(title_data+"laREad");
 		
 		createProducts();
 		return getProductsList();
@@ -192,8 +185,6 @@ public class Excel {
 		catch(Exception e) {
 			e.printStackTrace();
 		}
-		
-		System.out.println(productsList+"crateProduct");
 	}
 	
 }
