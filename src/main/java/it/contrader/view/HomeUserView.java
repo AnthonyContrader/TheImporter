@@ -12,23 +12,22 @@ public class HomeUserView extends AbstractView{
 	@Override
 	public void showResults(Request request) {
 		//System.out.println("\n-----Purtroppo in questo sample l'utente non pu� fare nulla, ci scusiamo per il disagio.-----");
-		if(request!=null) {
-	    	System.out.println("\n Benvenuto in SAMPLE PROJECT "+request.get("username").toString() + "\n");
+		if(request!=null) {try {
+			System.out.println("\n Benvenuto in SAMPLE PROJECT "+request.get("username").toString() + "\n");
+		    }catch(Exception e) {}
+			try {
+			System.out.println("\n ERRORE INSERIMENTO FILE : "+request.get("ERROR").toString() + "\n");
+		    }catch(Exception e) {}
 	    	}
 
 	}
 
 	@Override
 	public void showOptions() {
-		/*System.out.println("-------------MENU------------\n");
-		System.out.println("NESSUNA OPZIONE DISPONIBILE!");
-		System.out.println("\n Esatto, puoi solo uscire...");
-		choice = this.getInput();*/
 		 System.out.println("-------------MENU------------\n");
 	     System.out.println(" Seleziona cosa vuoi gestire:");
 	     System.out.println("[P]rodotti  [E]sci [I]nporta File");
-	        //Il metodo che salva l'input nella stringa choice.
-	        //getInput() � definito in AbstractView.
+	     
 	     choice = this.getInput();
 
 	}

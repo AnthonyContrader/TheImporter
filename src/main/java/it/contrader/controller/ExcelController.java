@@ -97,9 +97,13 @@ private static String sub_package = "excel.";
 
 				
 			case "I":
-				excel.setDirectory(directory);
+				if(directory.contains(".xlsx")) {excel.setDirectory(directory);
 				request.put("titlesList", excel.readTitle());
 				MainDispatcher.getInstance().callView(sub_package + "ExcelInsert", request);
+				}else {
+					request.put("ERROR", "file inserito non valido");
+					MainDispatcher.getInstance().callView("HomeUser",request);
+				}
 				break;
 			default:
 				MainDispatcher.getInstance().callView("Login", null);
