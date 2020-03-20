@@ -63,8 +63,9 @@ public class HistoryDAO {
 
 	}
 
-	public List<Product> read(int userId) {
+	public List<Product> searchByUserId(int userId) {
 		
+		ProductDAO productsDAO = new ProductDAO();
 		List<Product> productHistory = new ArrayList<Product>();
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
@@ -75,77 +76,19 @@ public class HistoryDAO {
 
 			while(resultSet.next()) {
 				
-				int idRecord,idProduct, idUser;
+				int idProduct;
 	
 				idProduct = resultSet.getInt("idProduct");
-				idUser = resultSet.getInt("idUser");
-				idRecord = resultSet.getInt("idRecord");
-				History Record = new History(idRecord, idProduct, idUser);
+				Product product = productsDAO.read(idProduct);
+				productHistory.add(product);
 			}
-			return user;
+			return productHistory;
 		} catch (SQLException e) {
 			return null;
 		}
 
 	}
 
-	public boolean update(User userToUpdate) {
-		Connection connection = ConnectionSingleton.getInstance();
-
-		// Check if id is present
-		if (userToUpdate.getId() == 0)
-			return false;
-
-		User userRead = read(userToUpdate.getId());
-		if (!userRead.equals(userToUpdate)) {
-			try {
-				// Fill the userToUpdate object
-				if (userToUpdate.getUsername() == null || userToUpdate.getUsername().equals("")) {
-					userToUpdate.setUsername(userRead.getUsername());
-				}
-
-				if (userToUpdate.getPassword() == null || userToUpdate.getPassword().equals("")) {
-					userToUpdate.setPassword(userRead.getPassword());
-				}
-
-				if (userToUpdate.getUsertype() == null || userToUpdate.getUsertype().equals("")) {
-					userToUpdate.setUsertype(userRead.getUsertype());
-				}
-
-				// Update the user
-				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
-				preparedStatement.setString(1, userToUpdate.getUsername());
-				preparedStatement.setString(2, userToUpdate.getPassword());
-				preparedStatement.setString(3, userToUpdate.getUsertype());
-				preparedStatement.setInt(4, userToUpdate.getId());
-				int a = preparedStatement.executeUpdate();
-				if (a > 0)
-					return true;
-				else
-					return false;
-
-			} catch (SQLException e) {
-				return false;
-			}
-		}
-
-		return false;
-
-	}
-
-	public boolean delete(int id) {
-		Connection connection = ConnectionSingleton.getInstance();
-		try {
-			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_DELETE);
-			preparedStatement.setInt(1, id);
-			int n = preparedStatement.executeUpdate();
-			if (n != 0)
-				return true;
-
-		} catch (SQLException e) {
-		}
-		return false;
-	}
 
 
 }
