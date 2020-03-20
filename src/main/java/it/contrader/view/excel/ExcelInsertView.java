@@ -12,6 +12,8 @@ public class ExcelInsertView extends AbstractView {
 	private String choice1, choice2;
 	private final String mode = "INSERT";
 	private List<String> titles;
+	private List<String> preData;
+	private List<List<String>> dataList;
 
 	public ExcelInsertView() {
 		
@@ -23,31 +25,34 @@ public class ExcelInsertView extends AbstractView {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void showResults(Request request) {
+		int counter;
 		if (request != null) {
-			/*System.out.println("\n------------------- Gestione utenti ----------------\n");
-			System.out.println("ID\tUsername\tPassword\tTipo Utente");
-			System.out.println("----------------------------------------------------\n");
-			*/
-			//@SuppressWarnings("unchecked")
 			System.out.println("\n------------------- Titoli Letti ----------------\n");
 			try {
-			titles=(List<String>) request.get("titlesList");
+			dataList=(List<List<String>>) request.get("titlesList");//J:\TheImporter\TheImporter.xlsx
+			titles=dataList.get(1);
+			preData=dataList.get(0);
 			
-			int counter = 0;
+			counter = 0;
 			for(String s: titles) {
 				counter++;
 				System.out.print("["+counter+"]"+s+"\t\t");
 			}
+			System.out.println(" ");
 					}catch (Exception e) {
 						e.getStackTrace();
 					}
-
-			/*List<ExcelDTO> users = (List<ExcelDTO>) request.get("par");
-			for (ExcelDTO u: users)
-				System.out.println(u);
-			System.out.println();*/
-			System.out.println(" ");
+			counter=0;
+			for(int i=0; i<= ((preData.size()/titles.size())-1);i++) {
+				
+				for(int j=0 ; j <= titles.size()-1;j++) {
+					System.out.print(preData.get(counter)+"\t\t\t");
+					counter++;
+				}
+				System.out.println(" ");
+			}
 		}
+		System.out.println(" ");
 		this.request = request;
 	}
 
@@ -61,7 +66,7 @@ public class ExcelInsertView extends AbstractView {
 		
 		
 	
-		System.out.println("scegli un numero fra 1 e"+titles.size());
+		System.out.println("scegli un numero fra 1 e "+titles.size());
 
 		this.choice1 = getInput();
 		

@@ -152,8 +152,10 @@ private static String sub_package = "excel.";
 
 	}
 	
-	public List<String> readTitle() {
-
+	@SuppressWarnings("deprecation")
+	public List<List<String>> readTitle() {
+		List<List<String>> insertData=new ArrayList<>();
+		List<String> dataList=new ArrayList<>();
 		Iterator<Row> itr = openFile();
 
 		if (itr != null) {
@@ -166,10 +168,26 @@ private static String sub_package = "excel.";
 					if (cell.getAddress().getRow() == 0) {
 						titleRead .add(cell.getStringCellValue().trim().toUpperCase()); // qui vengono aggiunti i
 						title_position.put(cell.getStringCellValue().toUpperCase(),cell.getAddress().getColumn()); //salvo la posizione del titolo																// titoli a lista
+					}else if( cell.getAddress().getRow() <= 5 ){
+						switch (cell.getCellType()) {
+						case Cell.CELL_TYPE_STRING: // field that represents string cell type
+							dataList.add(cell.getStringCellValue());
+							break;
+						case Cell.CELL_TYPE_NUMERIC: // field that represents number cell type
+							dataList.add(Double.toString(cell.getNumericCellValue()));
+							break;
+						default:
+							dataList.add("x");
+						break;
+						}
+
 					}
+					
 				}
 			}
-			return titleRead;
+			insertData.add(dataList);
+			insertData.add(titleRead);
+			return insertData;
 			}else return null;
 		}
 
