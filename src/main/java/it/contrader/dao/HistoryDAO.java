@@ -4,6 +4,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import it.contrader.main.ConnectionSingleton;
+import it.contrader.model.History;
+import it.contrader.model.Product;
 import it.contrader.model.User;
 
 /**
@@ -16,43 +18,43 @@ public class HistoryDAO {
 
 	private final String QUERY_ALL = "SELECT * FROM history";
 	private final String QUERY_CREATE = "INSERT INTO history (idProduct, idUser) VALUES (?,?)";
-	private final String QUERY_READ = "SELECT * FROM user WHERE id=?";
-	private final String QUERY_UPDATE = "UPDATE user SET username=?, password=?, usertype=? WHERE id=?";
-	private final String QUERY_DELETE = "DELETE FROM user WHERE id=?";
+	private final String QUERY_SEARCHBYUSER = "SELECT * FROM history WHERE idUser=?";
+	private final String QUERY_SEARCHBYPRODUCT = "SELECT * FROM history WHERE idProduct=?";
+	//private final String QUERY_UPDATE = "UPDATE user SET username=?, password=?, usertype=? WHERE id=?";
+	//private final String QUERY_DELETE = "DELETE FROM user WHERE id=?";
 
 	public HistoryDAO() {
 
 	}
 
-	public List<User> getAll() {
-		List<User> usersList = new ArrayList<>();
+	public List<History> getAll() {						//ritorna tutti i record della tabella
+		List<History> recordList = new ArrayList<>();
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(QUERY_ALL);
-			User user;
+			History record;
 			while (resultSet.next()) {
-				int id = resultSet.getInt("id");
-				String username = resultSet.getString("username");
-				String password = resultSet.getString("password");
-				String usertype = resultSet.getString("usertype");
-				user = new User(username, password, usertype);
-				user.setId(id);
-				usersList.add(user);
+				int idRecord = resultSet.getInt("idRecord");
+				int idProduct = resultSet.getInt("idProduct");
+				int idUser= resultSet.getInt("idUser");
+				
+				record = new History(idRecord, idProduct, idUser);
+				record.setIdRecord(idRecord);
+				recordList.add(record);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return usersList;
+		return recordList;
 	}
 
-	public boolean insert(User userToInsert) {
+	public boolean insert(History recordToInsert) {						//inserisce un record
 		Connection connection = ConnectionSingleton.getInstance();
 		try {	
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_CREATE);
-			preparedStatement.setString(1, userToInsert.getUsername());
-			preparedStatement.setString(2, userToInsert.getPassword());
-			preparedStatement.setString(3, userToInsert.getUsertype());
+			preparedStatement.setInt(1, recordToInsert.getIdProduct());
+			preparedStatement.setInt(2, recordToInsert.getIdUser());
 			preparedStatement.execute();
 			return true;
 		} catch (SQLException e) {
@@ -61,23 +63,25 @@ public class HistoryDAO {
 
 	}
 
-	public User read(int userId) {
+	public List<Product> read(int userId) {
+		
+		List<Product> productHistory = new ArrayList<Product>();
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 
-
-			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_READ);
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_SEARCHBYUSER);
 			preparedStatement.setInt(1, userId);
 			ResultSet resultSet = preparedStatement.executeQuery();
-			resultSet.next();
-			String username, password, usertype;
 
-			username = resultSet.getString("username");
-			password = resultSet.getString("password");
-			usertype = resultSet.getString("usertype");
-			User user = new User(username, password, usertype);
-			user.setId(resultSet.getInt("id"));
-
+			while(resultSet.next()) {
+				
+				int idRecord,idProduct, idUser;
+	
+				idProduct = resultSet.getInt("idProduct");
+				idUser = resultSet.getInt("idUser");
+				idRecord = resultSet.getInt("idRecord");
+				History Record = new History(idRecord, idProduct, idUser);
+			}
 			return user;
 		} catch (SQLException e) {
 			return null;

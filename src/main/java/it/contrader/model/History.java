@@ -9,11 +9,11 @@ public class History {
 		
 	}
 	
-	public History(int idProduct, int idUser,int id) {
+	public History(int idRecord, int idProduct, int idUser) {
 		super();
 		this.setIdProduct(idProduct);
 		this.setIdUser(idUser);
-		this.setIdRecord(id);
+		this.setIdRecord(idRecord);
 	}
 
 	public int getIdProduct() {
