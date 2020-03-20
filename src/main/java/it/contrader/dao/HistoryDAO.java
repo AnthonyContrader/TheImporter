@@ -88,6 +88,32 @@ public class HistoryDAO {
 		}
 
 	}
+	
+	public List<User> searchByProductId(int productId) {
+		
+		UserDAO usersDAO = new UserDAO();
+		List<User> userHistory = new ArrayList<User>();
+		Connection connection = ConnectionSingleton.getInstance();
+		try {
+
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_SEARCHBYPRODUCT);
+			preparedStatement.setInt(1, productId);
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			while(resultSet.next()) {
+				
+				int idUser;
+	
+				idUser = resultSet.getInt("idUser");
+				User user = usersDAO.read(idUser);
+				userHistory.add(user);
+			}
+			return userHistory;
+		} catch (SQLException e) {
+			return null;
+		}
+
+	}
 
 
 
