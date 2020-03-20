@@ -80,6 +80,7 @@ public class ExcelInsertView extends AbstractView {
 	@Override
 	public void submit() {
 		
+		request.put("titlesList", titles);
 		request.put("userPar1", choice1);
 		request.put("userPar2", choice2);
 		request.put("mode", mode);
