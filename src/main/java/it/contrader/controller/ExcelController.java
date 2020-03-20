@@ -16,7 +16,6 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import it.contrader.dto.ExcelDTO;
 import it.contrader.main.MainDispatcher;
-import it.contrader.model.Excel;
 import it.contrader.model.Product;
 import it.contrader.service.ExcelService;
 
@@ -27,7 +26,6 @@ public class ExcelController implements Controller{
 private static String sub_package = "excel.";
 	
 	private ExcelService excelService;
-	private Excel excel;
 	private ExcelDTO excelDTO = new ExcelDTO();
 	private String directory;
 
@@ -39,7 +37,6 @@ private static String sub_package = "excel.";
 	
 	public ExcelController() {
 		this.excelService = new ExcelService();
-		excel=new Excel();
 	}
 	
 	
@@ -176,6 +173,7 @@ private static String sub_package = "excel.";
 			}else return null;
 		}
 
+	@SuppressWarnings("deprecation")
 	public List<Product> readTitleSelected() {
 		
 		readTitle();

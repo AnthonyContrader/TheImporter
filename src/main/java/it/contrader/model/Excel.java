@@ -19,8 +19,6 @@ public class Excel {
 	private String par1, par2; // questi sono gli attributi di prodotto
 	
 	private List<String> titleRead = new ArrayList<String>();
-	
-
 	private List<String> titleSelected = new ArrayList<String>();
 	private Map<String, Integer> title_position = new HashMap<>();
 	private Map<String, List<String>> title_data = new HashMap<>();
