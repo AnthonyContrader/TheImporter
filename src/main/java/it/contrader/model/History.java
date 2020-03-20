@@ -1,7 +1,7 @@
 package it.contrader.model;
 
 public class History {
-	private int id;
+	private int idRecord;
 	private int idProduct;
 	private int idUser;
 	
@@ -13,7 +13,7 @@ public class History {
 		super();
 		this.setIdProduct(idProduct);
 		this.setIdUser(idUser);
-		this.setId(id);
+		this.setIdRecord(id);
 	}
 
 	public int getIdProduct() {
@@ -32,12 +32,12 @@ public class History {
 		this.idUser = idUser;
 	}
 
-	public int getId() {
-		return id;
+	public int getIdRecord() {
+		return idRecord;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIdRecord(int id) {
+		this.idRecord = id;
 	}
 	
 	
