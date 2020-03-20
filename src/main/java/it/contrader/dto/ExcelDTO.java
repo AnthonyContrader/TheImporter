@@ -1,5 +1,6 @@
 package it.contrader.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import it.contrader.model.Product;
@@ -11,6 +12,7 @@ public class ExcelDTO {
 	private String title1;
 	
 	private String title2;
+	
 	
 	private List<Product> productList;
 	
@@ -57,4 +59,5 @@ public class ExcelDTO {
 	public void setDirectory(String directory) {
 		this.directory = directory;
 	}
+
 }
