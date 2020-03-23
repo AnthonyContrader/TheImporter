@@ -10,6 +10,13 @@ public class ProductDTO {
 	public ProductDTO() {
 		
 	}
+	
+	public ProductDTO (String productName, int price,String brand,String desc) {
+		this.productName = productName;
+		this.price = price;
+		this.productBrand=brand;
+		this.description=desc;
+	}
 
 	public ProductDTO (int id, String productName, int price,String brand,String desc) {
 		this.id = id;
