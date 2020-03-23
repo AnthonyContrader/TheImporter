@@ -44,7 +44,7 @@ public class ProductController implements Controller {
 			brand=request.get("brand").toString();
 			desc=request.get("desc").toString();
 			
-			ProductDTO productToInsert= new ProductDTO(productName,price);
+			ProductDTO productToInsert= new ProductDTO(productName,price,brand,desc);
 			
 			productService.insert(productToInsert);
 			
