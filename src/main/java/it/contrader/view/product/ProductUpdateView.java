@@ -12,6 +12,8 @@ public class ProductUpdateView extends AbstractView {
 	private int id;
 	private String productName;
 	private int price;
+	private String desc;
+	private String brand;
 	
 	private final String mode = "UPDATE";
 
@@ -44,6 +46,10 @@ public class ProductUpdateView extends AbstractView {
 			productName = getInput();
 			System.out.println("Inserisci prezzo prodotto:");
 			price = Integer.parseInt(getInput());
+			System.out.println("Inserisci descrizione prodotto:");
+			desc = getInput();
+			System.out.println("Inserisci brand prodotto:");
+			brand = getInput();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -62,6 +68,8 @@ public class ProductUpdateView extends AbstractView {
 		request.put("productName", productName);
 		request.put("price", price);
 		request.put("mode", mode);
+		request.put("desc", mode);
+		request.put("brand", mode);
 		MainDispatcher.getInstance().callAction("Product", "doControl", request);
 	}
 

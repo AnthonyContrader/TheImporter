@@ -31,7 +31,7 @@ public class ProductReadView extends AbstractView {
 	@Override
 	public void showResults(Request request) {
 		if (request != null) {
-			ProductDTO product =(ProductDTO) request.get("product");    //qui era senza maiuscola mi sembra strano, nel caso non giri cambia quello 
+			ProductDTO product =(ProductDTO) request.get("product");     
 			System.out.println(product);
 			MainDispatcher.getInstance().callView("Product", null);
 		}

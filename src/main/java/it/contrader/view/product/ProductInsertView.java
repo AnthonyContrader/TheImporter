@@ -9,6 +9,8 @@ public class ProductInsertView extends AbstractView{
 	private Request request;
 	private String productName;
 	private int price;
+	private String desc;
+	private String brand;
 	private final String mode = "INSERT";
 
 	public ProductInsertView() {
@@ -35,6 +37,10 @@ public class ProductInsertView extends AbstractView{
 			productName = getInput();
 			System.out.println("Inserisci il prezzo del prodotto:");
 			price = Integer.parseInt(getInput());
+			System.out.println("Inserisci il brand del prodotto:");
+			brand = getInput();
+			System.out.println("Inserisci la descrizione del prodotto:");
+			desc = getInput();
 			
 	}
 
@@ -46,6 +52,8 @@ public class ProductInsertView extends AbstractView{
 		request = new Request();
 		request.put("productName", productName);
 		request.put("price", price);
+		request.put("desc", desc);
+		request.put("brand", brand);
 		request.put("mode", mode);
 		MainDispatcher.getInstance().callAction("Product", "doControl", request);
 	}

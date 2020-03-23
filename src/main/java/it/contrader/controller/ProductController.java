@@ -26,6 +26,8 @@ public class ProductController implements Controller {
 		int id;
 		String productName;
 		int price;
+		String brand;
+		String desc;
 		
 		switch(mode){
 		
@@ -39,6 +41,8 @@ public class ProductController implements Controller {
 		case "INSERT":
 			productName=request.get("productName").toString();
 			price=Integer.parseInt(request.get("price").toString());
+			brand=request.get("brand").toString();
+			desc=request.get("desc").toString();
 			
 			ProductDTO productToInsert= new ProductDTO(productName,price);
 			
@@ -64,7 +68,8 @@ public class ProductController implements Controller {
 			id=Integer.parseInt(request.get("id").toString());
 			productName=request.get("productName").toString();
 			price=Integer.parseInt(request.get("price").toString());
-			
+			desc=request.get("desc").toString();
+			brand=request.get("brand").toString();
 			ProductDTO productToUpdate=new ProductDTO(id,productName,price);
 			productService.update(productToUpdate);
 			request=new Request();

@@ -29,12 +29,12 @@ public class ProductView extends AbstractView {
 	public void showResults(Request request) {
 		if (request != null) {
 			System.out.println("\n------------------- Gestione Prodotti ----------------\n");
-			System.out.println("ID\tnomeProdotto\tPrice");
+			System.out.println("ID\tnomeProdotto\tPrice\tBrand\tDescription");
 			System.out.println("----------------------------------------------------\n");
 			
 			@SuppressWarnings("unchecked")
-			List<ProductDTO> users = (List<ProductDTO>) request.get("products");
-			for (ProductDTO u: users)
+			List<ProductDTO> products = (List<ProductDTO>) request.get("products");
+			for (ProductDTO u: products)
 				System.out.println(u);
 			System.out.println();
 		}
