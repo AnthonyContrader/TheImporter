@@ -15,9 +15,9 @@ import it.contrader.model.Product;
 public class ProductDAO {
 
 	private final String QUERY_ALL = "SELECT * FROM excel";
-	private final String QUERY_CREATE = "INSERT INTO excel (productName, price,desc,brand) VALUES (?,?,?,?)";
+	private final String QUERY_CREATE = "INSERT INTO excel (productName, price, brand, description) VALUES (?,?,?,?)";
 	private final String QUERY_READ = "SELECT * FROM excel WHERE id=?";
-	private final String QUERY_UPDATE = "UPDATE excel SET productName=?, price=?, desc=?, brand=? WHERE id=?";
+	private final String QUERY_UPDATE = "UPDATE excel SET productName=?, price=?, description=?, brand=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE FROM excel WHERE id=?";
 
 	public ProductDAO() {
@@ -36,7 +36,7 @@ public class ProductDAO {
 				String productName = resultSet.getString("productName");
 				int price = resultSet.getInt("price");
 				String brand= resultSet.getString("brand");
-				String desc= resultSet.getString("desc");
+				String desc= resultSet.getString("description");
 				
 				product = new Product(id, productName, price, desc, brand);
 				product.setId(id);
@@ -54,11 +54,12 @@ public class ProductDAO {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_CREATE);
 			preparedStatement.setString(1, productToInsert.getproductName());
 			preparedStatement.setInt(2, productToInsert.getprice());
-			preparedStatement.setString(3, productToInsert.getDescription());
-			preparedStatement.setString(4, productToInsert.getProductBrand());
+			preparedStatement.setString(3, productToInsert.getProductBrand());
+			preparedStatement.setString(4, productToInsert.getDescription());
 			preparedStatement.execute();
 			return true;
 		} catch (SQLException e) {
+			e.printStackTrace();
 			return false;
 		}
 
@@ -75,7 +76,7 @@ public class ProductDAO {
 			String productName = resultSet.getString("productName");
 			int price = resultSet.getInt("price");
 			String brand= resultSet.getString("brand");
-			String desc= resultSet.getString("desc");
+			String desc= resultSet.getString("description");
 			
 			Product product = new Product(productID, productName, price, desc, brand);
 			product.setId(resultSet.getInt("id"));
