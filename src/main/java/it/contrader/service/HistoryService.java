@@ -5,6 +5,7 @@ import java.util.List;
 import it.contrader.converter.HistoryConverter;
 import it.contrader.dao.HistoryDAO;
 import it.contrader.dto.HistoryDTO;
+import it.contrader.model.History;
 import it.contrader.model.Product;
 
 public class HistoryService {
@@ -24,5 +25,9 @@ public class HistoryService {
 	
 	public List<Product> serchByUserId(HistoryDTO dto) {
 		return historyDAO.searchByUserId(historyConverter.toEntity(dto).getIdUser());
+	}
+	
+	public List<History> getAll(){
+		return historyDAO.getAll();
 	}
 }
