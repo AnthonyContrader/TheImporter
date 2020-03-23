@@ -11,13 +11,6 @@ public class ProductDTO {
 		
 	}
 
-	public ProductDTO (String productName, int price) {
-		
-		this.productName = productName;
-		
-		this.price = price;
-	}
-
 	public ProductDTO (int id, String productName, int price,String brand,String desc) {
 		this.id = id;
 		this.productName = productName;
