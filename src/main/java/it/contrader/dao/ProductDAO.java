@@ -6,7 +6,6 @@ import java.util.List;
 import it.contrader.main.ConnectionSingleton;
 import it.contrader.model.Product;
 
-
 /**
  * 
  * @author Vittorio
@@ -16,9 +15,9 @@ import it.contrader.model.Product;
 public class ProductDAO {
 
 	private final String QUERY_ALL = "SELECT * FROM excel";
-	private final String QUERY_CREATE = "INSERT INTO excel (productName, price) VALUES (?,?)";
+	private final String QUERY_CREATE = "INSERT INTO excel (productName, price,desc,brand) VALUES (?,?,?,?)";
 	private final String QUERY_READ = "SELECT * FROM excel WHERE id=?";
-	private final String QUERY_UPDATE = "UPDATE excel SET productName=?, price=? WHERE id=?";
+	private final String QUERY_UPDATE = "UPDATE excel SET productName=?, price=?, desc=?, brand=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE FROM excel WHERE id=?";
 
 	public ProductDAO() {
@@ -36,8 +35,10 @@ public class ProductDAO {
 				int id = resultSet.getInt("id");
 				String productName = resultSet.getString("productName");
 				int price = resultSet.getInt("price");
+				String brand= resultSet.getString("brand");
+				String desc= resultSet.getString("desc");
 				
-				product = new Product(id, productName, price);
+				product = new Product(id, productName, price, desc, brand);
 				product.setId(id);
 				productList.add(product);
 			}
@@ -53,6 +54,8 @@ public class ProductDAO {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_CREATE);
 			preparedStatement.setString(1, productToInsert.getproductName());
 			preparedStatement.setInt(2, productToInsert.getprice());
+			preparedStatement.setString(3, productToInsert.getDescription());
+			preparedStatement.setString(4, productToInsert.getProductBrand());
 			preparedStatement.execute();
 			return true;
 		} catch (SQLException e) {
@@ -68,20 +71,19 @@ public class ProductDAO {
 			preparedStatement.setInt(1, productID);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			resultSet.next();
-			String productName;
-			int price;
 
-			productName = resultSet.getString("productName");
-			price = resultSet.getInt("price");
+			String productName = resultSet.getString("productName");
+			int price = resultSet.getInt("price");
+			String brand= resultSet.getString("brand");
+			String desc= resultSet.getString("desc");
 			
-			Product product = new Product(productID, productName, price);
+			Product product = new Product(productID, productName, price, desc, brand);
 			product.setId(resultSet.getInt("id"));
 
 			return product;
 		} catch (SQLException e) {
 			return null;
 		}
-
 	}
 	
 	
@@ -103,12 +105,20 @@ public class ProductDAO {
 				if (productToUpdate.getprice() == 0) {
 					productToUpdate.setprice(productRead.getprice());
 				}
+				if (productToUpdate.getDescription() == null) {
+					productToUpdate.setDescription(productRead.getDescription());
+				}
+				if (productToUpdate.getProductBrand() == null) {
+					productToUpdate.setProductBrand(productRead.getProductBrand());
+				}
 
 				// Update the user
 				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE); 
 				preparedStatement.setString(1, productToUpdate.getproductName());
 				preparedStatement.setInt(2, productToUpdate.getprice());
-				preparedStatement.setInt(3, productToUpdate.getId());
+				preparedStatement.setString(3, productToUpdate.getDescription());
+				preparedStatement.setString(4, productToUpdate.getProductBrand());
+				preparedStatement.setInt(5, productToUpdate.getId());
 				int a =  preparedStatement.executeUpdate();
 				if (a > 0)
 					return true;
@@ -137,6 +147,4 @@ public class ProductDAO {
 		}
 		return false;
 	}
-	
-	
 }

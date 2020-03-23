@@ -2,10 +2,10 @@ package it.contrader.dto;
 
 public class ProductDTO {
 	private int id;
-	
-	private String productName;
-	
+	private String productName;	
 	private int price;
+	private String productBrand;
+	private String description;
 	
 	public ProductDTO() {
 		
@@ -18,10 +18,12 @@ public class ProductDTO {
 		this.price = price;
 	}
 
-	public ProductDTO (int id, String productName, int price) {
+	public ProductDTO (int id, String productName, int price,String brand,String desc) {
 		this.id = id;
 		this.productName = productName;
 		this.price = price;
+		this.productBrand=brand;
+		this.description=desc;
 	}
 	
 	public void setId(int id) {
@@ -49,6 +51,22 @@ public class ProductDTO {
 	}
 	
 	public String toString() {
-		return id + "\t"  + productName +"\t\t" +   price ;
+		return id + "\t"  + productName +"\t\t" +   price +"\t\t" +   productBrand+"\t\t" +   description;
+	}
+
+	public String getProductBrand() {
+		return productBrand;
+	}
+
+	public void setProductBrand(String productBrand) {
+		this.productBrand = productBrand;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }

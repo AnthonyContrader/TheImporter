@@ -4,15 +4,19 @@ public class Product {
 	private int id;
 	private String productName;
 	private int price;
+	private String productBrand;
+	private String description;
 	
 	
 	public Product() {}
 	
-	public Product(int id, String nomeProdotto, int costo) {
+	public Product(int id, String nomeProdotto, int costo,String brand,String desc) {
 		super();
 		this.id = id;
 		this.productName = nomeProdotto;
 		this.price = costo;
+		this.productBrand=brand;
+		this.description=desc;
 	}
 
 	public int getId() {
@@ -73,6 +77,22 @@ public class Product {
 		} else if (!productName.equals(other.productName))
 			return false;
 		return true;
+	}
+
+	public String getProductBrand() {
+		return productBrand;
+	}
+
+	public void setProductBrand(String productBrand) {
+		this.productBrand = productBrand;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 	

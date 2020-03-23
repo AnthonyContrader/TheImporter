@@ -12,12 +12,12 @@ public class ProductConverter {
 
 	
 	public ProductDTO toDTO(Product product) {
-		ProductDTO productDTO =new ProductDTO(product.getId(),product.getproductName(),product.getprice());
+		ProductDTO productDTO =new ProductDTO(product.getId(),product.getproductName(),product.getprice(),product.getProductBrand(),product.getDescription());
 		return productDTO;
 	}
 	
 	public Product toEntity(ProductDTO productDTO) {
-		Product product =new Product (productDTO.getId(),productDTO.getProductName(),productDTO.getPrice());
+		Product product =new Product (productDTO.getId(),productDTO.getProductName(),productDTO.getPrice(),productDTO.getProductBrand(),productDTO.getDescription());
 		return product;
 	}
 	
