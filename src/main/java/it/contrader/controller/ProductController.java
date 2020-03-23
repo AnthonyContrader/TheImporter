@@ -70,7 +70,7 @@ public class ProductController implements Controller {
 			price=Integer.parseInt(request.get("price").toString());
 			desc=request.get("desc").toString();
 			brand=request.get("brand").toString();
-			ProductDTO productToUpdate=new ProductDTO(id,productName,price);
+			ProductDTO productToUpdate=new ProductDTO(id,productName,price, brand, desc);
 			productService.update(productToUpdate);
 			request=new Request();
 			request.put("mode", "mode");
