@@ -30,8 +30,9 @@ public class ExcelDAO {
 				int id = resultSet.getInt("id");
 				String productName = resultSet.getString("productName");
 				int price = resultSet.getInt("price");
-				
-				product = new Product(id, productName, price);
+				String description = resultSet.getString("description");
+				String brand = resultSet.getString("brand");
+				product = new Product(id, productName, price, description, brand);
 				product.setId(id);
 				productList.add(product);
 			}
