@@ -16,7 +16,7 @@ public class HistoryConverter {
 		}
 		
 		public History toEntity(HistoryDTO historyDTO) {
-			History history=new History(historyDTO.getIdProduct(), historyDTO.getIdUser(),historyDTO.getIdRecord());
+			History history=new History(historyDTO.getIdRecord(), historyDTO.getIdProduct(), historyDTO.getIdUser());
 			return history;
 		}
 		
