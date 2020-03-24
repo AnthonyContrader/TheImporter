@@ -92,7 +92,7 @@ private static String sub_package = "excel.";
 			
 			
 			
-			
+			//pulisce da tutti i titoli e aggiunge solo quelli selezionati dall'utente
 			titles.clear();
 			titles.add(title1);
 			titles.add(title2);
@@ -101,7 +101,7 @@ private static String sub_package = "excel.";
 			
 			titleSelected = titles;
 			directory = (request.get("directory").toString());
-			productsList = readTitleSelected();
+			productsList = readTitleSelected(); //funziona
 			
 			
 			excelDTO = new ExcelDTO(directory,title1,title2,title3,title4, productsList);
