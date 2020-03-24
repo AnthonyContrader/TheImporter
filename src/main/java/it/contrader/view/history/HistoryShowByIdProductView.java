@@ -4,7 +4,7 @@ import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
 import it.contrader.view.AbstractView;
 
-public class HistoryShowByIdProduct extends AbstractView {
+public class HistoryShowByIdProductView extends AbstractView {
 	private Request request;
 	private String choice;
 

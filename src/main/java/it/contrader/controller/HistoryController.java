@@ -106,20 +106,12 @@ public class HistoryController implements Controller {
 					//toUpperCase() mette in maiuscolo la scelta
 			switch (choice.toUpperCase()) {
 			
-			case "L":
-				MainDispatcher.getInstance().callView(sub_package + "UserRead", null);
+			case "P":
+				MainDispatcher.getInstance().callView(sub_package + "HistoryShowByIdProduct", null);
 				break;
 				
-			case "I":
-				MainDispatcher.getInstance().callView(sub_package + "UserInsert", null);
-				break;
-				
-			case "M":
-				MainDispatcher.getInstance().callView(sub_package + "UserUpdate", null);
-				break;
-				
-			case "C":
-				MainDispatcher.getInstance().callView(sub_package + "UserDelete", null);
+			case "U":
+				MainDispatcher.getInstance().callView(sub_package + "HistoryShowByIdUser", null);
 				break;
 				
 			case "E":
@@ -127,7 +119,7 @@ public class HistoryController implements Controller {
 				break;
 
 			case "B":
-				MainDispatcher.getInstance().callView("HomeAdmin", null);
+				MainDispatcher.getInstance().callView("HomeUser", null);
 				break;
 				
 			default:
