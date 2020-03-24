@@ -9,7 +9,7 @@ import it.contrader.view.AbstractView;
 public class ExcelInsertView extends AbstractView {
 	
 	private Request request;
-	private String choice1, choice2;
+	private String choice1, choice2, choice3, choice4;
 	private final String mode = "INSERT";
 	private List<String> titles;
 	private List<String> preData;
@@ -72,6 +72,12 @@ public class ExcelInsertView extends AbstractView {
 		
 		System.out.println("          Scegli quale deve essere la seconda colonna:");
 		this.choice2 = getInput();
+		
+		System.out.println("          Scegli quale deve essere la terza colonna:");
+		this.choice3 = getInput();
+		
+		System.out.println("          Scegli quale deve essere la quarta colonna:");
+		this.choice4 = getInput();
 	}
 	
 	/**
@@ -83,6 +89,8 @@ public class ExcelInsertView extends AbstractView {
 		request.put("titlesList", titles);
 		request.put("userPar1", choice1);
 		request.put("userPar2", choice2);
+		request.put("userPar3", choice3);
+		request.put("userPar4", choice4);
 		request.put("mode", mode);
 		MainDispatcher.getInstance().callAction("Excel", "doControl", this.request);
 	}

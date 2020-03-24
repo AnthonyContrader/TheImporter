@@ -52,6 +52,8 @@ private static String sub_package = "excel.";
 		
 		String parUser1 = "";
 		String parUser2 = "";
+		String parUser3 = "";
+		String parUser4 = "";
 		
 		
 		
@@ -62,12 +64,15 @@ private static String sub_package = "excel.";
 			
 			String title1 = "";
 			String title2 = "";
+			String title3 = "";
+			String title4 = "";
 			
 			@SuppressWarnings("unchecked") List<String> titles = (List<String>)request.get("titlesList");
-			
 			try {
 			parUser1 = request.get("userPar1").toString();					//questo è in realtà un intero di selezione, proviene da ExcelInsertView
 			parUser2 = request.get("userPar2").toString();
+			parUser3 = request.get("userPar3").toString();
+			parUser4 = request.get("userPar4").toString();
 			
 			//excel.setDirectory(direc);
 			//excel.readTitle();
@@ -76,6 +81,8 @@ private static String sub_package = "excel.";
 			
 			title1 = titles.get(Integer.parseInt(parUser1)-1);
 			title2 = titles.get(Integer.parseInt(parUser2)-1);
+			title3 = titles.get(Integer.parseInt(parUser3)-1);
+			title4 = titles.get(Integer.parseInt(parUser4)-1);
 			
 			
 			}
@@ -89,6 +96,8 @@ private static String sub_package = "excel.";
 			titles.clear();
 			titles.add(title1);
 			titles.add(title2);
+			titles.add(title3);
+			titles.add(title4);
 			
 			titleSelected = titles;
 			directory = (request.get("directory").toString());
@@ -198,9 +207,13 @@ private static String sub_package = "excel.";
 		
 		int positionTitle1 = title_position.get(titleSelected.get(0)).intValue();
 		int positionTitle2 = title_position.get(titleSelected.get(1)).intValue();
+		int positionTitle3 = title_position.get(titleSelected.get(2)).intValue();
+		int positionTitle4 = title_position.get(titleSelected.get(3)).intValue();
 		
 		List<String> list1=new ArrayList<>();
 		List<String> list2=new ArrayList<>();
+		List<String> list3=new ArrayList<>();
+		List<String> list4=new ArrayList<>();
 		
 		Iterator<Row> itr = openFile();
 		if (itr != null) {
@@ -217,6 +230,10 @@ private static String sub_package = "excel.";
 						}
 						else if(counter == positionTitle2) {
 							list2.add(cell.getStringCellValue());
+						}else if(counter == positionTitle3) {
+							list3.add(cell.getStringCellValue());
+						}else if(counter == positionTitle4) {
+							list4.add(cell.getStringCellValue());
 						}
 						break;
 					case Cell.CELL_TYPE_NUMERIC: // field that represents number cell type
@@ -227,6 +244,10 @@ private static String sub_package = "excel.";
 						}else if(counter==positionTitle2) {
 							temp=cell.getNumericCellValue();
 							list2.add(temp.toString());
+						}else if(counter == positionTitle3) {
+							list3.add(cell.getStringCellValue());
+						}else if(counter == positionTitle4) {
+							list4.add(cell.getStringCellValue());
 						}
 						break;
 					default:
@@ -238,6 +259,10 @@ private static String sub_package = "excel.";
 			title_data.put(temp.toUpperCase(), list1);
 			temp=list2.remove(0);
 			title_data.put(temp.toUpperCase(), list2);
+			temp=list3.remove(0);
+			title_data.put(temp.toUpperCase(), list3);
+			temp=list4.remove(0);
+			title_data.put(temp.toUpperCase(), list4);
 			
 		}
 		
