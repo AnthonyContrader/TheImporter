@@ -114,7 +114,7 @@ private static String sub_package = "excel.";
 			//recupero la lista degli id dei prodotti inseriti
 			List<Integer> idProductList = new ArrayList<Integer>();
 			try {
-				excelService.insert(excelDTO);
+				idProductList = excelService.insert(excelDTO);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
