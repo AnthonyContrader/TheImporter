@@ -81,6 +81,7 @@ public class HistoryController implements Controller {
 		
 		//Arriva qui dalla UserView Invoca il Service e invia alla UserView il risultato da mostrare 
 		case "SEARCHBYUSER":
+			request.put("SEARCHBY", "user");
 			idUser = Integer.parseInt(request.get("idUser").toString());
 			List<ProductDTO> productHistory = historyService.searchByUserId(idUser);
 			//Impacchetta la request con la lista degli user
@@ -90,6 +91,7 @@ public class HistoryController implements Controller {
 
 		//Arriva qui dalla UserView Invoca il Service e invia alla UserView il risultato da mostrare 
 		case "SEARCHBYPRODUCT":
+			request.put("SEARCHBY", "product");
 			idProduct = Integer.parseInt(request.get("idProduct").toString());
 			List<UserDTO> userHistory = historyService.searchByProductId(idProduct);
 			//Impacchetta la request con la lista degli user
