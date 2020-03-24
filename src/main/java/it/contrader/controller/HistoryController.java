@@ -14,7 +14,7 @@ import it.contrader.service.HistoryService;
  * 
  * @author TheImporterBoys
  *
- *Si osservi che nel Controller compaiono solo oggetti del DTO e non del Model!
+ *
  */
 public class HistoryController implements Controller {
 

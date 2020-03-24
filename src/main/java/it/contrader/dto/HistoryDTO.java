@@ -46,4 +46,9 @@ public class HistoryDTO {
 		this.idRecord = id;
 	}
 	
+	@Override
+	public String toString() {
+		return "HistoryDTO [idProduct=" + idProduct + ", idUser=" + idUser + "]";
+	}
+
 }

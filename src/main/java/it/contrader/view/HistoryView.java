@@ -17,23 +17,30 @@ public class HistoryView extends AbstractView{
 		if(request!=null) {
 			if(request.get("SEARCHBY").equals("product")){
 				System.out.println("\n------------------- Gestione Ricerche ----------------\n");
-				System.out.println("ID \t\t nomeProdotto \t\t costo \t\t desc \t\t marca \t\t");
-				System.out.println("----------------------------------------------------\n");
-				
-				List<ProductDTO> histories =(List<ProductDTO>) request.get("productHistory");
-				for (ProductDTO u: histories)
-					System.out.println(u);
-				System.out.println();
-			}
-			if(request.get("SEARCHBY").equals("user")){
-				System.out.println("\n------------------- Gestione Ricerche ----------------\n");
 				System.out.println("ID \t\t nomeUtente \t\t tipoUtente");
 				System.out.println("----------------------------------------------------\n");
 				
-				List<UserDTO> histories =(List<UserDTO>) request.get("productHistory");
-				for (UserDTO u: histories)
-					System.out.println(u);
+				List<UserDTO> histories =(List<UserDTO>) request.get("userHistory");
+				for (UserDTO u: histories) {
+					System.out.println(u.toString());
+				}
 				System.out.println();
+				request.put("SEARCHBY", "reset");
+			}
+			if(request.get("SEARCHBY").equals("user")){
+				
+				System.out.println("\n------------------- Gestione Ricerche ----------------\n");
+				System.out.println("ID \t\t nomeProdotto \t\t costo \t\t desc \t\t marca \t\t");
+				System.out.println("----------------------------------------------------\n");
+				
+				
+				List<ProductDTO> productHistory =(List<ProductDTO>) request.get("productHistory");
+				
+				for (ProductDTO u: productHistory) { 
+					System.out.println(u.toString());
+				}
+				System.out.println();
+				request.put("SEARCHBY", "reset");
 			}
 		}
 	}
