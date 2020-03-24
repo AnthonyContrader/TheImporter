@@ -245,9 +245,11 @@ private static String sub_package = "excel.";
 							temp=cell.getNumericCellValue();
 							list2.add(temp.toString());
 						}else if(counter == positionTitle3) {
-							list3.add(cell.getStringCellValue());
+							temp=cell.getNumericCellValue();
+							list3.add(temp.toString());
 						}else if(counter == positionTitle4) {
-							list4.add(cell.getStringCellValue());
+							temp=cell.getNumericCellValue();
+							list4.add(temp.toString());
 						}
 						break;
 					default:
