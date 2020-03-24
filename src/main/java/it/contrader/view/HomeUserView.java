@@ -26,7 +26,7 @@ public class HomeUserView extends AbstractView{
 	public void showOptions() {
 		 System.out.println("-------------MENU------------\n");
 	     System.out.println(" Seleziona cosa vuoi gestire:");
-	     System.out.println("[P]rodotti  [E]sci [I]nporta File");
+	     System.out.println("[P]rodotti  [E]sci [I]nporta File [H]istory");
 	     
 	     choice = this.getInput();
 
@@ -47,6 +47,9 @@ public class HomeUserView extends AbstractView{
 			break;
 		 case "e":
 	        	MainDispatcher.getInstance().callAction("Login", "doControl", null);
+	        break;
+		 case "h":
+	        	MainDispatcher.getInstance().callView("History",null);
 	        break;
 		default:
 			request.put("choice", choice);
