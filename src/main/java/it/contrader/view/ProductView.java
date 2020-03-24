@@ -29,7 +29,7 @@ public class ProductView extends AbstractView {
 	public void showResults(Request request) {
 		if (request != null) {
 			System.out.println("\n------------------- Gestione Prodotti ----------------\n");
-			System.out.println("ID\tnomeProdotto\tPrice\tBrand\tDescription");
+			System.out.println("ID\tnomeProdotto\t\tPrice\t\tBrand\t\tDescription");
 			System.out.println("----------------------------------------------------\n");
 			
 			@SuppressWarnings("unchecked")
