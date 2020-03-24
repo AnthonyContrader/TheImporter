@@ -1,5 +1,6 @@
 package it.contrader.service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import it.contrader.converter.HistoryConverter;
@@ -24,7 +25,11 @@ public class HistoryService {
 		this.userConverter = new UserConverter();
 	}
 	
-	public boolean insert(HistoryDTO dto) {
+	public boolean insertList(List<HistoryDTO> recordList) throws SQLException {
+		return historyDAO.insertList(historyConverter.toEntityList(recordList));
+	}
+	
+	public boolean insert(HistoryDTO dto) { //ok
 		// Converte un DTO in entit� e lo passa al DAO per l'inserimento
 		//return ExcelDAO.insert(ExcelConverter.toEntity(dto).getProductsList());
 		return historyDAO.insert(historyConverter.toEntity(dto));

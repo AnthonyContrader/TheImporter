@@ -42,21 +42,13 @@ public class ExcelDAO {
 		return productList;
 	}
 
-	public boolean insert(List<Product> productListToInsert) {
-		Connection connection = ConnectionSingleton.getInstance();
-		try {	
-			for(Product p: productListToInsert){
-				PreparedStatement preparedStatement = connection.prepareStatement(QUERY_CREATE);
-				preparedStatement.setString(1, p.getproductName());
-				preparedStatement.setInt(2, p.getprice());
-				preparedStatement.setString(3, p.getDescription());
-				preparedStatement.setString(4, p.getProductBrand());
-				preparedStatement.execute();
-			}
-			return true;
-		} catch (SQLException e) {
-			return false;
+	public List<Integer> insert(List<Product> productListToInsert) throws SQLException {
+		ProductDAO productDAO = new ProductDAO();
+		List<Integer> IDproducts = new ArrayList<Integer>();
+		for(Product p: productListToInsert){
+			IDproducts.add(productDAO.insert(p));
 		}
+		return IDproducts;
 
 	}
 

@@ -60,9 +60,16 @@ public class HistoryDAO {
 		} catch (SQLException e) {
 			return false;
 		}
-
 	}
-
+	
+	public boolean insertList(List<History> recordsToInsert) throws SQLException {						//inserisce un record
+		
+		for(History record: recordsToInsert) {
+			insert(record);
+		}
+		return true;
+	}
+	
 	public List<Product> searchByUserId(int userId) {
 		
 		ProductDAO productsDAO = new ProductDAO();

@@ -3,6 +3,7 @@ package it.contrader.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -15,9 +16,11 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import it.contrader.dto.ExcelDTO;
+import it.contrader.dto.HistoryDTO;
 import it.contrader.main.MainDispatcher;
 import it.contrader.model.Product;
 import it.contrader.service.ExcelService;
+import it.contrader.service.HistoryService;
 
 
 public class ExcelController implements Controller{
@@ -26,6 +29,7 @@ public class ExcelController implements Controller{
 private static String sub_package = "excel.";
 	
 	private ExcelService excelService;
+	private HistoryService historyService;
 	private ExcelDTO excelDTO = new ExcelDTO();
 	private String directory;
 
@@ -37,6 +41,7 @@ private static String sub_package = "excel.";
 	
 	public ExcelController() {
 		this.excelService = new ExcelService();
+		this.historyService = new HistoryService();
 	}
 	
 	
@@ -106,7 +111,30 @@ private static String sub_package = "excel.";
 			
 			excelDTO = new ExcelDTO(directory,title1,title2,title3,title4, productsList);
 			
-			excelService.insert(excelDTO);
+			//recupero la lista degli id dei prodotti inseriti
+			List<Integer> idProductList = new ArrayList<Integer>();
+			try {
+				excelService.insert(excelDTO);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			//raccolgo id dell'utente
+			int idLogged = MainDispatcher.getLoggedUSerID();
+			//creo la lista dei record inseriti
+			List<HistoryDTO> records = new ArrayList<HistoryDTO>();
+			for(Integer i: idProductList) {
+				HistoryDTO temp = new HistoryDTO(i.intValue(), idLogged);
+				records.add(temp);
+			}
+			//inserisco la lista
+			try {
+				historyService.insertList(records);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			request = new Request();
 			

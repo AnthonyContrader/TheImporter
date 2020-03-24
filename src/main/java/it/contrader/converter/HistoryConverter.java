@@ -32,4 +32,16 @@ public class HistoryConverter {
 			}
 			return historyDTOList;
 		}
+		
+		public List<History> toEntityList(List<HistoryDTO> historyList) {
+			
+			List<History> historyEntityList = new ArrayList<History>();
+			
+			
+			for(HistoryDTO recordDTO : historyList) {
+				
+				historyEntityList.add(toEntity(recordDTO));
+			}
+			return historyEntityList;
+		}
 }
