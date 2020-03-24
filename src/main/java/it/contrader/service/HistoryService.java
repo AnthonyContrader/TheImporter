@@ -7,6 +7,7 @@ import it.contrader.dao.HistoryDAO;
 import it.contrader.dto.HistoryDTO;
 import it.contrader.model.History;
 import it.contrader.model.Product;
+import it.contrader.model.User;
 
 public class HistoryService {
 	private HistoryDAO historyDAO;
@@ -25,6 +26,10 @@ public class HistoryService {
 	
 	public List<Product> serchByUserId(HistoryDTO dto) {
 		return historyDAO.searchByUserId(historyConverter.toEntity(dto).getIdUser());
+	}
+	
+	public List<User> serchByProductId(HistoryDTO dto) {
+		return historyDAO.searchByProductId(historyConverter.toEntity(dto).getIdProduct());
 	}
 	
 	public List<History> getAll(){
