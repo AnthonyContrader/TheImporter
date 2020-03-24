@@ -104,7 +104,7 @@ private static String sub_package = "excel.";
 			productsList = readTitleSelected();
 			
 			
-			excelDTO = new ExcelDTO(directory,title1,title2, productsList);
+			excelDTO = new ExcelDTO(directory,title1,title2,title3,title4, productsList);
 			
 			excelService.insert(excelDTO);
 			

@@ -8,9 +8,7 @@ public class ExcelDTO {
 	
 	private String directory;
 	
-	private String title1;
-	
-	private String title2;
+	private String title1, title2, title3, title4;
 	
 	
 	private List<Product> productList;
@@ -28,11 +26,13 @@ public class ExcelDTO {
 	public ExcelDTO() {	}
 	
 	
-	public ExcelDTO(String directory,String title1,String title2, List<Product> productList) {
+	public ExcelDTO(String directory,String title1,String title2,String title3,String title4, List<Product> productList) {
 		super();
 		this.directory = directory;
 		this.title1=title1;
 		this.title2=title2;
+		this.setTitle3(title3);
+		this.setTitle4(title4);
 		this.productList = productList;
 	}
 	
@@ -57,6 +57,26 @@ public class ExcelDTO {
 	}
 	public void setDirectory(String directory) {
 		this.directory = directory;
+	}
+
+
+	public String getTitle3() {
+		return title3;
+	}
+
+
+	public void setTitle3(String title3) {
+		this.title3 = title3;
+	}
+
+
+	public String getTitle4() {
+		return title4;
+	}
+
+
+	public void setTitle4(String title4) {
+		this.title4 = title4;
 	}
 
 }
