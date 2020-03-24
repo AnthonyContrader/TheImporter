@@ -25,7 +25,8 @@ public class HistoryShowByIdProductView extends AbstractView {
 	@Override
 	public void submit() {
 		request=new Request();
-		request.put("SEARCHBYPRODUCT", choice);
+		request.put("mode", "SEARCHBYUSER");
+		request.put("idProduct", choice);
 		MainDispatcher.getInstance().callAction("History", "doControl", request);
 		
 	}

@@ -26,7 +26,8 @@ public class HistoryShowByIdUserView extends AbstractView{
 	public void submit() {
 		// TODO Auto-generated method stub
 		request=new Request();
-		request.put("SEARCHBYUSER", choice);
+		request.put("mode", "SEARCHBYUSER");
+		request.put("idUser", choice);
 		MainDispatcher.getInstance().callAction("History", "doControl", request);
 	}
 
