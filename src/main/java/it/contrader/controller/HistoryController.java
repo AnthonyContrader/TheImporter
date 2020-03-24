@@ -2,8 +2,11 @@ package it.contrader.controller;
 
 import java.util.List;
 
-
+import it.contrader.dto.HistoryDTO;
+import it.contrader.dto.ProductDTO;
+import it.contrader.dto.UserDTO;
 import it.contrader.main.MainDispatcher;
+import it.contrader.model.Product;
 import it.contrader.service.HistoryService;
 
 
@@ -53,59 +56,45 @@ public class HistoryController implements Controller {
 
 		switch (mode) {
 		// Arriva qui dalla UserReadView. Invoca il Service con il parametro id e invia alla UserReadView uno user da mostrare 
-		case "READ":
-			id = Integer.parseInt(request.get("id").toString());
-			UserDTO userDTO = userService.read(id);
-			request.put("user", userDTO);
-			MainDispatcher.getInstance().callView(sub_package + "UserRead", request);
+		case "READALL":
+			List<HistoryDTO> historyDTOlist = historyService.getAll();
+			request.put("historyDTOlist", historyDTOlist);
+			MainDispatcher.getInstance().callView(sub_package + "HistoryRead", request);
 			break;
 		
 		// Arriva qui dalla UserInsertView. Estrae i parametri da inserire e chiama il service per inserire uno user con questi parametri
 		case "INSERT":
-			idUser = request.get("idUser").toString();
-			idRecord = request.get("idRecord").toString();
-			idProduct = request.get("idProduct").toString();
+			idUser = Integer.parseInt(request.get("idUser").toString());
+			idRecord = Integer.parseInt(request.get("idRecord").toString());
+			idProduct = Integer.parseInt(request.get("idProduct").toString());
 			
 			//costruisce l'oggetto user da inserire
-			UserDTO usertoinsert = new UserDTO(username, password, usertype);
+			HistoryDTO recordtoinsert = new HistoryDTO(idUser, idRecord, idProduct);
 			//invoca il service
-			userService.insert(usertoinsert);
+			historyService.insert(recordtoinsert);
 			request = new Request();
 			request.put("mode", "mode");
 			//Rimanda alla view con la risposta
-			MainDispatcher.getInstance().callView(sub_package + "UserInsert", request);
+			MainDispatcher.getInstance().callView(sub_package + "HistoryInsert", request);
 			break;
 		
-		// Arriva qui dalla UserDeleteView. Estrae l'id dell'utente da cancellare e lo passa al Service
-		case "DELETE":
-			id = Integer.parseInt(request.get("id").toString());
-			//Qui chiama il service
-			userService.delete(id);
-			request = new Request();
-			request.put("mode", "mode");
-			MainDispatcher.getInstance().callView(sub_package + "UserDelete", request);
-			break;
 		
-		// Arriva qui dalla UserUpdateView
-		case "UPDATE":
-			id = Integer.parseInt(request.get("id").toString());
-			username = request.get("username").toString();
-			password = request.get("password").toString();
-			usertype = request.get("usertype").toString();
-			UserDTO usertoupdate = new UserDTO(username, password, usertype);
-			usertoupdate.setId(id);
-			userService.update(usertoupdate);
-			request = new Request();
-			request.put("mode", "mode");
-			MainDispatcher.getInstance().callView(sub_package + "UserUpdate", request);
-			break;
-			
 		//Arriva qui dalla UserView Invoca il Service e invia alla UserView il risultato da mostrare 
-		case "USERLIST":
-			List<UserDTO> usersDTO = userService.getAll();
+		case "SEARCHBYUSER":
+			idUser = Integer.parseInt(request.get("idUser").toString());
+			List<ProductDTO> productHistory = historyService.searchByUserId(idUser);
 			//Impacchetta la request con la lista degli user
-			request.put("users", usersDTO);
-			MainDispatcher.getInstance().callView("User", request);
+			request.put("productHistory", productHistory);
+			MainDispatcher.getInstance().callView("History", request);
+			break;
+
+		//Arriva qui dalla UserView Invoca il Service e invia alla UserView il risultato da mostrare 
+		case "SEARCHBYPRODUCT":
+			idProduct = Integer.parseInt(request.get("idProduct").toString());
+			List<UserDTO> userHistory = historyService.searchByProductId(idProduct);
+			//Impacchetta la request con la lista degli user
+			request.put("userHistory", userHistory);
+			MainDispatcher.getInstance().callView("History", request);
 			break;
 			
 		//Esegue uno switch sulla base del comando inserito dall'utente e reindirizza tramite il Dispatcher alla View specifica per ogni operazione
