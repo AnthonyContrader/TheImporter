@@ -2,8 +2,10 @@ package it.contrader.controller;
 
 import java.util.List;
 
+import it.contrader.dto.HistoryDTO;
 import it.contrader.dto.ProductDTO;
 import it.contrader.main.MainDispatcher;
+import it.contrader.service.HistoryService;
 import it.contrader.service.ProductService;
 
 public class ProductController implements Controller {
@@ -46,7 +48,14 @@ public class ProductController implements Controller {
 			
 			ProductDTO productToInsert= new ProductDTO(productName,price,brand,desc);
 			
-			productService.insert(productToInsert);
+			int idProduct = productService.insert(productToInsert); //recupero id del prodotto dal dao e lo inserisco
+			
+			//ora prende l'utente che lo ha inserito
+			int loggedUserID = MainDispatcher.getLoggedUSerID();
+			//creo il record storico
+			HistoryDTO record = new HistoryDTO(idProduct,loggedUserID);
+			HistoryService historyService = new HistoryService();
+			historyService.insert(record);
 			
 			request=new Request();
 			

@@ -38,7 +38,7 @@ public class ProductService {
 	}
 
 
-	public boolean insert(ProductDTO dto) {
+	public int insert(ProductDTO dto) {
 		// Converte un DTO in entit� e lo passa al DAO per l'inserimento
 		return ProductDAO.insert(ProductConverter.toEntity(dto));
 	}

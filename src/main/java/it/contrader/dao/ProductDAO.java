@@ -48,7 +48,7 @@ public class ProductDAO {
 		return productList;
 	}
 
-	public boolean insert(Product productToInsert) {
+	public int insert(Product productToInsert) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {	
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_CREATE);
@@ -57,10 +57,15 @@ public class ProductDAO {
 			preparedStatement.setString(3, productToInsert.getProductBrand());
 			preparedStatement.setString(4, productToInsert.getDescription());
 			preparedStatement.execute();
-			return true;
+			
+			//cerco di recupare l'id inserito
+			preparedStatement = connection.prepareStatement("SELECT MAX(id) FROM excel");
+			ResultSet resultSet = preparedStatement.executeQuery();
+			resultSet.next();
+			return resultSet.getInt("MAX(id)");
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return false;
+			return -1;
 		}
 
 	}

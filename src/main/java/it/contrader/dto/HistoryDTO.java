@@ -9,6 +9,12 @@ public class HistoryDTO {
 		super();
 	}
 
+	public HistoryDTO(int idProduct, int idUser) {
+		super();
+		this.setIdProduct(idProduct);
+		this.setIdUser(idUser);
+	}
+	
 	public HistoryDTO(int idProduct, int idUser,int id) {
 		super();
 		this.setIdProduct(idProduct);
