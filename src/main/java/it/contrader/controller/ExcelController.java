@@ -287,15 +287,15 @@ private static String sub_package = "excel.";
 				Product product = new Product();
 				product.setproductName(title_data.get(titleSelected.get(0)).get(i));
 				product.setprice((int)Double.parseDouble(title_data.get(titleSelected.get(1)).get(i)));
-				product.setDescription(title_data.get(titleSelected.get(0)).get(i));
-				product.setProductBrand(title_data.get(titleSelected.get(0)).get(i));
+				product.setDescription(title_data.get(titleSelected.get(2)).get(i));
+				product.setProductBrand(title_data.get(titleSelected.get(3)).get(i));
 				productsList.add(product);
 			}
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
-	}//J:\TheImporter\TheImporter.xlsx
+	}
 
 	
 }
