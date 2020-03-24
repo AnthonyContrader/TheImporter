@@ -74,4 +74,8 @@ public class UserDTO {
 	public String toString() {
 		return  id + "\t"  + username +"\t\t" +   password + "\t\t" + usertype;
 	}
+	
+	public String toString1() {
+		return  id + "\t"  + username + "\t\t" + usertype;
+	}
 }

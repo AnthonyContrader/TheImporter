@@ -3,7 +3,6 @@ package it.contrader.view;
 import java.util.List;
 
 import it.contrader.controller.Request;
-import it.contrader.dto.HistoryDTO;
 import it.contrader.dto.ProductDTO;
 import it.contrader.dto.UserDTO;
 import it.contrader.main.MainDispatcher;
@@ -12,6 +11,7 @@ public class HistoryView extends AbstractView{
 	String choice;
 	private Request request;
 	@Override
+	@SuppressWarnings("unchecked")
 	public void showResults(Request request) {
 		// TODO Auto-generated method stub
 		if(request!=null) {
@@ -22,7 +22,7 @@ public class HistoryView extends AbstractView{
 				
 				List<UserDTO> histories =(List<UserDTO>) request.get("userHistory");
 				for (UserDTO u: histories) {
-					System.out.println(u.toString());
+					System.out.println(u.toString1());
 				}
 				System.out.println();
 				request.put("SEARCHBY", "reset");

@@ -6,7 +6,6 @@ import it.contrader.dto.HistoryDTO;
 import it.contrader.dto.ProductDTO;
 import it.contrader.dto.UserDTO;
 import it.contrader.main.MainDispatcher;
-import it.contrader.model.Product;
 import it.contrader.service.HistoryService;
 
 

@@ -10,7 +10,7 @@ import it.contrader.model.Product;
 public class ExcelDAO {
 	
 	private final String QUERY_ALL = "SELECT * FROM excel";
-	private final String QUERY_CREATE = "INSERT INTO excel (productName, price, description, brand) VALUES (?,?,?,?)";
+	//private final String QUERY_CREATE = "INSERT INTO excel (productName, price, description, brand) VALUES (?,?,?,?)";
 	//private final String QUERY_READ = "SELECT * FROM excel WHERE id=?";
 	//private final String QUERY_UPDATE = "UPDATE excel SET productName=?, price=? WHERE id=?";
 	//private final String QUERY_DELETE = "DELETE FROM excel WHERE id=?";
