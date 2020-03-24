@@ -20,6 +20,7 @@ public class MainDispatcher {
 	}
 
 	private static MainDispatcher instance;
+	private static int LoggedUSerID = -1;
 	
 	/*
 	 * il metodo getInstance � alla base del pattern Singleton
@@ -76,5 +77,13 @@ public class MainDispatcher {
 		oggettoView.showResults(request);
 		oggettoView.showOptions();
 		oggettoView.submit();
+	}
+
+	public static int getLoggedUSerID() {
+		return LoggedUSerID;
+	}
+
+	public static void setLoggedUSerID(int loggedUSerID) {
+		LoggedUSerID = loggedUSerID;
 	}
 }

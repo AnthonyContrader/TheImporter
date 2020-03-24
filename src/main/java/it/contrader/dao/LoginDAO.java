@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import it.contrader.main.ConnectionSingleton;
+import it.contrader.main.MainDispatcher;
 
 /**
  * 
@@ -35,12 +36,18 @@ public class LoginDAO {
 				resultSet = statement.executeQuery();
 				resultSet.next();
 				usertype = resultSet.getString("usertype");
+			
+				//salvataggio utente loggato
+				MainDispatcher.setLoggedUSerID(resultSet.getInt("id"));
+			
 			}
+			
 			return usertype;
 		}
 		
 		catch (SQLException e) {
 			return null;
 		}
+		
 	}
 }
