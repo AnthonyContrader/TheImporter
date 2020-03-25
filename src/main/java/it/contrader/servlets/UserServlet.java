@@ -35,7 +35,6 @@ public class UserServlet extends HttpServlet {
 		UserDTO dto;
 		int id;
 		boolean ans;
-
 		switch (mode.toUpperCase()) {
 
 		case "USERLIST":
