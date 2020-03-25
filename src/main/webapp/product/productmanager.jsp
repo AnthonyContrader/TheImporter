@@ -36,13 +36,13 @@
 			for (ProductDTO u : list) {
 		%>
 		<tr>
-			<td><a href=UserServlet?mode=read&id=<%=u.getId()%>>
+			<td><a href=ProductServlet?mode=read&id=<%=u.getId()%>>
 					<%=u.getProductName()%>
 			</a></td>
 			<td><%=u.getPrice()%></td>
-			<td><%=u.getBrand()%></td>
+			<td><%=u.getProductBrand()%></td>
 			<td><%=u.getDescription()%></td>
-			<td><a href=UserServlet?mode=read&update=true&id=<%=u.getId()%>>Edit</a>
+			<td><a href=ProductServlet?mode=read&update=true&id=<%=u.getId()%>>Edit</a>
 			</td>
 			<td><a href=UserServlet?mode=delete&id=<%=u.getId()%>>Delete</a>
 			</td>
@@ -61,7 +61,7 @@
       <label for="product">ProductName</label>  <!-- ho modificato i label -->
     </div>
     <div class="col-75">
-      <input type="text" id="productName" name="productName" placeholder="inserisci un nome prodotto">
+      <input type="text" id="productname" name="productname" placeholder="inserisci un nome prodotto">
     </div>
   </div>
   <div class="row">

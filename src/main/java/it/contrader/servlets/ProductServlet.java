@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import it.contrader.dto.ProductDTO;
-import it.contrader.dto.UserDTO;
 import it.contrader.service.ProductService;
 import it.contrader.service.Service;
 
@@ -32,9 +31,9 @@ public class ProductServlet extends HttpServlet {
 		int id;
 		boolean ans;
 		switch (mode.toUpperCase()) {
-		case "USERLIST":			
+		case "PRODUCTLIST":			
 			updateList(request);
-			getServletContext().getRequestDispatcher("/user/usermanager.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/product/productmanager.jsp").forward(request, response);
 			break;
 		case "READ":
 			id = Integer.parseInt(request.getParameter("id"));
@@ -42,39 +41,39 @@ public class ProductServlet extends HttpServlet {
 			request.setAttribute("dto", dto);
 
 			if (request.getParameter("update") == null) {
-				getServletContext().getRequestDispatcher("/user/readuser.jsp").forward(request, response);
+				getServletContext().getRequestDispatcher("/product/readproduct.jsp").forward(request, response);
 
 			}
 
 			else
-				getServletContext().getRequestDispatcher("/user/updateuser.jsp").forward(request, response);
+				getServletContext().getRequestDispatcher("/product/updateproduct.jsp").forward(request, response);
 
 			break;
 			
 		case "INSERT":
-			String productName = request.getParameter("username").toString();
-			int price = Integer.parseInt(request.getParameter("username").toString());
-			String brand = request.getParameter("username").toString();
-			String desc = request.getParameter("username").toString();
+			String productName = request.getParameter("productname").toString();
+			int price = Integer.parseInt(request.getParameter("price").toString());
+			String brand = request.getParameter("brand").toString();
+			String desc = request.getParameter("description").toString();
 			dto = new ProductDTO(productName, price, brand, desc);
 			ProductService services=(ProductService) service;
 			services.insert2(dto);
 			//mancha history
 			request.setAttribute("ans", true);
 			updateList(request);
-			getServletContext().getRequestDispatcher("/user/usermanager.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/product/productmanager.jsp").forward(request, response);
 			break;
 			
 		case "UPDATE":
-			productName = request.getParameter("username").toString();
-			price = Integer.parseInt(request.getParameter("username").toString());
-			brand = request.getParameter("username").toString();
-			desc = request.getParameter("username").toString();
+			productName = request.getParameter("productname").toString();
+			price = Integer.parseInt(request.getParameter("price").toString());
+			brand = request.getParameter("brand").toString();
+			desc = request.getParameter("description").toString();
 			id = Integer.parseInt(request.getParameter("id"));
 			dto = new ProductDTO(id,productName, price, brand, desc);
 			ans = service.update(dto);
 			updateList(request);
-			getServletContext().getRequestDispatcher("/user/usermanager.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/product/productmanager.jsp").forward(request, response);
 			break;
 
 		}
