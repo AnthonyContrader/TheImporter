@@ -6,7 +6,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <link href="../css/vittoriostyle.css" rel="stylesheet">
-<title>User Manager</title>
+<title>Product Manager</title>
 </head>
 <body>
 <%@ include file="../css/header.jsp" %>
@@ -44,7 +44,7 @@
 			<td><%=u.getDescription()%></td>
 			<td><a href=ProductServlet?mode=read&update=true&id=<%=u.getId()%>>Edit</a>
 			</td>
-			<td><a href=UserServlet?mode=delete&id=<%=u.getId()%>>Delete</a>
+			<td><a href=ProductServlet?mode=delete&id=<%=u.getId()%>>Delete</a>
 			</td>
 
 		</tr>
