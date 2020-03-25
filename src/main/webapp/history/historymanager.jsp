@@ -19,24 +19,37 @@
 		<!-- metti collegamento -->
 		<a href="LogoutServlet" id="logout">Logout</a>
 	</div>
-<%
-	int counter=1;
-	String u="a";
-%>
-	<p id="demo"></p>
-
-	<form action="ExcelServlet?mode=insert" method="post">
-
-		<label for="user">Scegliere il percorso del file .xlsx: </label> <input
-			type="file" id="directory" name="directory"
-			placeholder="Insert file excel">
-
-		<button type="submit" value="Import" name="pulsante">Login</button>
-	</form>
 
 
 
 
+	<table>
+		<tr>
+			<td>
+			
+				<form action="HistoryServlet?mode=searchbyuser" method="post">
+
+					<label for="user">Cerca prodotti per ID cliente: </label>
+					<input	type="text" id="idUser" name="idUser" placeholder="2">
+					<button type="submit" value="Import" name="pulsante">Cerca</button>
+					
+				</form>
+				
+			</td>
+			<td>
+
+				<form action="HistoryServlet?mode=searchbyproduct" method="post">
+
+					<label for="user">Cerca Utenti per ID prodotto: </label> 
+					<input	type="text" id="idProduct" name="idProduct" placeholder="1">
+					<button type="submit" value="Import" name="pulsante">Cerca</button>
+					
+					
+				</form>
+
+			</td>
+		</tr>
+	</table>
 
 
 	<%@ include file="../css/footer.jsp"%>
