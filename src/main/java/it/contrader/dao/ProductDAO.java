@@ -33,7 +33,7 @@ public class ProductDAO implements DAO<Product> {
 				String brand= resultSet.getString("brand");
 				String desc= resultSet.getString("description");
 				
-				product = new Product(id, productName, price, desc, brand);
+				product = new Product(id, productName, price, brand, desc);
 				product.setId(id);
 				productList.add(product);
 			}
@@ -57,7 +57,7 @@ public class ProductDAO implements DAO<Product> {
 			String brand= resultSet.getString("brand");
 			String desc= resultSet.getString("description");
 			
-			Product product = new Product(id, productName, price, desc, brand);
+			Product product = new Product(id, productName, price, brand, desc);
 			product.setId(resultSet.getInt("id"));
 
 			return product;
