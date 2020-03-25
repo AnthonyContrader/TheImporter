@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Home Admin</title>
+<title>Home User</title>
 <link href="css/vittoriostyle.css" rel="stylesheet">
 </head>
 <body>
@@ -14,8 +14,7 @@
 
 <div class="navbar">
   <a class="active" href="homeadmin.jsp">Home</a>
-  <a href="UserServlet?mode=userlist">Users</a>
-  <!--<a  href="ProductServlet?mode=productlist">Products</a> metti collegamento -->
+  <a  href="ProductServlet?mode=productlist">Products</a>				<!-- metti collegamento -->
   <a href="LogoutServlet" id="logout">Logout</a>
 </div>
 
