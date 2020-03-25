@@ -4,10 +4,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import it.contrader.utils.ConnectionSingleton;
+import it.contrader.model.Excel;
 import it.contrader.model.Product;
 
 
-public class ExcelDAO {
+public class ExcelDAO implements DAO<Excel> {
 	
 	private final String QUERY_ALL = "SELECT * FROM excel";
 	//private final String QUERY_CREATE = "INSERT INTO excel (productName, price, description, brand) VALUES (?,?,?,?)";
@@ -19,7 +20,7 @@ public class ExcelDAO {
 		
 	}
 
-	public List<Product> getAll() {
+	public List<Product> getAll1() {
 		List<Product> productList = new ArrayList<>();
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
@@ -50,6 +51,36 @@ public class ExcelDAO {
 		}
 		return IDproducts;
 
+	}
+
+	@Override
+	public List<Excel> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Excel read(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean insert(Excel dto) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean update(Excel dto) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean delete(int id) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 

@@ -85,7 +85,7 @@ public class ExcelServlet extends HttpServlet{
 			String title3 = "";
 			String title4 = "";
 			
-			@SuppressWarnings("unchecked") List<String> titles = (List<String>)request.getSession().getAttribute("titlesList");
+			@SuppressWarnings("unchecked") List<String> titles = (List<String>)request.getAttribute("titlesList");
 			try {
 			parUser1 = request.getParameter("userPar1").toString();					//questo è in realtà un intero di selezione, proviene da ExcelInsertView
 			parUser2 = request.getParameter("userPar2").toString();
