@@ -15,7 +15,7 @@ public class ConnectionSingleton {
 
 
     public static Connection getInstance() {
-        if (connection == null) {
+        //if (connection == null) {
             try {
                 String vendor="mysql";
                 String driver="com.mysql.cj.jdbc.Driver";
@@ -23,8 +23,8 @@ public class ConnectionSingleton {
                 String port="3306";
                 String dbName="sampledb";
                 String username="root";
-                String password ="root";
-                String jdbcAdditionalParams="useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useLegacyDatetimeCode=false";
+                String password ="aprile1995";
+                String jdbcAdditionalParams="useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
                 Class<?> c = Class.forName(driver);
                 System.out.println("Ho caricato: " + c.getName());
                 String url = "jdbc:" + vendor + "://" + host + ":" + port + "/" + dbName+"?"+jdbcAdditionalParams;
@@ -35,7 +35,7 @@ public class ConnectionSingleton {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
+        //}
         return connection;
     }
 
