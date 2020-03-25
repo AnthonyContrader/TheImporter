@@ -76,6 +76,13 @@ public class ProductServlet extends HttpServlet {
 			getServletContext().getRequestDispatcher("/product/productmanager.jsp").forward(request, response);
 			break;
 
+		case "DELETE":
+			id = Integer.parseInt(request.getParameter("id"));
+			ans = service.delete(id);
+			request.setAttribute("ans", ans);
+			updateList(request);
+			getServletContext().getRequestDispatcher("/product/productmanager.jsp").forward(request, response);
+			break;
 		}
 
 	}
