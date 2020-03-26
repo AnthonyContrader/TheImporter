@@ -53,8 +53,13 @@ public class ExcelServlet extends HttpServlet{
 		
 	}
 	
-	public void updateList(HttpServletRequest request) {
+	public void reset() {
 		Service<ExcelDTO> service = new ExcelService();
+		 titleRead = new ArrayList<String>();
+		 titleSelected = new ArrayList<String>();
+		 title_position = new HashMap<>();
+		 title_data = new HashMap<>();
+		 productsList = new ArrayList<Product>();
 		//List<ProductDTO> listDTO = service.getAll();    //questo dovrebbe diventare una lista di prodotti letta dall'excel
 		//request.setAttribute("list", listDTO);
 	}
@@ -163,6 +168,7 @@ public class ExcelServlet extends HttpServlet{
 
 				
 			//case "I":
+				reset();
 				if(directory.contains(".xlsx")) {
 					
 					excelDTO.setDirectory(directory);
