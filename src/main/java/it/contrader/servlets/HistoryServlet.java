@@ -87,7 +87,7 @@ public class HistoryServlet extends HttpServlet{
 			List<ProductDTO> productHistory = historyService.searchByUserId(idUser);
 			//Impacchetta la request con la lista degli user
 			request.setAttribute("productHistory", productHistory);
-			getServletContext().getRequestDispatcher("/history/historyRecord.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/history/historyrecord.jsp").forward(request, response);
 			break;
 
 		//Arriva qui dalla UserView Invoca il Service e invia alla UserView il risultato da mostrare 
@@ -97,7 +97,7 @@ public class HistoryServlet extends HttpServlet{
 			List<UserDTO> userHistory = historyService.searchByProductId(idProduct);
 			//Impacchetta la request con la lista degli user
 			request.setAttribute("userHistory", userHistory);
-			getServletContext().getRequestDispatcher("/history/historyRecord.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/history/historyrecord.jsp").forward(request, response);
 			break;
 			
 		case "MODE":	
@@ -111,27 +111,27 @@ public class HistoryServlet extends HttpServlet{
 			switch (choice.toUpperCase()) {
 			
 			case "P":
-				getServletContext().getRequestDispatcher("/history/historyRecord.jsp").forward(request, response);
+				getServletContext().getRequestDispatcher("/history/historyrecord.jsp").forward(request, response);
 				break;
 				
 			case "U":
-				getServletContext().getRequestDispatcher("/history/historyRecord.jsp").forward(request, response);
+				getServletContext().getRequestDispatcher("/history/historyrecord.jsp").forward(request, response);
 				break;
 				
 			case "E":
-				getServletContext().getRequestDispatcher("/history/historyRecord.jsp").forward(request, response);
+				getServletContext().getRequestDispatcher("/history/historyrecord.jsp").forward(request, response);
 				break;
 
 			case "B":
-				getServletContext().getRequestDispatcher("/history/historyRecord.jsp").forward(request, response);
+				getServletContext().getRequestDispatcher("/history/historyrecord.jsp").forward(request, response);
 				break;
 				
 			default:
-				getServletContext().getRequestDispatcher("/history/historyRecord.jsp").forward(request, response);
+				getServletContext().getRequestDispatcher("/history/historyrecord.jsp").forward(request, response);
 			}
 			
 		default:
-			getServletContext().getRequestDispatcher("/history/historyRecord.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/history/historyrecord.jsp").forward(request, response);
 		}
 	}
 }
