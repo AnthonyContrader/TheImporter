@@ -48,7 +48,7 @@ public class HistoryServlet extends HttpServlet{
 		//Estrae dalla request mode e choice
 		String mode = (String) request.getParameter("mode");
 		mode = mode.toUpperCase();
-		String choice = (String) request.getParameter("choice");
+		
 
 		//Definisce i campi della classe (serviranno sempre, tanto vale definirli una sola volta)
 		int idRecord;
