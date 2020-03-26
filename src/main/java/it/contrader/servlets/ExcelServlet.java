@@ -191,14 +191,17 @@ public class ExcelServlet extends HttpServlet{
 	//gestione excel
 	
 	private Iterator<Row> openFile() {
+
 		try {
 			File file = new File(directory); // creating a new file instance
+			System.out.println(directory);
 			FileInputStream fis = new FileInputStream(file); // obtaining bytes from the file
 			// creating Workbook instance that refers to .xlsx file
 			XSSFWorkbook wb = new XSSFWorkbook(fis);
+
 			XSSFSheet sheet = wb.getSheetAt(0); // creating a Sheet object to retrieve object
-			wb.close();
 			Iterator<Row> itr = sheet.iterator(); // iterating over excel file
+
 			return itr;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -209,9 +212,12 @@ public class ExcelServlet extends HttpServlet{
 	
 	@SuppressWarnings("deprecation")
 	public List<List<String>> readTitle() {
+
 		List<List<String>> insertData=new ArrayList<>();
 		List<String> dataList=new ArrayList<>();
+
 		Iterator<Row> itr = openFile();
+
 
 		if (itr != null) {
 
