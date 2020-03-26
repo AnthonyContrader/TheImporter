@@ -62,8 +62,8 @@ public class ExcelServlet extends HttpServlet{
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Service<ExcelDTO> service = new ExcelService();
-		String mode = request.getParameter("mode");
-		String choice = (String) request.getParameter("choice");
+		String mode = request.getParameter("mode").toUpperCase();
+		//String choice = (String) request.getParameter("choice"); non esiste in un contesto di webapplication
 		
 		ExcelDTO dto;
 		
@@ -159,22 +159,27 @@ public class ExcelServlet extends HttpServlet{
 			break;
 		
 		case"GETCHOICE":
-			switch(choice.toUpperCase()) {
+			//switch(choice.toUpperCase()) {
 
 				
-			case "I":
-				if(directory.contains(".xlsx")) {excelDTO.setDirectory(directory);
-				request.setAttribute("titlesList", readTitle());
-				getServletContext().getRequestDispatcher("/excel/excelinsert.jsp").forward(request, response);
+			//case "I":
+				if(directory.contains(".xlsx")) {
+					
+					excelDTO.setDirectory(directory);
+					List<List<String>> stringList = readTitle();
+					request.getSession().setAttribute("titlesList", stringList);
+					//String temp = stringList.get(1).get(0);
+					request.getSession().setAttribute("unaStringa", titleRead.get(0));
+					getServletContext().getRequestDispatcher("/excel/excelinsert.jsp").forward(request, response);
 				}else {
 					request.setAttribute("ERROR", "file inserito non valido");
 					getServletContext().getRequestDispatcher("/excel/excelmanager.jsp").forward(request, response);
 				}
-				break;
-			default:
-				getServletContext().getRequestDispatcher("/excel/excelmanager.jsp").forward(request, response);
+				//break;
+			//default:
+				//getServletContext().getRequestDispatcher("/excel/excelmanager.jsp").forward(request, response);
 			
-			}
+			//}
 			break;
 		default:
 			getServletContext().getRequestDispatcher("/excel/excelmanager.jsp").forward(request, response);
@@ -216,7 +221,7 @@ public class ExcelServlet extends HttpServlet{
 				while (cellIterator.hasNext()) {
 					Cell cell = cellIterator.next();
 					if (cell.getAddress().getRow() == 0) {
-						titleRead .add(cell.getStringCellValue().trim().toUpperCase()); // qui vengono aggiunti i
+						titleRead.add(cell.getStringCellValue().trim().toUpperCase()); // qui vengono aggiunti i
 						title_position.put(cell.getStringCellValue().toUpperCase(),cell.getAddress().getColumn()); //salvo la posizione del titolo																// titoli a lista
 					}else if( cell.getAddress().getRow() <= 5 ){
 						switch (cell.getCellType()) {

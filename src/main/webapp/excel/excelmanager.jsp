@@ -26,13 +26,13 @@
 %>
 	<p id="demo"></p>
 
-	<form action="ExcelServlet?mode=insert" method="post">
+	<form action="ExcelServlet?mode=getchoice" method="post">
 
 		<label for="user">Scegliere il percorso del file .xlsx: </label> <input
 			type="file" id="directory" name="directory"
 			placeholder="Insert file excel">
 
-		<button type="submit" value="Import" name="pulsante">Login</button>
+		<button type="submit" value="Import" name="pulsante">submit</button>
 	</form>
 
 

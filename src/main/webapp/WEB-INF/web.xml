@@ -42,4 +42,24 @@
     <servlet-name>ProductServlet</servlet-name>
     <url-pattern>/ProductServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ExcelServlet</display-name>
+    <servlet-name>ExcelServlet</servlet-name>
+    <servlet-class>it.contrader.servlets.ExcelServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExcelServlet</servlet-name>
+    <url-pattern>/ExcelServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>HistoryServlet</display-name>
+    <servlet-name>HistoryServlet</servlet-name>
+    <servlet-class>it.contrader.servlets.HistoryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HistoryServlet</servlet-name>
+    <url-pattern>/HistoryServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
