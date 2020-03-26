@@ -169,7 +169,7 @@ public class ExcelServlet extends HttpServlet{
 					List<List<String>> stringList = readTitle();
 					request.getSession().setAttribute("titlesList", stringList);
 					//String temp = stringList.get(1).get(0);
-					request.getSession().setAttribute("unaStringa", titleRead.get(0));
+					//request.getSession().setAttribute("unaStringa", titleRead.get(0));
 					System.out.println(titleRead.get(0));
 					getServletContext().getRequestDispatcher("/excel/excelinsert.jsp").forward(request, response);
 				}else {

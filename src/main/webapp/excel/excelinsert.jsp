@@ -20,16 +20,44 @@
   <a  href="HistoryServlet?mode=mode">history</a>				<!-- metti collegamento -->
   <a href="LogoutServlet" id="logout">Logout</a>
 </div>
-	<%
-	String temp = (String) request.getSession().getAttribute("unaStringa");//J:\TheImporter\TheImporter.xlsx
+	<%	
 	List<List<String>> dataList = (List<List<String>>) request.getSession().getAttribute("titlesList");//J:\TheImporter\TheImporter.xlsx
-	//List<String> titles = dataList.get(1);
-	//List<String> preData = dataList.get(0);
+	List<String> titles = dataList.get(1);
+	List<String> preData = dataList.get(0);
 	int counter = 0;
 	%>
 
-	<p> <%=temp %></p>
-	
+
+	<table>
+		<tr>
+			<%
+				for (String u : titles) {
+				counter++;
+			%>
+			<th><%="[" + counter + "]" + u%></th>
+			<%
+				}
+			%>
+		</tr>
+		<%
+			counter = 0;
+		for (int i = 0; i <= ((preData.size() / titles.size()) - 1); i++) {
+
+			for (int j = 0; j <= titles.size() - 1; j++) {
+		%>
+		<tr>
+			<td><%=preData.get(counter)%></td>
+			<%
+				counter++;
+			}
+			%>
+
+		</tr>
+		<%
+			}
+		%>
+	</table>
+
 
 
 	<form action="ExcelServlet?mode=insert" method="post">
