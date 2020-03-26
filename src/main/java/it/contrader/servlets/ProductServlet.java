@@ -57,7 +57,7 @@ public class ProductServlet extends HttpServlet {
 			String desc = request.getParameter("description").toString();
 			dto = new ProductDTO(productName, price, brand, desc);
 			ProductService services=(ProductService) service;
-			services.insert2(dto);
+			services.insertProduct(dto);
 			//mancha history
 			request.setAttribute("ans", true);
 			updateList(request);

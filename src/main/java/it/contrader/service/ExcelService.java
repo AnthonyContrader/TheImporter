@@ -24,7 +24,7 @@ public class ExcelService extends AbstractService<Excel, ExcelDTO> {
 	}
 
 
-	public List<Integer> insert2(ExcelDTO dto) throws SQLException {
+	public List<Integer> insertExcel(ExcelDTO dto) throws SQLException {
 		// Converte un DTO in entit� e lo passa al DAO per l'inserimento
 		return ExcelDAO.insert(ExcelConverter.toEntity(dto).getProductsList());
 	}

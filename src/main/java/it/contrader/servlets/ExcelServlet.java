@@ -36,10 +36,11 @@ import it.contrader.service.UserService;
 public class ExcelServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 
+	Service<ExcelDTO> excelService = new ExcelService();
+	Service<HistoryDTO> historyService = new HistoryService();
 	
 	
-	private ExcelService excelService;
-	private HistoryService historyService;
+	
 	private ExcelDTO excelDTO = new ExcelDTO();
 	private String directory;
 
@@ -54,7 +55,7 @@ public class ExcelServlet extends HttpServlet{
 	}
 	
 	public void reset() {
-		Service<ExcelDTO> service = new ExcelService();
+		
 		 titleRead = new ArrayList<String>();
 		 titleSelected = new ArrayList<String>();
 		 title_position = new HashMap<>();
@@ -66,7 +67,7 @@ public class ExcelServlet extends HttpServlet{
 	
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Service<ExcelDTO> service = new ExcelService();
+		
 		String mode = request.getParameter("mode").toUpperCase();
 		//String choice = (String) request.getParameter("choice"); non esiste in un contesto di webapplication
 		
@@ -90,7 +91,7 @@ public class ExcelServlet extends HttpServlet{
 			String title3 = "";
 			String title4 = "";
 			
-			@SuppressWarnings("unchecked") List<String> titles = (List<String>)request.getAttribute("titlesList");
+			@SuppressWarnings("unchecked") List<String> titles = (List<String>)request.getSession().getAttribute("titlesList");
 			try {
 			parUser1 = request.getParameter("userPar1").toString();					//questo è in realtà un intero di selezione, proviene da ExcelInsertView
 			parUser2 = request.getParameter("userPar2").toString();
@@ -123,16 +124,21 @@ public class ExcelServlet extends HttpServlet{
 			titles.add(title4);
 			
 			titleSelected = titles;
-			directory = (request.getParameter("directory").toString());
+			//directory = (request.getParameter("directory").toString());    FORSE QUA PROBLEMA!!!!!!!!!!!!!!!!!!!!!!
 			productsList = readTitleSelected(); //funziona
+			
 			
 			
 			excelDTO = new ExcelDTO(directory,title1,title2,title3,title4, productsList);
 			
+			System.out.println(productsList);
+			System.out.println(directory);
+			System.out.println(excelDTO.toString());
+			
 			//recupero la lista degli id dei prodotti inseriti
 			List<Integer> idProductList = new ArrayList<Integer>();
 			try {
-				idProductList = excelService.insert2(excelDTO);
+				idProductList = excelService.insertExcel(excelDTO);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -160,7 +166,7 @@ public class ExcelServlet extends HttpServlet{
 			
 			System.out.println("inserimento andato a buon fine");
 			
-			getServletContext().getRequestDispatcher("/excel/exelmanager.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/homeuser.jsp").forward(request, response);
 			break;
 		
 		case"GETCHOICE":

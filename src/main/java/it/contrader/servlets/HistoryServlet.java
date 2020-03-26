@@ -13,6 +13,7 @@ import it.contrader.dto.ProductDTO;
 import it.contrader.dto.UserDTO;
 
 import it.contrader.service.HistoryService;
+import it.contrader.service.Service;
 
 
 /**
@@ -24,7 +25,7 @@ import it.contrader.service.HistoryService;
 public class HistoryServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 		
-	private HistoryService historyService;
+	private Service<HistoryDTO> historyService;
 	
 	public HistoryServlet() {
 	
@@ -46,7 +47,7 @@ public class HistoryServlet extends HttpServlet{
 		historyService = new HistoryService();
 		//Estrae dalla request mode e choice
 		String mode = (String) request.getParameter("mode");
-		
+		mode = mode.toUpperCase();
 		String choice = (String) request.getParameter("choice");
 
 		//Definisce i campi della classe (serviranno sempre, tanto vale definirli una sola volta)
@@ -59,7 +60,7 @@ public class HistoryServlet extends HttpServlet{
 		case "READALL":
 			List<HistoryDTO> historyDTOlist = historyService.getAll();
 			request.setAttribute("historyDTOlist", historyDTOlist);
-			getServletContext().getRequestDispatcher("/history/historyManager.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/history/historymanager.jsp").forward(request, response);
 			break;
 		
 		
@@ -75,7 +76,7 @@ public class HistoryServlet extends HttpServlet{
 			//request = new Request();
 			//request.setAttribute("mode", "mode");
 			//Rimanda alla view con la risposta
-			getServletContext().getRequestDispatcher("/history/historyManager.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/history/historymanager.jsp").forward(request, response);
 			break;
 		
 		
@@ -98,6 +99,9 @@ public class HistoryServlet extends HttpServlet{
 			request.setAttribute("userHistory", userHistory);
 			getServletContext().getRequestDispatcher("/history/historyRecord.jsp").forward(request, response);
 			break;
+			
+		case "MODE":	
+			getServletContext().getRequestDispatcher("/history/historymanager.jsp").forward(request, response);
 			
 		//Esegue uno switch sulla base del comando inserito dall'utente e reindirizza tramite il Dispatcher alla View specifica per ogni operazione
 		//con REQUEST NULL (vedi una View specifica)

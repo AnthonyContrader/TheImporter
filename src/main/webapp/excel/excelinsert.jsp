@@ -23,6 +23,9 @@
 	<%	
 	List<List<String>> dataList = (List<List<String>>) request.getSession().getAttribute("titlesList");//J:\TheImporter\TheImporter.xlsx
 	List<String> titles = dataList.get(1);
+	if(titles != null){
+		request.getSession().setAttribute("titlesList",titles);  //settiamo titles per andarlo a leggere nella seconda fase del controller 
+	}
 	List<String> preData = dataList.get(0);
 	int counter = 0;
 	%>
@@ -65,20 +68,20 @@
 	<table>
 		<tr>
 		<tb>
-		<label for="user">Inserine N° della prima colonna: </label>
-		<input	type="text" id="directory" name="directory" placeholder="1">
+		<label for="user">Inserine N° della colonna nome prodotto: </label>
+		<input	type="text" id="userPar1" name="userPar1" placeholder="1">
 		</tb>
 		<tb>
-		<label for="user">Inserine N° della seconda colonna: </label> 
-		<input	type="text" id="directory" name="directory" placeholder="2">
+		<label for="user">Inserine N° della colonna prezzo: </label> 
+		<input	type="text" id="userPar2" name="userPar2" placeholder="2">
 		</tb>
 		<tb>
-		<label for="user">Inserine N° della terza colonna: </label>
-		<input	type="text" id="directory" name="directory" placeholder="3">
+		<label for="user">Inserine N° della colonna brand: </label>
+		<input	type="text" id="userPar3" name="userPar3" placeholder="3">
 		</tb>
 		<tb>
-		<label for="user">Inserine N° della quarta colonna: </label>
-		<input	type="text" id="directory" name="directory" placeholder="3">
+		<label for="user">Inserine N° della colonna descrizione: </label>
+		<input	type="text" id="userPar4" name="userPar4" placeholder="3">
 		</tb>
 		
 		</tr>
@@ -87,7 +90,7 @@
 
 		
 	
-		<button type="submit" value="Import" name="pulsante">Login</button>
+		<button type="submit" value="Import" name="pulsante">Submit</button>
 	</form>
 
 

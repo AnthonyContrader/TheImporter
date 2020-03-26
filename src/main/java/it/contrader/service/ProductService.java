@@ -12,7 +12,7 @@ public class ProductService extends AbstractService<Product, ProductDTO> {
 			this.converter = new ProductConverter();
 		}
 		
-		public int insert2(ProductDTO dto ) {
+		public int insertProduct(ProductDTO dto ) {
 			ProductDAO productDAO=(ProductDAO) dao;
 			ProductConverter productConverter=(ProductConverter) converter;
 			return productDAO.insert2(productConverter.toEntity(dto));
