@@ -26,10 +26,10 @@
 	</div>
 
 
-<% if(request.getAttribute("SEARCHBY").equals("product")){
+<% if(request.getSession().getAttribute("SEARCHBY").equals("user")){
 %>
 	<%
-		List<ProductDTO> list = (List<ProductDTO>) request.getAttribute("list"); //metti collegamento
+		List<ProductDTO> list = (List<ProductDTO>) request.getSession().getAttribute("productHistory"); //metti collegamento
 	%>
 
 <br>
@@ -59,10 +59,10 @@
  	}
 %>
 
-<% if(request.getAttribute("SEARCHBY").equals("user")){
+<% if(request.getSession().getAttribute("SEARCHBY").equals("product")){
 %>
 	<%
-		List<UserDTO> list = (List<UserDTO>) request.getAttribute("list");
+		List<UserDTO> list = (List<UserDTO>) request.getSession().getAttribute("userHistory");
 	%>
 
 <br>

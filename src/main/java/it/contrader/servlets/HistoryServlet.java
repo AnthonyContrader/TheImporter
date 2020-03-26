@@ -80,23 +80,23 @@ public class HistoryServlet extends HttpServlet{
 			break;
 		
 		
-		//Arriva qui dalla UserView Invoca il Service e invia alla UserView il risultato da mostrare 
+		 
 		case "SEARCHBYUSER":
-			request.setAttribute("SEARCHBY", "user");
+			request.getSession().setAttribute("SEARCHBY", "user");
 			idUser = Integer.parseInt(request.getParameter("idUser").toString());
 			List<ProductDTO> productHistory = historyService.searchByUserId(idUser);
-			//Impacchetta la request con la lista degli user
-			request.setAttribute("productHistory", productHistory);
+			
+			request.getSession().setAttribute("productHistory", productHistory);
 			getServletContext().getRequestDispatcher("/history/historyrecord.jsp").forward(request, response);
 			break;
 
-		//Arriva qui dalla UserView Invoca il Service e invia alla UserView il risultato da mostrare 
+		
 		case "SEARCHBYPRODUCT":
-			request.setAttribute("SEARCHBY", "product");
+			request.getSession().setAttribute("SEARCHBY", "product");
 			idProduct = Integer.parseInt(request.getParameter("idProduct").toString());
 			List<UserDTO> userHistory = historyService.searchByProductId(idProduct);
 			//Impacchetta la request con la lista degli user
-			request.setAttribute("userHistory", userHistory);
+			request.getSession().setAttribute("userHistory", userHistory);
 			getServletContext().getRequestDispatcher("/history/historyrecord.jsp").forward(request, response);
 			break;
 			
@@ -105,33 +105,6 @@ public class HistoryServlet extends HttpServlet{
 			
 		//Esegue uno switch sulla base del comando inserito dall'utente e reindirizza tramite il Dispatcher alla View specifica per ogni operazione
 		//con REQUEST NULL (vedi una View specifica)
-		case "GETCHOICE":
-					
-					//toUpperCase() mette in maiuscolo la scelta
-			switch (choice.toUpperCase()) {
-			
-			case "P":
-				getServletContext().getRequestDispatcher("/history/historyrecord.jsp").forward(request, response);
-				break;
-				
-			case "U":
-				getServletContext().getRequestDispatcher("/history/historyrecord.jsp").forward(request, response);
-				break;
-				
-			case "E":
-				getServletContext().getRequestDispatcher("/history/historyrecord.jsp").forward(request, response);
-				break;
-
-			case "B":
-				getServletContext().getRequestDispatcher("/history/historyrecord.jsp").forward(request, response);
-				break;
-				
-			default:
-				getServletContext().getRequestDispatcher("/history/historyrecord.jsp").forward(request, response);
-			}
-			
-		default:
-			getServletContext().getRequestDispatcher("/history/historyrecord.jsp").forward(request, response);
 		}
 	}
 }
