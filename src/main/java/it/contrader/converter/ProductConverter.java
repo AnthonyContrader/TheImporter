@@ -10,6 +10,7 @@ public class ProductConverter implements Converter<Product, ProductDTO> {
 
 	@Override
 	public ProductDTO toDTO(Product product) {
+		
 		ProductDTO productDTO =new ProductDTO(product.getId(),product.getproductName(),product.getprice(),product.getProductBrand(),product.getDescription());
 		return productDTO;
 	}

@@ -8,7 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.contrader.dto.HistoryDTO;
 import it.contrader.dto.ProductDTO;
+import it.contrader.dto.UserDTO;
+import it.contrader.service.HistoryService;
 import it.contrader.service.ProductService;
 import it.contrader.service.Service;
 
@@ -57,8 +60,12 @@ public class ProductServlet extends HttpServlet {
 			String desc = request.getParameter("description").toString();
 			dto = new ProductDTO(productName, price, brand, desc);
 			ProductService services=(ProductService) service;
-			services.insertProduct(dto);
+			int idProduct = services.insertProduct(dto);
 			//mancha history
+			UserDTO userLogged = (UserDTO) request.getSession().getAttribute("user");
+			HistoryDTO record = new HistoryDTO(idProduct,userLogged.getId());
+			HistoryService historyService = new HistoryService();
+			historyService.insert(record);
 			request.setAttribute("ans", true);
 			updateList(request);
 			getServletContext().getRequestDispatcher("/product/productmanager.jsp").forward(request, response);
