@@ -25,16 +25,28 @@
 	String u="a";
 %>
 	<p id="demo"></p>
-
-	<form action="ExcelServlet?mode=getchoice" method="post">
+	
+	<%if(System.getProperty("os.name").toLowerCase().contains("mac")){ %>
+		<form action="ExcelServlet?mode=getchoice" method="post">
 
 		<label for="user">Scegliere il percorso del file .xlsx: </label> <input
-			type="file" id="directory" name="directory"
-			placeholder="Insert file excel">
+			type="text" id="directory" name="directory"
+			placeholder="Insert directory of the file:">
 
 		<button type="submit" value="Import" name="pulsante">submit</button>
 	</form>
-
+			
+	<%} %>
+	<%if(!System.getProperty("os.name").toLowerCase().contains("mac")){ %>
+		<form action="ExcelServlet?mode=getchoice" method="post">
+	
+			<label for="user">Scegliere il percorso del file .xlsx: </label> <input
+				type="file" id="directory" name="directory"
+				placeholder="Insert file excel">
+	
+			<button type="submit" value="Import" name="pulsante">submit</button>
+		</form>
+	<%} %>
 
 
 
