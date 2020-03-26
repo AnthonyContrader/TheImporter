@@ -7,9 +7,7 @@ import java.util.List;
 import it.contrader.converter.ExcelConverter;
 import it.contrader.dao.ExcelDAO;
 import it.contrader.dto.ExcelDTO;
-import it.contrader.dto.ProductDTO;
 import it.contrader.model.Excel;
-import it.contrader.model.Product;
 
 
 public class ExcelService extends AbstractService<Excel, ExcelDTO> {

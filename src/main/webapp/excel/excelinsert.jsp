@@ -67,22 +67,22 @@
 	<form action="ExcelServlet?mode=insert" method="post">
 	<table>
 		<tr>
-		<tb>
+		<td>
 		<label for="user">Inserine N° della colonna nome prodotto: </label>
 		<input	type="text" id="userPar1" name="userPar1" placeholder="1">
-		</tb>
-		<tb>
+		</td>
+		<td>
 		<label for="user">Inserine N° della colonna prezzo: </label> 
 		<input	type="text" id="userPar2" name="userPar2" placeholder="2">
-		</tb>
-		<tb>
+		</td>
+		<td>
 		<label for="user">Inserine N° della colonna brand: </label>
 		<input	type="text" id="userPar3" name="userPar3" placeholder="3">
-		</tb>
-		<tb>
+		</td>
+		<td>
 		<label for="user">Inserine N° della colonna descrizione: </label>
 		<input	type="text" id="userPar4" name="userPar4" placeholder="3">
-		</tb>
+		</td>
 		
 		</tr>
 		

@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.contrader.dto.ExcelDTO;
-import it.contrader.dto.ProductDTO;
 import it.contrader.model.Excel;
-import it.contrader.model.Product;
 
 public class ExcelConverter implements Converter<Excel, ExcelDTO> {
 

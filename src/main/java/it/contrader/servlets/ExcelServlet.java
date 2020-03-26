@@ -23,14 +23,12 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import it.contrader.dto.ExcelDTO;
 import it.contrader.dto.HistoryDTO;
-import it.contrader.dto.ProductDTO;
 import it.contrader.dto.UserDTO;
 import it.contrader.model.Product;
 import it.contrader.service.ExcelService;
 import it.contrader.service.HistoryService;
-import it.contrader.service.ProductService;
 import it.contrader.service.Service;
-import it.contrader.service.UserService;
+
 
 
 public class ExcelServlet extends HttpServlet{
@@ -71,7 +69,6 @@ public class ExcelServlet extends HttpServlet{
 		String mode = request.getParameter("mode").toUpperCase();
 		//String choice = (String) request.getParameter("choice"); non esiste in un contesto di webapplication
 		
-		ExcelDTO dto;
 		
 		if(request.getParameter("directory") != null) {
 			directory = request.getParameter("directory").toString();;
@@ -131,9 +128,6 @@ public class ExcelServlet extends HttpServlet{
 			
 			excelDTO = new ExcelDTO(directory,title1,title2,title3,title4, productsList);
 			
-			System.out.println(productsList);
-			System.out.println(directory);
-			System.out.println(excelDTO.toString());
 			
 			//recupero la lista degli id dei prodotti inseriti
 			List<Integer> idProductList = new ArrayList<Integer>();
@@ -164,7 +158,6 @@ public class ExcelServlet extends HttpServlet{
 			//request = new Request();   qui se vuoi essere in logica pari devi creare un nuovo oggetto HTTPrequest	
 			//request.put("mode", "mode");
 			
-			System.out.println("inserimento andato a buon fine");
 			
 			getServletContext().getRequestDispatcher("/homeuser.jsp").forward(request, response);
 			break;
@@ -182,7 +175,6 @@ public class ExcelServlet extends HttpServlet{
 					request.getSession().setAttribute("titlesList", stringList);
 					//String temp = stringList.get(1).get(0);
 					//request.getSession().setAttribute("unaStringa", titleRead.get(0));
-					System.out.println(titleRead.get(0));
 					getServletContext().getRequestDispatcher("/excel/excelinsert.jsp").forward(request, response);
 				}else {
 					request.setAttribute("ERROR", "file inserito non valido");
@@ -207,11 +199,10 @@ public class ExcelServlet extends HttpServlet{
 
 		try {
 			File file = new File(directory); // creating a new file instance
-			System.out.println(directory);
 			FileInputStream fis = new FileInputStream(file); // obtaining bytes from the file
 			// creating Workbook instance that refers to .xlsx file
 			XSSFWorkbook wb = new XSSFWorkbook(fis);
-
+			wb.close();
 			XSSFSheet sheet = wb.getSheetAt(0); // creating a Sheet object to retrieve object
 			Iterator<Row> itr = sheet.iterator(); // iterating over excel file
 

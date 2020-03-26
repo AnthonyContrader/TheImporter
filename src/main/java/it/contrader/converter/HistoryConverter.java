@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.contrader.dto.HistoryDTO;
-import it.contrader.model.Excel;
 import it.contrader.model.History;
 
 
