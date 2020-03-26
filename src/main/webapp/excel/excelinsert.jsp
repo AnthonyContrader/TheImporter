@@ -14,9 +14,9 @@
 	<%@ include file="../css/header.jsp"%>
 
 <div class="navbar">
-  <a class="active" href="homeuser.jsp">Home</a>
+  <a  href="homeuser.jsp">Home</a>
   <a  href="ProductServlet?mode=productlist">Products</a>
-  <a  href="ExcelServlet?mode=mode">Import Excel</a>
+  <a class="active" href="ExcelServlet?mode=mode">Import Excel</a>
   <a  href="HistoryServlet?mode=mode">history</a>				<!-- metti collegamento -->
   <a href="LogoutServlet" id="logout">Logout</a>
 </div>
@@ -29,7 +29,8 @@
 	List<String> preData = dataList.get(0);
 	int counter = 0;
 	%>
-
+	
+	<br>
 
 	<table>
 		<tr>
@@ -61,37 +62,51 @@
 	</table>
 	
 			
+	<br>
 
 
+	
+	
 
-	<form action="ExcelServlet?mode=insert" method="post">
-	<table>
-		<tr>
-		<td>
-		<label for="user">Inserine N° della colonna nome prodotto: </label>
-		<input	type="text" id="userPar1" name="userPar1" placeholder="1">
-		</td>
-		<td>
-		<label for="user">Inserine N° della colonna prezzo: </label> 
-		<input	type="text" id="userPar2" name="userPar2" placeholder="2">
-		</td>
-		<td>
-		<label for="user">Inserine N° della colonna brand: </label>
-		<input	type="text" id="userPar3" name="userPar3" placeholder="3">
-		</td>
-		<td>
-		<label for="user">Inserine N° della colonna descrizione: </label>
-		<input	type="text" id="userPar4" name="userPar4" placeholder="3">
-		</td>
-		
-		</tr>
-		
-	</table>
+	<form id="floatright" action="ExcelServlet?mode=insert" method="post">
+  <div class="row">
+    <div class="col-25">
+      <label for="col1">Inserine N° della colonna nome prodotto: </label>  <!-- ho modificato i label -->
+    </div>
+    <div class="col-75">
+      <input type="text" id="userPar1" name="userPar1" placeholder="inserisci colonna productName">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+     <label for="col2">Inserine N° della colonna prezzo: </label>
+    </div>
+    <div class="col-75">
+      <input type="number" id="userPar2" name="userPar2" placeholder="inserisci colonna prezzo"> 
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="col3">Brand</label>  <!-- ho modificato i label -->
+    </div>
+    <div class="col-75">
+      <input type="text" id="userPar3" name="userPar3" placeholder="inserisci colonna brand del prodotto">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="col4">Description</label>  <!-- ho modificato i label -->
+    </div>
+    <div class="col-75">
+      <input type="text" id="userPar4" name="userPar4" placeholder="inserisci colonna descrizione prodotto">
+    </div>
+  </div>
+      <button type="submit" >Insert</button>
+</form>
+
 
 		
 	
-		<button type="submit" value="Import" name="pulsante">Submit</button>
-	</form>
 
 
 
