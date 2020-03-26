@@ -60,19 +60,31 @@
 
 
 	<form action="ExcelServlet?mode=insert" method="post">
-
+	<table>
+		<tr>
+		<tb>
 		<label for="user">Inserine N° della prima colonna: </label>
 		<input	type="text" id="directory" name="directory" placeholder="1">
-		
+		</tb>
+		<tb>
 		<label for="user">Inserine N° della seconda colonna: </label> 
 		<input	type="text" id="directory" name="directory" placeholder="2">
-		
+		</tb>
+		<tb>
+		<label for="user">Inserine N° della terza colonna: </label>
+		<input	type="text" id="directory" name="directory" placeholder="3">
+		</tb>
+		<tb>
 		<label for="user">Inserine N° della quarta colonna: </label>
 		<input	type="text" id="directory" name="directory" placeholder="3">
+		</tb>
 		
-		<label for="user">Inserine N° della quinta colonna: </label> 
-		<input	type="text" id="directory" name="directory" placeholder="4">
+		</tr>
+		
+	</table>
 
+		
+	
 		<button type="submit" value="Import" name="pulsante">Login</button>
 	</form>
 
