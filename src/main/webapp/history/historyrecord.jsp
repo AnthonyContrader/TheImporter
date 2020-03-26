@@ -17,10 +17,10 @@
 
 	<div class="navbar">
 <div class="navbar">
-  <a class="active" href="homeuser.jsp">Home</a>
+  <a href="homeuser.jsp">Home</a>
   <a  href="ProductServlet?mode=productlist">Products</a>
   <a  href="ExcelServlet?mode=mode">Import Excel</a>
-  <a  href="HistoryServlet?mode=mode">history</a>				<!-- metti collegamento -->
+  <a class="active" href="HistoryServlet?mode=mode">history</a>				<!-- metti collegamento -->
   <a href="LogoutServlet" id="logout">Logout</a>
 </div>
 	</div>
