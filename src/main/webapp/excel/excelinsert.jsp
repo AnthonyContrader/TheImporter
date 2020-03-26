@@ -42,10 +42,9 @@
 		<%
 			counter = 0;
 		for (int i = 0; i <= ((preData.size() / titles.size()) - 1); i++) {
-
+        %><tr><%
 			for (int j = 0; j <= titles.size() - 1; j++) {
-		%>
-		<tr>
+			%>
 			<td><%=preData.get(counter)%></td>
 			<%
 				counter++;
