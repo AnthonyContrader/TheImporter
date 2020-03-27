@@ -46,4 +46,13 @@ public class HistoryService {
 	public List<HistoryDTO> getAll(){
 		return historyConverter.toDTOList(historyDAO.getAll());
 	}
+	
+	public boolean deleteByProductId(int idProduct) {
+		return historyDAO.deleteByProductId(idProduct);
+	}
+	
+	public boolean deleteByUserId(int idUser) {
+		return historyDAO.deleteByUserId(idUser);
+	}
+	
 }

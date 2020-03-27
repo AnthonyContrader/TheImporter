@@ -123,13 +123,13 @@ public class HistoryDAO {
 
 	}
 	
-	public boolean deleteByProductId(Product productTODelete) {
+	public boolean deleteByProductId(int id) {
 		
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_DELETEBYPRODUCT);
-			preparedStatement.setInt(1, productTODelete.getId());
+			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
 			
 				return true;
@@ -140,13 +140,13 @@ public class HistoryDAO {
 
 	}	
 	
-public boolean deleteByUserId(User userToDelete) {
+public boolean deleteByUserId(int id) {
 		
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_DELETEBYUSER);
-			preparedStatement.setInt(1, userToDelete.getId());
+			preparedStatement.setInt(1, id);
 			preparedStatement.executeUpdate();
 			
 				return true;
