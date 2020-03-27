@@ -21,8 +21,9 @@ public class HistoryDAO {
 	private final String QUERY_SEARCHBYUSER = "SELECT * FROM history WHERE idUser=?";
 	private final String QUERY_SEARCHBYPRODUCT = "SELECT * FROM history WHERE idProduct=?";
 	//private final String QUERY_UPDATE = "UPDATE user SET username=?, password=?, usertype=? WHERE id=?";
-	//private final String QUERY_DELETE = "DELETE FROM user WHERE id=?";
-
+	private final String QUERY_DELETEBYPRODUCT = "DELETE FROM history WHERE idProduct=?";
+	private final String QUERY_DELETEBYUSER = "DELETE FROM history WHERE idUser=?";
+	
 	public HistoryDAO() {
 
 	}
@@ -121,7 +122,40 @@ public class HistoryDAO {
 		}
 
 	}
+	
+	public boolean deleteByProductId(Product productTODelete) {
+		
+		Connection connection = ConnectionSingleton.getInstance();
+		try {
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_DELETEBYPRODUCT);
+			preparedStatement.setInt(1, productTODelete.getId());
+			preparedStatement.executeUpdate();
+			
+				return true;
 
+		} catch (Exception e) {
+			return false;
+		}
+
+	}	
+	
+public boolean deleteByUserId(User userToDelete) {
+		
+		Connection connection = ConnectionSingleton.getInstance();
+		try {
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_DELETEBYUSER);
+			preparedStatement.setInt(1, userToDelete.getId());
+			preparedStatement.executeUpdate();
+			
+				return true;
+
+		} catch (Exception e) {
+			return false;
+		}
+
+	}	
 
 
 }
