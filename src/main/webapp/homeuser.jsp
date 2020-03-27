@@ -17,7 +17,6 @@
   <a  href="ProductServlet?mode=productlist">Products</a>
   <a  href="ExcelServlet?mode=mode">Import Excel</a>
   <a  href="HistoryServlet?mode=mode">history</a>
-  <a  href="test.jsp">testJSP</a>				<!-- metti collegamento -->
 </div>
 
 <div class="main">

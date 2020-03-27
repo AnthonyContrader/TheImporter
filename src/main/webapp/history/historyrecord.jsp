@@ -11,6 +11,33 @@
 <meta charset="ISO-8859-1">
 <link href="../css/vittoriostyle.css" rel="stylesheet">
 <title>Excel Manager</title>
+<style type="text/css">
+      
+div.pager {
+    text-align: left; 
+}
+
+div.pager span {
+    display: inline-block;
+    width: 1.8em;
+    height: 1.8em;
+    line-height: 1.8;
+    text-align: center;
+    cursor: pointer;
+    background: #191919;
+    color: #ccc;
+    margin-right: 0.5em;
+}
+
+div.pager span.active {
+    background: #fff;
+    color:#191919;
+    font-weight:bold;
+    text-align:center;
+}
+
+</style>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 </head>
 <body>
 	<%@ include file="../css/header.jsp"%>
@@ -34,13 +61,16 @@
 
 <br>
 
-	<table>
+	<table class="paginated">
+	<thead>
 		<tr>
 			<th>ProductName</th>
 			<th>Price</th>
 			<th>Brand</th>
 			<th>Description</th>
 		</tr>
+	</thead>
+	<tbody>
 		<%
 			for (ProductDTO u : list) {
 		%>
@@ -54,7 +84,38 @@
 		<%
 			}
 		%>
+	</tbody>
 	</table>
+	<script>
+
+
+    $('table.paginated').each(function () {
+        var currentPage = 0;
+        var numPerPage = 5; // number of items 
+        var $table = $(this);
+        //var $tableBd = $(this).find("tbody");
+
+        $table.bind('repaginate', function () {
+            $table.find('tbody tr').hide().slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
+        });
+        $table.trigger('repaginate');
+        var numRows = $table.find('tbody tr').length;
+        var numPages = Math.ceil(numRows / numPerPage);
+        var $pager = $('<div class="pager"></div>');
+        for (var page = 0; page < numPages; page++) {
+            $('<span class="page-number"></span>').text(page + 1).bind('click', {
+                newPage: page
+            }, function (event) {
+                currentPage = event.data['newPage'];
+                $table.trigger('repaginate');
+                $(this).addClass('active').siblings().removeClass('active');
+            }).appendTo($pager).addClass('clickable');
+        }
+        if (numRows > numPerPage) {
+            $pager.insertAfter($table).find('span.page-number:first').addClass('active');
+        }
+    });
+</script>
 <%
  	}
 %>
@@ -67,11 +128,14 @@
 
 <br>
 
-	<table>
+	<table class="paginated">
+	 <thead>
 		<tr>
 			<th>Username</th>
 			<th>Usertype</th>
 		</tr>
+	</thead>
+	<tbody>
 		<%
 			for (UserDTO u : list) {
 		%>
@@ -83,6 +147,7 @@
 		<%
 			}
 		%>
+	</tbody>
 	</table>
 
 
