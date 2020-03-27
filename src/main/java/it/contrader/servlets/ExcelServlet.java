@@ -159,7 +159,7 @@ public class ExcelServlet extends HttpServlet{
 			//request.put("mode", "mode");
 			
 			
-			getServletContext().getRequestDispatcher("/homeuser.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/ProductServlet?mode=PRODUCTLIST").forward(request, response);
 			break;
 		
 		case"GETCHOICE":
