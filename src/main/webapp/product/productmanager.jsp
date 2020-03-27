@@ -79,9 +79,9 @@
 			<td><%=u.getPrice()%></td>
 			<td><%=u.getProductBrand()%></td>
 			<td><%=u.getDescription()%></td>
-			<td><a href=ProductServlet?mode=read&update=true&id=<%=u.getId()%>>Edit</a>
+			<td><a href=/JspApp/ProductServlet?mode=read&update=true&id=<%=u.getId()%>>Edit</a>
 			</td>
-			<td><a href=ProductServlet?mode=delete&id=<%=u.getId()%>>Delete</a>
+			<td><a href=/JspApp/ProductServlet?mode=delete&id=<%=u.getId()%>>Delete</a>
 			</td>
 
 		</tr>
@@ -92,7 +92,7 @@
 
 
 
-<form id="floatright" action="ProductServlet?mode=insert" method="post">
+<form id="floatright" action="/JspApp/ProductServlet?mode=insert" method="post">
   <div class="row">
     <div class="col-25">
       <label for="product">ProductName</label>  <!-- ho modificato i label -->
