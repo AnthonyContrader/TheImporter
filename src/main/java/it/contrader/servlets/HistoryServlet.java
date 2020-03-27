@@ -57,9 +57,9 @@ public class HistoryServlet extends HttpServlet{
 
 		switch (mode) {
 		// Arriva qui dalla UserReadView. Invoca il Service con il parametro id e invia alla UserReadView uno user da mostrare 
-		case "READALL":
+		case "MODE":
 			List<HistoryDTO> historyDTOlist = historyService.getAll();
-			request.setAttribute("historyDTOlist", historyDTOlist);
+			request.getSession().setAttribute("historyDTOlist", historyDTOlist);
 			getServletContext().getRequestDispatcher("/history/historymanager.jsp").forward(request, response);
 			break;
 		
@@ -100,8 +100,6 @@ public class HistoryServlet extends HttpServlet{
 			getServletContext().getRequestDispatcher("/history/historyrecord.jsp").forward(request, response);
 			break;
 			
-		case "MODE":	
-			getServletContext().getRequestDispatcher("/history/historymanager.jsp").forward(request, response);
 			
 		//Esegue uno switch sulla base del comando inserito dall'utente e reindirizza tramite il Dispatcher alla View specifica per ogni operazione
 		//con REQUEST NULL (vedi una View specifica)
