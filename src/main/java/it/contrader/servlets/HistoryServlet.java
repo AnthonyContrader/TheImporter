@@ -1,6 +1,7 @@
 package it.contrader.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -59,6 +60,8 @@ public class HistoryServlet extends HttpServlet{
 		// Arriva qui dalla UserReadView. Invoca il Service con il parametro id e invia alla UserReadView uno user da mostrare 
 		case "MODE":
 			List<HistoryDTO> historyDTOlist = historyService.getAll();
+			List<Integer> idUsers = new ArrayList<Integer>();
+			request.getSession().setAttribute("idUsers", idUsers);
 			request.getSession().setAttribute("historyDTOlist", historyDTOlist);
 			getServletContext().getRequestDispatcher("/history/historymanager.jsp").forward(request, response);
 			break;

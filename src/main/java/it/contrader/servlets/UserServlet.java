@@ -51,9 +51,7 @@ public class UserServlet extends HttpServlet {
 				 getServletContext().getRequestDispatcher("/user/readuser.jsp").forward(request, response);
 				
 			}
-			
 			else getServletContext().getRequestDispatcher("/user/updateuser.jsp").forward(request, response);
-			
 			break;
 
 		case "INSERT":
