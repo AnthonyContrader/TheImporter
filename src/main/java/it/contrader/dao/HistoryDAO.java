@@ -20,6 +20,8 @@ public class HistoryDAO implements DAO<History>{
 	private final String QUERY_CREATE = "INSERT INTO history (idProduct, idUser) VALUES (?,?)";
 	private final String QUERY_SEARCHBYUSER = "SELECT * FROM history WHERE idUser=?";
 	private final String QUERY_SEARCHBYPRODUCT = "SELECT * FROM history WHERE idProduct=?";
+	private final String QUERY_DELETEBYPRODUCT = "DELETE FROM history WHERE idProduct=?";
+	private final String QUERY_DELETEBYUSER = "DELETE FROM history WHERE idUser=?";
 	//private final String QUERY_UPDATE = "UPDATE user SET username=?, password=?, usertype=? WHERE id=?";
 	//private final String QUERY_DELETE = "DELETE FROM user WHERE id=?";
 
@@ -124,22 +126,52 @@ public class HistoryDAO implements DAO<History>{
 
 	@Override
 	public History read(int id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean update(History dto) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean delete(int id) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
+public boolean deleteByProductId(int id) {
+		
+		Connection connection = ConnectionSingleton.getInstance();
+		try {
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_DELETEBYPRODUCT);
+			preparedStatement.setInt(1, id);
+			preparedStatement.executeUpdate();
+			
+				return true;
+
+		} catch (Exception e) {
+			return false;
+		}
+
+	}	
+	
+public boolean deleteByUserId(int id) {
+		
+		Connection connection = ConnectionSingleton.getInstance();
+		try {
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_DELETEBYUSER);
+			preparedStatement.setInt(1, id);
+			preparedStatement.executeUpdate();
+			
+				return true;
+
+		} catch (Exception e) {
+			return false;
+		}
+
+	}	
 
 
 }
