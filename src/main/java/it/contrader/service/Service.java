@@ -35,6 +35,10 @@ public interface Service<DTO> {
 	public List<UserDTO> searchByProductId(int idProduct);
 
 	public List<ProductDTO> searchByUserId(int idUser);
+	
+	public boolean deleteByProductId(int idProduct);
+	
+	public boolean deleteByUserId(int idUser);
 
 	
 

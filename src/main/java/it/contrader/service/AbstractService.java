@@ -70,4 +70,15 @@ public abstract class AbstractService<Entity,DTO> implements Service<DTO> {
 	public List<ProductDTO> searchByUserId(int idUser) {
 		return null;
 	}
+	
+	
+	public boolean deleteByProductId(int idProduct) {
+		return false;
+	}
+	
+	public boolean deleteByUserId(int idUser) {
+		return false;
+	}
+	
+	
 }
