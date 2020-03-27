@@ -28,7 +28,7 @@
       <label for="product">Productname</label>
     </div>
     <div class="col-75">
-      <input type="text" id="product" name="productname" value=<%=u.getProductName()%>>
+      <input type="text" id="product" name="productname" value="<%=u.getProductName()%>">
     </div>
   </div>
   <div class="row">
@@ -45,7 +45,7 @@
       <label for="description">Description</label>
     </div>
     <div class="col-75">
-      <input type="text" id="description" name="description" value=<%=u.getDescription()%>>
+      <input type="text" id="description" name="description" value="<%=u.getDescription()%>">
     </div>
   </div>
    <div class="row">
@@ -53,7 +53,7 @@
       <label for="brand">brand</label>
     </div>
     <div class="col-75">
-      <input type="text" id="brand" name="brand" value=<%=u.getProductBrand()%>>
+      <input type="text" id="brand" name="brand" value="<%=u.getProductBrand()%>">
     </div>
   </div>
   
