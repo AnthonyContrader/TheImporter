@@ -17,7 +17,8 @@ import it.contrader.service.Service;
 
 public class ProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	Service<HistoryDTO> historyService;
+	
 	public ProductServlet() {
 	}
 
@@ -29,6 +30,8 @@ public class ProductServlet extends HttpServlet {
 
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Service<ProductDTO> service = new ProductService();
+		historyService = new HistoryService();
+		
 		String mode = request.getParameter("mode");
 		ProductDTO dto;
 		int id;
@@ -64,7 +67,7 @@ public class ProductServlet extends HttpServlet {
 			//mancha history
 			UserDTO userLogged = (UserDTO) request.getSession().getAttribute("user");
 			HistoryDTO record = new HistoryDTO(idProduct,userLogged.getId());
-			HistoryService historyService = new HistoryService();
+			//modificato
 			historyService.insert(record);
 			request.setAttribute("ans", true);
 			updateList(request);
@@ -86,6 +89,10 @@ public class ProductServlet extends HttpServlet {
 		case "DELETE":
 			id = Integer.parseInt(request.getParameter("id"));
 			ans = service.delete(id);
+			if(ans) {
+				historyService.deleteByProductId(id);
+			}
+			else System.out.println("cancellazione mancata di prodotto, id: "+id );
 			request.setAttribute("ans", ans);
 			updateList(request);
 			getServletContext().getRequestDispatcher("/product/productmanager.jsp").forward(request, response);
