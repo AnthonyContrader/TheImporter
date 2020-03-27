@@ -13,9 +13,11 @@ public class ProductController implements Controller {
 	private static String sub_package = "product.";
 	
 	private ProductService productService;
+	HistoryService historyService;
 	
 	public ProductController() {
 		this.productService = new ProductService();
+		 historyService = new HistoryService();
 	}
 	
 	
@@ -54,7 +56,7 @@ public class ProductController implements Controller {
 			int loggedUserID = MainDispatcher.getLoggedUSerID();
 			//creo il record storico
 			HistoryDTO record = new HistoryDTO(idProduct,loggedUserID);
-			HistoryService historyService = new HistoryService();
+			
 			historyService.insert(record);
 			
 			request=new Request();
@@ -66,8 +68,10 @@ public class ProductController implements Controller {
 			
 		case "DELETE":
 			id=Integer.parseInt(request.get("id").toString());
-			
-			productService.delete(id);
+			if(productService.delete(id)) {
+				historyService.deleteByProductId(id);
+			}
+			else System.out.println("errore nella cancellazione di prodotto, id:" + id );
 			request= new Request();
 			request.put("mode", "mode");
 			MainDispatcher.getInstance().callView(sub_package+"ProductDelete", request);
