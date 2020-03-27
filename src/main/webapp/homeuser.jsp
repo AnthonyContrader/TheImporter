@@ -16,7 +16,9 @@
   <a class="active" href="homeuser.jsp">Home</a>
   <a  href="ProductServlet?mode=productlist">Products</a>
   <a  href="ExcelServlet?mode=mode">Import Excel</a>
-  <a  href="HistoryServlet?mode=mode">history</a>				<!-- metti collegamento -->
+  <a  href="HistoryServlet?mode=mode">history</a>
+  <a  href="test.jsp">testJSP</a>				<!-- metti collegamento -->
+  <a  href="/test/index.html">testHTML</a>				<!-- metti collegamento -->
   <a href="LogoutServlet" id="logout">Logout</a>
 </div>
 

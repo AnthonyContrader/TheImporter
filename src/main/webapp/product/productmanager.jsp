@@ -12,18 +12,41 @@
 <%@ include file="../css/header.jsp" %>
 
 <div class="navbar">
-  <a href="homeuser.jsp">Home</a>
-  <a   class="active" href="ProductServlet?mode=productlist">Products</a>
-  <a  href="ExcelServlet?mode=mode">Import Excel</a>
-  <a  href="HistoryServlet?mode=mode">history</a>				<!-- metti collegamento -->
-  <a href="LogoutServlet" id="logout">Logout</a>
+  <a href="/JspApp/homeuser.jsp">Home</a>
+  <a   class="active" href="/JspApp/ProductServlet?mode=productlist">Products</a>
+  <a  href=/JspApp/ExcelServlet?mode=mode">Import Excel</a>
+  <a  href="/JspApp/HistoryServlet?mode=mode">history</a>				<!-- metti collegamento -->
+  <a href="/JspApp/LogoutServlet" id="logout">Logout</a>
 </div>
 <div class="main">
-	<%
-		List<ProductDTO> list = (List<ProductDTO>) request.getAttribute("list"); //metti collegamento
+
+	<%!
+	String myMethod(String input) {
+    return input;
+	}
+	%>
+	<%!
+	int count=0;
 	%>
 
-<br>
+	<%
+		List<ProductDTO> list = (List<ProductDTO>) request.getAttribute("list"); //metti collegamento
+		if(list!=null){
+			request.getSession().setAttribute("listLoaded", list);
+		}
+		else list = (List<ProductDTO>) request.getSession().getAttribute("listLoaded"); //metti collegamento
+		Double pages = list.size()/(double)20;
+		pages = Math.ceil(pages);
+		
+	%>
+	
+	<p>prodotti totali:<%=list.size() %></p>
+	pagine:
+	<%for(count=1; count<=pages; count++) {%>
+	<%= myMethod("<a href='/JspApp/product/productmanager.jsp?page="+count+"'>"+count+"</a>  ") %>
+	<%} %>
+	
+	<br>
 
 	<table>
 		<tr>
@@ -35,7 +58,19 @@
 			<th></th>
 		</tr>
 		<%
-			for (ProductDTO u : list) {
+		int pageToShow = 1;
+		List<ProductDTO>list1;
+		if(request.getParameter("page")!=null){
+			pageToShow = Integer.parseInt(request.getParameter("page"));
+		}
+			
+			if(list.size()<(pageToShow-1)*20+20){
+				list1 = list.subList((pageToShow-1)*20, list.size()); //pageToShow*20+20
+			}
+			else {
+				list1 = list.subList((pageToShow-1)*20, (pageToShow-1)*20+20); //pageToShow*20+20
+			}
+			for (ProductDTO u : list1) {
 		%>
 		<tr>
 			<td><a href=ProductServlet?mode=read&id=<%=u.getId()%>>
