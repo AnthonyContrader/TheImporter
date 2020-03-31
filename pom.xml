@@ -60,7 +60,7 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.15</version>
-			a
+			aa
 		</dependency>
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
