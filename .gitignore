@@ -1,4 +1,6 @@
 */target/*
+pom.xml
+
 
 # eclipse specific git ignore
 *.pydevproject
@@ -46,4 +48,3 @@ local.properties
 hs_err_pid*
 /target/
 /bin/
-/pom.xml
