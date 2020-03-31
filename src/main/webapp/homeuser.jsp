@@ -1,5 +1,5 @@
 
-<html lang="en">
+<html>
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport"
@@ -15,14 +15,15 @@
 		<!-- Custom styles for this template -->
 		<link href="/css/vittoriostyle.css" rel="stylesheet">
 	</head>
-	
 	<body>
 		<%@include file="css/header.jsp"%>
 	
 	
 		<div class="navbar">
-			<a class="active" href="/homeadmin.jsp">Home</a>
-			<a href=/user/getall>Users</a>
+			<a class="active" href="homeuser.jsp">Home</a> 
+			<a href="/product/getall">Products</a> 
+			<a href="ExcelServlet?mode=mode">Import Excel</a> 
+			<a href="HistoryServlet?mode=mode">history</a>
 			<a href="/user/logout" id="logout">Logout</a>
 		</div>
 	

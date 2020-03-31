@@ -21,7 +21,8 @@ public abstract class AbstractService<Entity, DTO> implements ServiceDTO<DTO> {
 
 	@Override
 	public DTO insert(DTO dto) {
-		return converter.toDTO(crudRepository.save(converter.toEntity(dto)));
+		return converter.toDTO(crudRepository.save(converter.toEntity(dto))); //bisogna capire se restituisce il DTO effeticamente inserito nel DB (tipo id = 143)
+																			  // o se ritorna il DTO passato come parametro
 	}
 
 	@Override
