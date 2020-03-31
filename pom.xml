@@ -26,16 +26,9 @@
 	</properties>
 
 
-
-	<profiles>
+		<profiles>
   			<profile>
-			    <activation>
-			      <os>
-			        <name>Mac</name>
-			        <family>Mac</family>
-			        <arch>x64</arch>
-			      </os>
-			    </activation>
+			    <id>mac</id>
 			    <dependencies>
 				    <dependency>
 						<groupId>mysql</groupId>
@@ -48,26 +41,25 @@
 			
 			
   			<profile>
-			    <activation>
-			      <os>
-			        <name>Windows 10</name>
-			        <family>Windows</family>
-			        <arch>x64</arch>
-			      </os>
-			    </activation>
+			    <id>windows</id>
 			    <dependencies>
 				    <dependency>
 						<groupId>mysql</groupId>
 						<artifactId>mysql-connector-java</artifactId>
 					</dependency>
-			  </dependencies>
+			  	</dependencies>
 			  </profile>
-			</profiles>
+		</profiles>
+
+	
 
 
 
 
 	<dependencies>
+	
+	
+	
 	
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
