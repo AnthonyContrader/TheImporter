@@ -16,6 +16,10 @@ public class ProductService extends AbstractService<Product, ProductDTO> {
 	private ProductConverter converter;
 	@Autowired
 	private ProductRepository repository;
+	
+	public ProductDTO getById(long longValue) {
+		return converter.toDTO(repository.getProductById(longValue));
+	}
 
 
 

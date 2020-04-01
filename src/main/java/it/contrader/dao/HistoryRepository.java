@@ -1,5 +1,7 @@
 package it.contrader.dao;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.repository.CrudRepository;
@@ -12,8 +14,8 @@ import it.contrader.model.History;
 @Transactional
 public interface HistoryRepository extends CrudRepository<History, Integer> {
 
-	int findByProductId(int idProduct);
+	List<Integer> findByProductId(int idProduct);
 	
-	int findByUserId(int idProduct);
+	List<Integer> findByUserId(int idProduct);
 
 }

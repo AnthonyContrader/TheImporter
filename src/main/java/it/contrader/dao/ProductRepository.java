@@ -11,6 +11,8 @@ import it.contrader.model.Product;
 @Transactional
 public interface ProductRepository extends CrudRepository<Product, Long> {
 
+	Product getProductById(long longValue);
+
 	
 
 }
