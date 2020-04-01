@@ -51,11 +51,11 @@ public class ExcelController {
 			excelDTO.setDirectory(directory);
 			stringList = readTitle(); //leggo la lista di liste da passare alla jsp come preview
 			request.getSession().setAttribute("titlesList", stringList);
-			return "updateproduct"; // completa l'inserimento da cambiare
+			return "excelinsert"; // completa l'inserimento da cambiare
 
 		}else {
 			System.out.println("directory errata");
-			return "updateproduct"; //ritorna indietro da cambiare
+			return "excelmanager"; //ritorna indietro da cambiare
 		}
 	}
 
