@@ -44,11 +44,11 @@ public class ExcelController {
 	private ProductService productService;
 
 	
-	@GetMapping("/preinsert")
+	@PostMapping("/preinsert")
 	public String preinsert(HttpServletRequest request, @RequestParam("directory") String directory) {
 		if(directory.contains(".xlsx")) {
 			
-			excelDTO.setDirectory(directory);
+			this.directory = directory;
 			stringList = readTitle(); //leggo la lista di liste da passare alla jsp come preview
 			request.getSession().setAttribute("titlesList", stringList);
 			return "excelinsert"; // completa l'inserimento da cambiare
@@ -80,7 +80,7 @@ public class ExcelController {
 			
 		}
 
-		return "/product/getall";
+		return "forward:/product/getall";
 	}
 
 

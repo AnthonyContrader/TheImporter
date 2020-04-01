@@ -39,6 +39,10 @@
 			request.getSession().setAttribute("listLoaded", list);
 		}
 		else list = (List<ProductDTO>) request.getSession().getAttribute("listLoaded"); //metti collegamento
+		
+		if(list == null){ //se non ho ancora nulla ricarico
+			
+		}
 		Double pages = list.size()/(double)20;
 		pages = Math.ceil(pages);
 		%>

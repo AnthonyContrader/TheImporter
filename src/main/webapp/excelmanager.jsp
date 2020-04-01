@@ -27,7 +27,7 @@
 	<p id="demo"></p>
 	
 	<%if(System.getProperty("os.name").toLowerCase().contains("mac")){ %>
-		<form action="/excel/preinsert" method="get">
+		<form action="/excel/preinsert" method="post">
 
 		<label for="directory">Scegliere il percorso del file .xlsx: </label> <input
 			type="text" id="directory" name="directory"
@@ -38,7 +38,7 @@
 			
 	<%} %>
 	<%if(!System.getProperty("os.name").toLowerCase().contains("mac")){ %>
-		<form action="/excel/preinsert" method="get">
+		<form action="/excel/preinsert" method="post">
 	
 			<label for="user">Scegliere il percorso del file .xlsx: </label> <input
 				type="file" id="directory" name="directory"
