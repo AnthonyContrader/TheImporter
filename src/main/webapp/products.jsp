@@ -1,3 +1,4 @@
+<%@ include file="./css/header.jsp"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 <%@ page import="it.contrader.dto.ProductDTO" import="java.util.*"%>
@@ -13,7 +14,7 @@
 		
 	</head>
 <body>
-	<%@ include file="./css/header.jsp"%>
+	
 
 	<div class="navbar">
 			<a href="/homeuser.jsp">Home</a> 

@@ -67,13 +67,13 @@ public class ExcelController {
 		
 		List<String>titles= stringList.get(1);
 		
-		titleSelected.add(titles.get(productName));
-		titleSelected.add(titles.get(price));
-		titleSelected.add(titles.get(brand));
-		titleSelected.add(titles.get(description));
+		titleSelected.add(titles.get(productName-1));
+		titleSelected.add(titles.get(price-1));
+		titleSelected.add(titles.get(brand-1));
+		titleSelected.add(titles.get(description-1));
 		
 		productsList = readTitleSelected();
-		
+		System.out.println(productsList);
 		for (ProductDTO u: productsList) {
 			
 			productService.insert(u);
