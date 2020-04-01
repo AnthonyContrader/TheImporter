@@ -74,6 +74,13 @@ public class ProductController {
 		request.getSession().setAttribute("dto", service.read(id));
 		return "readproduct";
 	}
+	
+	@GetMapping("/pagination")
+	public String pagination(HttpServletRequest request, @RequestParam("page") int page) {
+		request.getSession().setAttribute("page", page);
+		setAll(request);
+		return "products";
+	}
 
 	
 

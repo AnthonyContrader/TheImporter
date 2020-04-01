@@ -1,3 +1,5 @@
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+
 <%@ page import="it.contrader.dto.ProductDTO" import="java.util.*"%>
 <html>
 	<head>
@@ -14,7 +16,7 @@
 	<%@ include file="./css/header.jsp"%>
 
 	<div class="navbar">
-			<a class="active" href="homeuser.jsp">Home</a> 
+			<a class="active" href="/homeuser.jsp">Home</a> 
 			<a href="/product/getall">Products</a> 
 			<a href="ExcelServlet?mode=mode">Import Excel</a> 
 			<a href="HistoryServlet?mode=mode">history</a>
@@ -22,10 +24,31 @@
 	</div>
 	
 	<div class="main">
-		<%
-			List<ProductDTO> list = (List<ProductDTO>) request.getSession().getAttribute("list");
+		<%!
+		String myMethod(String input) {
+	    return input;
+		}
 		%>
-
+		<%!
+		int count=0;
+		%>
+	
+		<%
+		List<ProductDTO> list = (List<ProductDTO>) request.getSession().getAttribute("list"); //metti collegamento
+		if(list!=null){
+			request.getSession().setAttribute("listLoaded", list);
+		}
+		else list = (List<ProductDTO>) request.getSession().getAttribute("listLoaded"); //metti collegamento
+		Double pages = list.size()/(double)20;
+		pages = Math.ceil(pages);
+		%>
+	
+		<p>prodotti totali:<%=list.size() %></p>
+		pagine:
+		<%for(count=1; count<=pages; count++) {%>
+		<%= myMethod("<a href='/product/pagination?page="+count+"'>"+count+"</a>  ") %>
+		<%} %>
+		
 		<br>
 
 		<table>
@@ -38,8 +61,21 @@
 				<th></th>
 			</tr>
 			<%
-				for (ProductDTO u : list) {
+			int pageToShow = 1;
+			List<ProductDTO>list1;
+			if(request.getSession().getAttribute("page")!=null){
+				pageToShow = Integer.parseInt(request.getSession().getAttribute("page").toString());
+			}
+				
+			if(list.size()<(pageToShow-1)*20+20){
+				list1 = list.subList((pageToShow-1)*20, list.size()); //pageToShow*20+20
+			}
+			else {
+				list1 = list.subList((pageToShow-1)*20, (pageToShow-1)*20+20); //pageToShow*20+20
+			}
+			for (ProductDTO u : list1) {
 			%>
+
 			<tr>
 				<td><a href="/product/read?id=<%=u.getId()%>"> <%=u.getProductName()%></a></td>
 				<td><%=u.getPrice()%></td>
