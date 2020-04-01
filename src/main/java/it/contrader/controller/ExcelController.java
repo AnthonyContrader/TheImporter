@@ -80,7 +80,7 @@ public class ExcelController {
 			
 		}
 
-		return "forward:/product/getall";
+		return "redirect:/product/getall";
 	}
 
 

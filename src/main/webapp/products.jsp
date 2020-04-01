@@ -16,9 +16,9 @@
 	<%@ include file="./css/header.jsp"%>
 
 	<div class="navbar">
-			<a class="active" href="/homeuser.jsp">Home</a> 
-			<a href="/product/getall">Products</a> 
-			<a href="ExcelServlet?mode=mode">Import Excel</a> 
+			<a href="/homeuser.jsp">Home</a> 
+			<a class="active" href="/product/getall">Products</a> 
+			<a href="/excelmanager.jsp">Import Excel</a> 
 			<a href="HistoryServlet?mode=mode">history</a>
 			<a href="/user/logout" id="logout">Logout</a>
 	</div>
