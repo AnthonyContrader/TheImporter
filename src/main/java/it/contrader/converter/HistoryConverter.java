@@ -1,5 +1,8 @@
 package it.contrader.converter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -32,5 +35,18 @@ UserConverter userConverter;
 			historyDTO = new HistoryDTO(history.getId(), history.getProduct(), history.getUser());
 		}
 		return historyDTO;
+	}
+	
+	public List<HistoryDTO> toDTOList(List<History> historyList) {
+		//Crea una lista vuota.
+		List<HistoryDTO> historyDTOList = new ArrayList<HistoryDTO>();
+		
+		//Cicla tutti gli elementi della lista e li converte uno a uno
+		for(History record : historyList) {
+			//Utilizza il metodo toDTO per convertire ogni singolo elemento della lista
+			//e lo aggiunge adda lista di DTO
+			historyDTOList.add(toDTO(record));
+		}
+		return historyDTOList;
 	}
 }

@@ -12,9 +12,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import it.contrader.converter.UserConverter;
 import it.contrader.dto.HistoryDTO;
 import it.contrader.dto.UserDTO;
+import it.contrader.model.User;
 import it.contrader.service.HistoryService;
+import it.contrader.service.UserService;
 import javassist.expr.NewArray;
 
 
@@ -24,6 +27,9 @@ public class HistoryController {
 
 	@Autowired
 	private HistoryService service;
+	
+	@Autowired
+	private UserConverter userConverter;
 
 
 	@GetMapping("/getall")
@@ -52,20 +58,24 @@ public class HistoryController {
 
 	@PostMapping("/searchbyuser")
 	public String searchbyuser(HttpServletRequest request, @RequestParam("iduser") Long id) {
+		System.out.println("---------hey----\n\n\n\n\n\n\n\n"+id.getClass().toString());
+		UserDTO temp = (UserDTO)request.getSession().getAttribute("user");
+		User temp2 = userConverter.toEntity(temp);
 		request.getSession().setAttribute("SEARCHBY", "user");
-		request.getSession().setAttribute("productlist", service.findByUserId(id));
+		request.getSession().setAttribute("productlist", service.findByUser(temp2));
 		return "historyrecord";
 	}
 
 	@PostMapping("/searchbyproduct")
 	public String searchbyproduct(HttpServletRequest request, @RequestParam("idproduct") Long id) {
+		
 		request.getSession().setAttribute("SEARCHBY", "product");
-		request.getSession().setAttribute("userlist", service.findByProductId(id));
+		request.getSession().setAttribute("userlist", service.findByProduct(id));
 		return "historyrecord";
 	}
 
 	private void setAll(HttpServletRequest request) {
-		List<UserDTO> a=new ArrayList<>();
+		List<User> a=new ArrayList<>();
 		request.getSession().setAttribute("historyDTOlist", service.getAll());
 		request.getSession().setAttribute("list", a);
 	}
