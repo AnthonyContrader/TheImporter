@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.contrader.dto.HistoryDTO;
+import it.contrader.dto.UserDTO;
 import it.contrader.service.HistoryService;
 import javassist.expr.NewArray;
 
@@ -49,14 +50,14 @@ public class HistoryController {
 		return "historymanager";
 	}
 
-	@GetMapping("/searchbyuser")
+	@PostMapping("/searchbyuser")
 	public String searchbyuser(HttpServletRequest request, @RequestParam("iduser") Long id) {
 		request.getSession().setAttribute("SEARCHBY", "user");
 		request.getSession().setAttribute("productlist", service.findByUserId(id));
 		return "historyrecord";
 	}
 
-	@GetMapping("/searchbyproduct")
+	@PostMapping("/searchbyproduct")
 	public String searchbyproduct(HttpServletRequest request, @RequestParam("idproduct") Long id) {
 		request.getSession().setAttribute("SEARCHBY", "product");
 		request.getSession().setAttribute("userlist", service.findByProductId(id));
@@ -64,7 +65,7 @@ public class HistoryController {
 	}
 
 	private void setAll(HttpServletRequest request) {
-		List<HistoryDTO> a=new ArrayList<>();
+		List<UserDTO> a=new ArrayList<>();
 		request.getSession().setAttribute("historyDTOlist", service.getAll());
 		request.getSession().setAttribute("list", a);
 	}

@@ -1,7 +1,8 @@
 <%@page import="org.w3c.dom.Document"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="java.util.List"
-	import="it.contrader.dto.HistoryDTO"%>
+	import="it.contrader.dto.HistoryDTO"
+	import="it.contrader.dto.UserDTO"%>
 <!-- metti collegamento -->
 <!DOCTYPE html>
 <html>
@@ -23,7 +24,7 @@
 
 <%
 		List<HistoryDTO> productlist = (List<HistoryDTO>) request.getSession().getAttribute("historyDTOlist"); //metti collegamento
-		List<HistoryDTO> idUser= (List<HistoryDTO>) request.getSession().getAttribute("list");
+		List<UserDTO> idUser= (List<UserDTO>) request.getSession().getAttribute("list");
 	%>
 
 
@@ -31,25 +32,25 @@
 		<tr>
 			<td>
 
-				<form action="HistoryServlet?mode=searchbyuser" method="post">
+				<form action="/history/searchbyuser" method="post">
 
 					<label for="user">Cerca prodotti per ID cliente: </label> 
-					<select id="idUser" name="idUser">
+					<select id="iduser" name="iduser">
 
 						<%
 							for (HistoryDTO u : productlist) {
 								
 								
-								if(!idUser.contains(u.getUserDTO().getId())){
-									idUser.add(u);
+								if(!idUser.contains(u.getUserDTO())){
+									idUser.add(u.getUserDTO());
 								}
 								
 							}	
 								
-						for (HistoryDTO u : idUser) {
+						for (UserDTO u : idUser) {
 								
 						%>
-							<option value=<%=u.getUserDTO().getId()%>><%=u.getUserDTO().getUsername()%></option>
+							<option value=<%=u.getId()%>><%=u.getUsername()%></option>
 						<%
 							}
 						%>
@@ -63,10 +64,10 @@
 			</td>
 			<td>
 
-				<form action="HistoryServlet?mode=searchbyproduct" method="post">
+				<form action="/history/searchbyproduct" method="post">
 
 					<label for="user">Cerca Utenti per ID prodotto: </label> 
-					<select id="idProduct" name="idProduct">
+					<select id="idproduct" name="idproduct">
 
 						<%
 							for (HistoryDTO u : productlist) {

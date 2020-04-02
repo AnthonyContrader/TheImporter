@@ -17,7 +17,7 @@
   <a  href="/homeuser.jsp">Home</a>
   <a  href="/product/getall">Products</a>
   <a  class="active" href="/excelmanager.jsp">Import Excel</a>
-  <a  href="/history/getall">history</a>			<!-- metti collegamento -->
+  <a  href="/historymanager.jsp">history</a>			<!-- metti collegamento -->
   <a href="/user/logout" id="logout">Logout</a>
 </div>
 <%
@@ -41,7 +41,7 @@
 		<form action="/excel/preinsert" method="post">
 	
 			<label for="user">Scegliere il percorso del file .xlsx: </label> <input
-				type="file" id="directory" name="directory"
+				type="text" id="directory" name="directory"
 				placeholder="Insert file excel">
 	
 			<button type="submit" value="Import" name="pulsante">submit</button>
