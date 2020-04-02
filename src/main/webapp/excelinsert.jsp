@@ -16,8 +16,8 @@
 <div class="navbar">
   <a  href="/homeuser.jsp">Home</a>
   <a  href="/product/getall">Products</a>
-  <a  class="active" href="/excelmanager.jsp">Import Excel</a>
-  <a  href="HistoryServlet?mode=mode">history</a>				<!-- metti collegamento -->
+  <a  class="active"  href="/excelmanager.jsp">Import Excel</a>
+  <a  href="/historymanager.jsp">history</a>			<!-- metti collegamento -->
   <a href="/user/logout" id="logout">Logout</a>
 </div>
 	<%	

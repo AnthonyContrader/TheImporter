@@ -16,13 +16,13 @@
 <body>
 	
 
-	<div class="navbar">
-			<a href="/homeuser.jsp">Home</a> 
-			<a class="active" href="/product/getall">Products</a> 
-			<a href="/excelmanager.jsp">Import Excel</a> 
-			<a href="HistoryServlet?mode=mode">history</a>
-			<a href="/user/logout" id="logout">Logout</a>
-	</div>
+<div class="navbar">
+  <a  href="/homeuser.jsp">Home</a>
+  <a  class="active" href="/product/getall">Products</a>
+  <a  href="/excelmanager.jsp">Import Excel</a>
+  <a  href="/historymanager.jsp">history</a>			<!-- metti collegamento -->
+  <a href="/user/logout" id="logout">Logout</a>
+</div>
 	
 	<div class="main">
 		<%!
