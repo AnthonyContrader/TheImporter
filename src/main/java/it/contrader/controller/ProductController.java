@@ -30,7 +30,7 @@ public class ProductController {
 
 	@GetMapping("/delete")
 	public String delete(HttpServletRequest request, @RequestParam("id") Long id) {
-		service.delete(id);
+		service.deleteWRecord(id);
 		setAll(request);
 		return "products";
 	}

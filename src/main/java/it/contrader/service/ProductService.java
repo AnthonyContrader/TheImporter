@@ -35,5 +35,19 @@ public class ProductService extends AbstractService<Product, ProductDTO> {
 		return historyService.insert(historyDTO).getId(); //ritorna l'id del record inserito
 		
 	}
+	
+	public Long deleteWRecord(Long productId) {
+		
+		long result = -1;
+		
+		for(HistoryDTO h: historyService.getAll()) {
+			if(h.getProductDTO().getId() == productId) {
+				historyService.delete(h.getId());
+				return h.getId();
+			}
+		}
+		
+		return result;
+	}
 
 }
