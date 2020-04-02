@@ -19,6 +19,7 @@ public class Excel {
 	private String par1, par2, par3, par4;
 	
 	private List<String> titleRead = new ArrayList<String>();
+	
 	private List<Product> productsList = new ArrayList<Product>();
 
 }

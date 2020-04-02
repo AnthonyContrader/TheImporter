@@ -8,11 +8,17 @@ import it.contrader.model.History;
 @Component
 public class HistoryConverter extends AbstractConverter<History, HistoryDTO> {
 
+	
+	//problemi successivi nel controller
+	
+ProductConverter productConverter;
+UserConverter userConverter;
+	
 	@Override
 	public History toEntity(HistoryDTO historyDTO) {
 		History history = null;
 		if (historyDTO != null) {
-			history = new History(historyDTO.getIdRecord(), historyDTO.getIdUser(),historyDTO.getIdProduct());
+			history = new History(historyDTO.getId(), userConverter.toEntity(historyDTO.getUserDTO()), productConverter.toEntity(historyDTO.getProductDTO()));
 		}
 		return history;
 	}
@@ -21,8 +27,7 @@ public class HistoryConverter extends AbstractConverter<History, HistoryDTO> {
 	public HistoryDTO toDTO(History history) {
 		HistoryDTO historyDTO = null;
 		if (history != null) {
-			historyDTO = new HistoryDTO(history.getIdRecord(), history.getIdProduct(), history.getIdUser());
-
+			historyDTO = new HistoryDTO(history.getId(), productConverter.toDTO(history.getProduct()), userConverter.toDTO(history.getUser()));
 		}
 		return historyDTO;
 	}

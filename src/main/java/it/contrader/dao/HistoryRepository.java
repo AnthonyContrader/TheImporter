@@ -7,15 +7,19 @@ import javax.transaction.Transactional;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+
+
 import it.contrader.model.History;
+import it.contrader.model.Product;
+import it.contrader.model.User;
 
 
 @Repository
 @Transactional
-public interface HistoryRepository extends CrudRepository<History, Integer> {
+public interface HistoryRepository extends CrudRepository<History, Long> {
 
-	List<Integer> findByProductId(int idProduct);
+	List<User> findByProductId(Long id);
 	
-	List<Integer> findByUserId(int idProduct);
+	List<Product> findByUserId(Long id);
 
 }

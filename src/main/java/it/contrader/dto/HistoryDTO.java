@@ -11,10 +11,10 @@ import lombok.NoArgsConstructor;
 
 public class HistoryDTO {
 
-	private int idRecord;
+	private Long id;
 
-	private int idProduct;
+	private ProductDTO productDTO;
 	
-	private int idUser;
+	private UserDTO UserDTO;
 
 }

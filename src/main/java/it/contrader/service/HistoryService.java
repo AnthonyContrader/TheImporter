@@ -8,42 +8,40 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.contrader.converter.HistoryConverter;
+import it.contrader.converter.ProductConverter;
+import it.contrader.converter.UserConverter;
 import it.contrader.dao.HistoryRepository;
 import it.contrader.dto.HistoryDTO;
 import it.contrader.dto.ProductDTO;
 import it.contrader.dto.UserDTO;
 import it.contrader.model.History;
 
+//stesso del converter
 
 @Service
 public class HistoryService extends AbstractService<History, HistoryDTO> {
 
 	@Autowired
-	private HistoryConverter converter;
+	private HistoryConverter historyConverter;
+	
+	@Autowired
+	private UserConverter userConverter;
+	
+	@Autowired
+	private ProductConverter productConverter;
+	
 	@Autowired
 	private HistoryRepository historyRepository;
-	private UserService userService;
-	private ProductService productService;
+	
 
-	public List<UserDTO> findByProductId(int productId) {
-		List<UserDTO> userList = new ArrayList<UserDTO>();
+	public List<UserDTO> findByProductId(Long productId) {
 		
-		List<Integer> userListId = historyRepository.findByProductId(productId);
-		for(Integer i: userListId) {
-			userList.add(userService.getById(i.longValue()));
-		}
-		return userList;
+		return userConverter.toDTOList(historyRepository.findByProductId(productId));
 	}
 	
-	public List<ProductDTO> findByUserId(int userId) {
+	public List<ProductDTO> findByUserId(Long userId) {
 		
-		List<ProductDTO> productList = new ArrayList<ProductDTO>();
-		
-		List<Integer> productListId = historyRepository.findByUserId(userId);
-		for(Integer i: productListId) {
-			productList.add(productService.getById(i.longValue()));
-		}
-		return productList;
+		return productConverter.toDTOList(historyRepository.findByUserId(userId));
 	}
 
 }

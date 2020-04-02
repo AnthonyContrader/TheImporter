@@ -1,5 +1,8 @@
 package it.contrader.converter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import it.contrader.dto.ProductDTO;
@@ -26,5 +29,18 @@ public class ProductConverter extends AbstractConverter<Product, ProductDTO> {
 
 		}
 		return productDTO;
+	}
+	
+	public List<ProductDTO> toDTOList(List<Product> productList) {
+		
+		List<ProductDTO> productDTOList = new ArrayList<ProductDTO>();
+		
+		//Cicla tutti gli elementi della lista e li converte uno a uno
+		for(Product product : productList) {
+			//Utilizza il metodo toDTO per convertire ogni singolo elemento della lista
+			//e lo aggiunge adda lista di DTO
+			productDTOList.add(toDTO(product));
+		}
+		return productDTOList;
 	}
 }

@@ -5,7 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,12 +21,15 @@ public class History{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idRecord;
-
+	private Long id;
 	
-	private int idUser;
+	@ManyToOne
+	private User user;
 	
-	private	int idProduct;
+	@ManyToOne
+	private Product product;
+	
+	
 }
 
 
