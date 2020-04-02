@@ -1,6 +1,8 @@
 package it.contrader.dto;
 
 
+import it.contrader.model.Product;
+import it.contrader.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,8 +15,8 @@ public class HistoryDTO {
 
 	private Long id;
 
-	private ProductDTO productDTO;
+	private Product product;
 	
-	private UserDTO UserDTO;
+	private User user;
 
 }

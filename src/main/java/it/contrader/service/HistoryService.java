@@ -34,14 +34,14 @@ public class HistoryService extends AbstractService<History, HistoryDTO> {
 	private HistoryRepository historyRepository;
 	
 
-	public List<UserDTO> findByProductId(Long productId) {
+	public List<UserDTO> findByProductId(Long id) {
 		
-		return userConverter.toDTOList(historyRepository.findByProductId(productId));
+		return userConverter.toDTOList(historyRepository.findByProductId(id));
 	}
 	
-	public List<ProductDTO> findByUserId(Long userId) {
+	public List<ProductDTO> findByUserId(Long id) {	//il prametro del model --> che conseguentemente è quello del db
 		
-		return productConverter.toDTOList(historyRepository.findByUserId(userId));
+		return productConverter.toDTOList(historyRepository.findByUserId(id));
 	}
 
 }

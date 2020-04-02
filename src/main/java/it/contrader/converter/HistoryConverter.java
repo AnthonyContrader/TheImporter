@@ -20,7 +20,7 @@ UserConverter userConverter;
 	public History toEntity(HistoryDTO historyDTO) {
 		History history = null;
 		if (historyDTO != null) {
-			history = new History(historyDTO.getId(), userConverter.toEntity(historyDTO.getUserDTO()), productConverter.toEntity(historyDTO.getProductDTO()));
+			history = new History(historyDTO.getId(), historyDTO.getUser(), historyDTO.getProduct());
 		}
 		return history;
 	}
@@ -29,7 +29,7 @@ UserConverter userConverter;
 	public HistoryDTO toDTO(History history) {
 		HistoryDTO historyDTO = null;
 		if (history != null) {
-			historyDTO = new HistoryDTO(history.getId(), productConverter.toDTO(history.getProduct()), userConverter.toDTO(history.getUser()));
+			historyDTO = new HistoryDTO(history.getId(), history.getProduct(), history.getUser());
 		}
 		return historyDTO;
 	}

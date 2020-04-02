@@ -43,8 +43,8 @@ public class HistoryController {
 	public String insert(HttpServletRequest request, @RequestParam("iduser") Long idUser,
 			@RequestParam("idprodotto") Long idProdotto) {
 		HistoryDTO dto = new HistoryDTO();
-		dto.getUserDTO().setId(idUser);
-		dto.getProductDTO().setId(idProdotto);
+		dto.getUser().setId(idUser);
+		dto.getProduct().setId(idProdotto);
 		service.insert(dto);
 		setAll(request);
 		return "historymanager";

@@ -18,8 +18,8 @@ import it.contrader.model.User;
 @Transactional
 public interface HistoryRepository extends CrudRepository<History, Long> {
 
-	List<User> findByProductId(Long id);
+	List<User> findByProductId(Long product_id);
 	
-	List<Product> findByUserId(Long id);
+	List<Product> findByUserId(Long user_id);
 
 }
