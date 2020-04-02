@@ -1,7 +1,7 @@
 <%@page import="org.w3c.dom.Document"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="java.util.List"
-	import="it.contrader.dto.ProductDTO" import="it.contrader.dto.UserDTO"%>
+	import="it.contrader.model.Product" import="it.contrader.model.User"%>
 <!-- metti collegamento -->
 <!DOCTYPE html>
 <html>
@@ -25,7 +25,7 @@
 			if (request.getSession().getAttribute("SEARCHBY").equals("user")) {
 		%>
 		<%
-			List<ProductDTO> list = (List<ProductDTO>) request.getSession().getAttribute("productHistory"); //metti collegamento
+			List<Product> list = (List<Product>) request.getSession().getAttribute("productHistory"); //metti collegamento
 		%>
 
 		<br>
@@ -41,7 +41,7 @@
 			</thead>
 			<tbody>
 				<%
-					for (ProductDTO u : list) {
+					for (Product u : list) {
 				%>
 				<tr>
 					<td><%=u.getProductName()%></td>
@@ -114,7 +114,7 @@
 			if (request.getSession().getAttribute("SEARCHBY").equals("product")) {
 		%>
 		<%
-			List<UserDTO> list = (List<UserDTO>) request.getSession().getAttribute("userHistory");
+			List<User> list = (List<User>) request.getSession().getAttribute("userHistory");
 		%>
 
 		<br>
@@ -128,7 +128,7 @@
 			</thead>
 			<tbody>
 				<%
-					for (UserDTO u : list) {
+					for (User u : list) {
 				%>
 				<tr>
 					<td><%=u.getUsername()%></td>
