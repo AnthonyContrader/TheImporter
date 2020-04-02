@@ -23,7 +23,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import it.contrader.dto.ExcelDTO;
 import it.contrader.dto.ProductDTO;
+import it.contrader.dto.UserDTO;
 import it.contrader.model.Product;
+import it.contrader.service.HistoryService;
 import it.contrader.service.ProductService;
 
 @Controller
@@ -43,6 +45,8 @@ public class ExcelController {
 	@Autowired
 	private ProductService productService;
 
+	@Autowired
+	private HistoryService historyService;
 	
 	@PostMapping("/preinsert")
 	public String preinsert(HttpServletRequest request, @RequestParam("directory") String directory) {
@@ -65,6 +69,8 @@ public class ExcelController {
 	public String insert(HttpServletRequest request, @RequestParam("productName") int productName,
 			@RequestParam("price") int price, @RequestParam("brand") int brand, @RequestParam("description") int description) {//gli interi rapresentano i nummeri delle colonne associate
 		
+		UserDTO userDTO = (UserDTO)request.getSession().getAttribute("user"); //raccolgo l'utente loggato
+		
 		List<String>titles= stringList.get(1);
 		
 		titleSelected.add(titles.get(productName-1));
@@ -76,7 +82,7 @@ public class ExcelController {
 		System.out.println(productsList);
 		for (ProductDTO u: productsList) {
 			
-			productService.insert(u);
+			productService.insertWRecord(userDTO, u);
 			
 		}
 

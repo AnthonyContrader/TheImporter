@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import it.contrader.dto.ProductDTO;
+import it.contrader.dto.UserDTO;
 import it.contrader.service.ProductService;
 
 @Controller
@@ -59,12 +60,15 @@ public class ProductController {
 	@PostMapping("/insert")
 	public String insert(HttpServletRequest request, @RequestParam("productName") String productName,
 			@RequestParam("price") int price, @RequestParam("brand") String brand, @RequestParam("description") String description) {
+		
+		UserDTO userDTO = (UserDTO)request.getSession().getAttribute("user"); //raccolgo l'utente loggato
+		
 		ProductDTO dto = new ProductDTO();
 		dto.setProductName(productName);
 		dto.setPrice(price);
 		dto.setBrand(brand);
 		dto.setDescription(description);
-		service.insert(dto);
+		service.insertWRecord(userDTO, dto);
 		setAll(request);
 		return "products";
 	}

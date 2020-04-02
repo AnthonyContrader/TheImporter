@@ -1,5 +1,6 @@
 package it.contrader.converter;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import it.contrader.dto.HistoryDTO;
@@ -10,8 +11,9 @@ public class HistoryConverter extends AbstractConverter<History, HistoryDTO> {
 
 	
 	//problemi successivi nel controller
-	
+@Autowired	
 ProductConverter productConverter;
+@Autowired
 UserConverter userConverter;
 	
 	@Override
