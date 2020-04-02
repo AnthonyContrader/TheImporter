@@ -1,5 +1,8 @@
 package it.contrader.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import it.contrader.dto.HistoryDTO;
 import it.contrader.service.HistoryService;
+import javassist.expr.NewArray;
 
 
 @Controller
@@ -60,6 +64,8 @@ public class HistoryController {
 	}
 
 	private void setAll(HttpServletRequest request) {
-		request.getSession().setAttribute("list", service.getAll());
+		List<HistoryDTO> a=new ArrayList<>();
+		request.getSession().setAttribute("historyDTOlist", service.getAll());
+		request.getSession().setAttribute("list", a);
 	}
 }

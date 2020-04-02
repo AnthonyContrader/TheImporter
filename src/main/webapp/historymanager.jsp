@@ -16,14 +16,14 @@
 <div class="navbar">
   <a  href="/homeuser.jsp">Home</a>
   <a  href="/product/getall">Products</a>
-  <a  href="/excelmanager.jsp">Import Excel</a>
-  <a  class="active" href="/historymanager.jsp">history</a>				<!-- metti collegamento -->
+  <a  class="active" href="/excelmanager.jsp">Import Excel</a>
+  <a  href="/history/getall">history</a>				<!-- metti collegamento -->
   <a href="/user/logout" id="logout">Logout</a>
 </div>
 
 <%
 		List<HistoryDTO> productlist = (List<HistoryDTO>) request.getSession().getAttribute("historyDTOlist"); //metti collegamento
-		List<Integer> idUser = (List<Integer>) request.getSession().getAttribute("idUsers");
+		List<HistoryDTO> idUser= (List<HistoryDTO>) request.getSession().getAttribute("list");
 	%>
 
 
@@ -40,16 +40,16 @@
 							for (HistoryDTO u : productlist) {
 								
 								
-								if(!idUser.contains(u.getIdUser())){
-									idUser.add(u.getIdUser());
+								if(!idUser.contains(u.getUserDTO().getId())){
+									idUser.add(u);
 								}
 								
 							}	
 								
-						for (Integer u : idUser) {
+						for (HistoryDTO u : idUser) {
 								
 						%>
-							<option value=<%=u%>><%=u%></option>
+							<option value=<%=u.getUserDTO().getId()%>><%=u.getUserDTO().getUsername()%></option>
 						<%
 							}
 						%>
@@ -71,7 +71,7 @@
 						<%
 							for (HistoryDTO u : productlist) {
 						%>
-							<option value=<%=u.getIdProduct() %>><%=u.getIdProduct() %></option>
+							<option value=<%=u.getProductDTO().getId()%>><%=u.getProductDTO().getProductName() %></option>
 						<%
 							}
 						%>

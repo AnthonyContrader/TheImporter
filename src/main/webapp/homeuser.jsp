@@ -23,7 +23,7 @@
   <a  class="active" href="/homeuser.jsp">Home</a>
   <a  href="/product/getall">Products</a>
   <a  href="/excelmanager.jsp">Import Excel</a>
-  <a  href="/historymanager.jsp">history</a>			<!-- metti collegamento -->
+  <a  href="/history/getall">history</a>			<!-- metti collegamento -->
   <a href="/user/logout" id="logout">Logout</a>
 </div>
 	
