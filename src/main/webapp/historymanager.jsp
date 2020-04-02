@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="java.util.List"
 	import="it.contrader.dto.HistoryDTO"
-	import="it.contrader.dto.UserDTO"%>
+	import="it.contrader.model.User"%>
 <!-- metti collegamento -->
 <!DOCTYPE html>
 <html>
@@ -24,7 +24,7 @@
 
 <%
 		List<HistoryDTO> productlist = (List<HistoryDTO>) request.getSession().getAttribute("historyDTOlist"); //metti collegamento
-		List<UserDTO> idUser= (List<UserDTO>) request.getSession().getAttribute("list");
+		List<User> idUser= (List<User>) request.getSession().getAttribute("list");
 	%>
 
 
@@ -41,13 +41,13 @@
 							for (HistoryDTO u : productlist) {
 								
 								
-								if(!idUser.contains(u.getUserDTO())){
-									idUser.add(u.getUserDTO());
+								if(!idUser.contains(u.getUser())){
+									idUser.add(u.getUser());
 								}
 								
 							}	
 								
-						for (UserDTO u : idUser) {
+						for (User u : idUser) {
 								
 						%>
 							<option value=<%=u.getId()%>><%=u.getUsername()%></option>
@@ -72,7 +72,7 @@
 						<%
 							for (HistoryDTO u : productlist) {
 						%>
-							<option value=<%=u.getProductDTO().getId()%>><%=u.getProductDTO().getProductName() %></option>
+							<option value=<%=u.getProduct().getId()%>><%=u.getProduct().getProductName() %></option>
 						<%
 							}
 						%>
