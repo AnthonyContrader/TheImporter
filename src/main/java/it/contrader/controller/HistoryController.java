@@ -69,7 +69,7 @@ public class HistoryController {
 	public String searchbyproduct(HttpServletRequest request, @RequestParam("idproduct") Long id) {
 		
 		request.getSession().setAttribute("SEARCHBY", "product");
-		//request.getSession().setAttribute("userHistory", service.findByProduct(id));
+		request.getSession().setAttribute("userHistory", extractUserList(id));
 		return "historyrecord";
 	}
 
@@ -90,6 +90,19 @@ public class HistoryController {
 			}
 		}
 		return productList;
+		
+	}
+	
+private List<User> extractUserList(Long id) {
+		
+		List<User> userList = new ArrayList<User>();
+		
+		for(HistoryDTO h: service.getAll()) {
+			if(h.getProduct().getId() == id){
+				userList.add(h.getUser());
+			}
+		}
+		return userList;
 		
 	}
 }
