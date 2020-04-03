@@ -98,7 +98,7 @@ private List<User> extractUserList(Long id) {
 		List<User> userList = new ArrayList<User>();
 		
 		for(HistoryDTO h: service.getAll()) {
-			if(h.getProduct().getId() == id){
+			if(h.getProduct().getId().longValue() == id.longValue()){
 				userList.add(h.getUser());
 			}
 		}

@@ -30,6 +30,7 @@ public class ProductController {
 
 	@GetMapping("/delete")
 	public String delete(HttpServletRequest request, @RequestParam("id") Long id) {
+		System.out.println("sono nel controller:"+id);
 		service.deleteWRecord(id);
 		setAll(request);
 		return "products";
