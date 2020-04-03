@@ -27,7 +27,7 @@
 	<div class="main">
 		
 		
-		<%if(request.getAttribute("userNotLogged").toString().equals("true")){%>
+		<%if(request.getSession().getAttribute("userNotLogged") != null && request.getSession().getAttribute("userNotLogged").toString().equals("true")){%>
 			<script>
 				
 					var txt;

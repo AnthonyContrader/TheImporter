@@ -25,7 +25,7 @@
 	String u="a";
 %>
 	
-	<%if(request.getSession().getAttribute("directoryError").toString().equals("true")){ %>
+	<%if(request.getSession().getAttribute("directoryError") != null && request.getSession().getAttribute("directoryError").toString().equals("true")){ %>
 		<script type="text/javascript"> alert("directory errata! riprova") </script>
 	<%request.getSession().setAttribute("directoryError", "false"); 
 	  } %>

@@ -49,9 +49,9 @@ public class ProductService extends AbstractService<Product, ProductDTO> {
 		long result = -1;
 		
 		
-		System.out.println("parametro del metodo:"+productId);
+		
 		for(HistoryDTO h: historyService.getAll()) {
-			System.out.println("parametro lista:"+h.getProduct().getId());
+			
 			if(h.getProduct().getId().longValue() == productId.longValue()) {
 				System.out.println(h);
 				historyService.delete(h.getId());

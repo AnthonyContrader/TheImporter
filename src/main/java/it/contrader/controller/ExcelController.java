@@ -53,6 +53,8 @@ public class ExcelController {
 		if(directory.contains(".xlsx")) {
 			
 			this.directory = directory;
+			stringList= new ArrayList<List<String>>();
+			titleRead = new ArrayList<String>();
 			try{
 				stringList = readTitle(); //leggo la lista di liste da passare alla jsp come preview
 			}
@@ -61,6 +63,7 @@ public class ExcelController {
 				request.getSession().setAttribute("directoryError", "true");
 				return "excelmanager";
 			}
+			System.out.println(stringList);
 			request.getSession().setAttribute("titlesList", stringList);
 			return "excelinsert"; // completa l'inserimento da cambiare
 
@@ -92,7 +95,7 @@ public class ExcelController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(productsList);
+		
 		for (ProductDTO u: productsList) {
 			
 			try {
