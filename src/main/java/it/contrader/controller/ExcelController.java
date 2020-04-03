@@ -53,12 +53,20 @@ public class ExcelController {
 		if(directory.contains(".xlsx")) {
 			
 			this.directory = directory;
-			stringList = readTitle(); //leggo la lista di liste da passare alla jsp come preview
+			try{
+				stringList = readTitle(); //leggo la lista di liste da passare alla jsp come preview
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+				request.getSession().setAttribute("directoryError", "true");
+				return "excelmanager";
+			}
 			request.getSession().setAttribute("titlesList", stringList);
 			return "excelinsert"; // completa l'inserimento da cambiare
 
 		}else {
 			System.out.println("directory errata");
+			request.getSession().setAttribute("directoryError", "true");
 			return "excelmanager"; //ritorna indietro da cambiare
 		}
 	}
@@ -78,11 +86,21 @@ public class ExcelController {
 		titleSelected.add(titles.get(brand-1));
 		titleSelected.add(titles.get(description-1));
 		
-		productsList = readTitleSelected();
+		try {
+			productsList = readTitleSelected();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println(productsList);
 		for (ProductDTO u: productsList) {
 			
-			productService.insertWRecord(userDTO, u);
+			try {
+				productService.insertWRecord(userDTO, u);
+			} catch (Exception e) { //ricevi questa exception se l'utente non è loggato
+				request.getSession().setAttribute("userNotLogged", "true"); 
+				return "redirect:/product/getall";
+			}
 			
 		}
 
@@ -99,7 +117,7 @@ public class ExcelController {
 	
 	//gestione excel
 	
-		private Iterator<Row> openFile() {
+		private Iterator<Row> openFile() throws Exception{
 
 			try {
 				File file = new File(directory); // creating a new file instance
@@ -112,14 +130,13 @@ public class ExcelController {
 
 				return itr;
 			} catch (Exception e) {
-				e.printStackTrace();
-				return null;
+				throw new Exception();
 			}
 
 		}
 		
 		@SuppressWarnings("deprecation")
-		public List<List<String>> readTitle() {
+		public List<List<String>> readTitle() throws Exception{
 
 			List<List<String>> insertData=new ArrayList<>();
 			List<String> dataList=new ArrayList<>();
@@ -161,7 +178,7 @@ public class ExcelController {
 			}
 
 		@SuppressWarnings("deprecation")
-		public List<ProductDTO> readTitleSelected() {
+		public List<ProductDTO> readTitleSelected() throws Exception {
 			
 			readTitle();
 			

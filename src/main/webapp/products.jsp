@@ -25,6 +25,22 @@
 </div>
 	
 	<div class="main">
+		
+		
+		<%if(request.getAttribute("userNotLogged").toString().equals("true")){%>
+			<script>
+				
+					var txt;
+					if (confirm("non sei loggato, vuoi loggarti?")) {
+						<a  href="/index.jsp">login</a>
+					} else {
+						txt = "You pressed Cancel!";
+					}
+				
+			</script>	
+		<%} %>
+		
+		
 		<%!
 		String myMethod(String input) {
 	    return input;

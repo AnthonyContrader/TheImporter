@@ -28,9 +28,14 @@ public class ProductService extends AbstractService<Product, ProductDTO> {
 		return converter.toDTO(repository.getProductById(longValue));
 	}
 
-	public Long insertWRecord(UserDTO userDTO, ProductDTO productDTO) {
-		Product insertedProduct = repository.save(converter.toEntity(productDTO)); //salva nel db product, poi converte per raccogliere il DTO con l'id inserito nel db
+	public Long insertWRecord(UserDTO userDTO, ProductDTO productDTO) throws Exception {
 		
+		if(userDTO.getId() == null) {
+			System.out.println("non hai l'id per inserire su history e stai fottendo tutto");
+			throw new Exception(); 
+		}
+		
+		Product insertedProduct = repository.save(converter.toEntity(productDTO)); //salva nel db product, poi converte per raccogliere il DTO con l'id inserito nel db
 		HistoryDTO historyDTO = new HistoryDTO();
 		historyDTO.setProduct(insertedProduct);
 		historyDTO.setUser(userConverter.toEntity(userDTO));

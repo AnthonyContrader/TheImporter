@@ -69,7 +69,12 @@ public class ProductController {
 		dto.setPrice(price);
 		dto.setBrand(brand);
 		dto.setDescription(description);
-		service.insertWRecord(userDTO, dto);
+		try {
+			service.insertWRecord(userDTO, dto);
+		} catch (Exception e) { //ricevi questa exception se l'utente non risulta loggato
+			request.getSession().setAttribute("userNotLogged", "true"); 
+			return "products"; //lo rimando al login
+		}
 		setAll(request);
 		return "products";
 	}

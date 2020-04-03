@@ -24,6 +24,12 @@
 	int counter=1;
 	String u="a";
 %>
+	
+	<%if(request.getSession().getAttribute("directoryError").toString().equals("true")){ %>
+		<script type="text/javascript"> alert("directory errata! riprova") </script>
+	<%request.getSession().setAttribute("directoryError", "false"); 
+	  } %>
+	
 	<p id="demo"></p>
 	
 	<%if(System.getProperty("os.name").toLowerCase().contains("mac")){ %>
