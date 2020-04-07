@@ -25,6 +25,33 @@
 		<java.version>1.8</java.version>
 	</properties>
 
+	<profiles>
+  			<profile>
+			    <id>mac</id>
+			    <dependencies>
+				    <dependency>
+						<groupId>mysql</groupId>
+						<artifactId>mysql-connector-java</artifactId>
+						<version>8.0.15</version>
+					</dependency>
+			  </dependencies>
+			  </profile>
+			
+			
+			
+  			<profile>
+			    <id>windows</id>
+			    <dependencies>
+				    <dependency>
+						<groupId>mysql</groupId>
+						<artifactId>mysql-connector-java</artifactId>
+					</dependency>
+			  	</dependencies>
+			  </profile>
+		</profiles>
+
+
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
