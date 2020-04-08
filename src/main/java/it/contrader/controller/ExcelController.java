@@ -36,7 +36,7 @@ public class ExcelController extends AbstractController<ExcelDTO> {
 	List<List<String>> stringList = new ArrayList<List<String>>();
 
 	@PostMapping(value = "/preinsert")
-	public List<List<String>> excelinser(@RequestBody String directory) {
+	public String excelinser(@RequestBody String directory) {
 		this.directory = directory;
 		stringList = new ArrayList<List<String>>();
 		titleRead = new ArrayList<String>();
@@ -47,7 +47,7 @@ public class ExcelController extends AbstractController<ExcelDTO> {
 			e.printStackTrace();
 		}
 
-		return stringList;
+		return directory;//stringLinst
 
 	}
 
