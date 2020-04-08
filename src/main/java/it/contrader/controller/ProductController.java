@@ -25,10 +25,7 @@ public class ProductController extends AbstractController<ProductDTO> {
 	@Autowired
 	private ProductService service;
 
-	@PostMapping(value = "/getall")
-	public Iterable<ProductDTO> getAll() {
-		return service.getAll();
-	}
+
 
 	/*@GetMapping("/delete")
 	public String delete(HttpServletRequest request, @RequestParam("id") Long id) {
