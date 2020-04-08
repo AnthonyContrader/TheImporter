@@ -2,13 +2,15 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UserLayoutComponent } from '../layout/user-layout/user-layout.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { ProductsComponent } from './products/products.component';
 import { CommonModule } from '@angular/common';
 
 //dovrai imporate i componenti di product e excel
 
 const routes: Routes = [
   { path: 'user-dashboard', component: UserLayoutComponent, children:[
-    { path: '', component: UserDashboardComponent}
+    { path: '', component: UserDashboardComponent},
+	{ path: 'products', component: ProductsComponent}
     //qua dentro ci dovrai mettere product e excel
     
   ]}

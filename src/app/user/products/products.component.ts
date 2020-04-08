@@ -1,40 +1,40 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/service/user.service';
-import { UserDTO } from 'src/dto/userdto';
+import { ProductService } from 'src/service/product.service';
+import { ProductDTO } from 'src/dto/productdto';
 
 @Component({
-  selector: 'app-users',
+  selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class UsersComponent implements OnInit {
+export class ProductsComponent implements OnInit {
 
-  users: UserDTO[];
-  usertoinsert: UserDTO = new UserDTO();
+  products: ProductDTO[];
+  producttoinsert: ProductDTO = new ProductDTO();
 
-  constructor(private service: UserService) { }
+  constructor(private service: ProductService) { }
 
   ngOnInit() {
-    this.getUsers();
+    this.getProducts();
   }
 
-  getUsers() {
-    this.service.getAll().subscribe(users => this.users = users);
+  getProducts() {
+    this.service.getAll().subscribe(products => this.products = products);
   }
 
-  delete(user: UserDTO) {
-    this.service.delete(user.id).subscribe(() => this.getUsers());
+  delete(product: ProductDTO) {
+    this.service.delete(product.id).subscribe(() => this.getProducts());
   }
 
-  update(user: UserDTO) {
-    this.service.update(user).subscribe(() => this.getUsers());
+  update(product: ProductDTO) {
+    this.service.update(product).subscribe(() => this.getProducts());
   }
 
-  insert(user: UserDTO) {
-    this.service.insert(user).subscribe(() => this.getUsers());
+  insert(product: ProductDTO) {
+    this.service.insert(product).subscribe(() => this.getProducts());
   }
 
   clear(){
-    this.usertoinsert = new UserDTO();
+    this.producttoinsert = new ProductDTO();
   }
 }

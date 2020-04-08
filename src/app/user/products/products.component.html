@@ -7,13 +7,16 @@
       <table>
         <tr>
           <th>
-            Username
+            product name
           </th>
           <th>
-            Password
+            price
           </th>
           <th>
-            Usertype
+            brand
+          </th>
+          <th>
+            description
           </th>
           <th>
             Edit
@@ -24,44 +27,45 @@
         </tr>
         <tr>
           <td>
-            <input placeholder="username" [(ngModel)]="usertoinsert.username">
+            <input placeholder="product name" [(ngModel)]="producttoinsert.productName">
           </td>
           <td>
-            <input placeholder="password" [(ngModel)]="usertoinsert.password">
+            <input placeholder="price" [(ngModel)]="producttoinsert.price">
           </td>
           <td>
-            <select placeholder="usertype" [(ngModel)]="usertoinsert.usertype">
-              <option value="ADMIN">ADMIN</option>
-              <option value="USER">USER</option>
-            </select>
+            <input placeholder="brand" [(ngModel)]="producttoinsert.brand">
           </td>
           <td>
-            <button (click)="insert(usertoinsert)">Insert</button>
+            <input placeholder="description" [(ngModel)]="producttoinsert.description">
+          </td>
+          <td>
+            <button (click)="insert(producttoinsert)">Insert</button>
           </td>
           <td>
             <button (click)="clear()">Clear</button>
           </td>
         </tr>
-        <tr *ngFor="let user of users">
+        <tr *ngFor="let product of products">
           <td>
-            <input [(ngModel)]="user.username">
+            <input [(ngModel)]="product.productName">
           </td>
           <td>
-            <input [(ngModel)]="user.password">
+            <input [(ngModel)]="product.price">
           </td>
           <td>
-            <select [(ngModel)]="user.usertype">
-              <option [selected]="user.usertype===ADMIN" value="ADMIN">ADMIN</option>
-              <option [selected]="user.usertype===USER" value="USER">USER</option>
-            </select>
+            <input [(ngModel)]="product.brand">
           </td>
           <td>
-            <button (click)=update(user)>Save</button>
+            <input [(ngModel)]="product.description">
           </td>
           <td>
-            <button (click)="delete(user)">Delete</button>
+            <button (click)=update(product)>Save</button>
+          </td>
+          <td>
+            <button (click)="delete(product)">Delete</button>
           </td>
         </tr>
+        
       </table>
     </div>
     <div class="col-md-1">
