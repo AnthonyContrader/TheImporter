@@ -20,6 +20,7 @@ export class ProductsComponent implements OnInit {
 
   getProducts() {
     this.service.getAll().subscribe(products => this.products = products);
+	console.log(this.products[0].productName);
   }
 
   delete(product: ProductDTO) {

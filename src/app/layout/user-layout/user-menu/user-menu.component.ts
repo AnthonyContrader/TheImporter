@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class UserMenuComponent implements OnInit {
 
   isUserCollapsed = false;
-  isClientCollapsed = false;
+  isExcelCollapsed = false;
   isAccountCollapsed = false;
 
   constructor(private router: Router) {
@@ -34,4 +34,12 @@ export class UserMenuComponent implements OnInit {
       this.isAccountCollapsed = true;
     } else { this.isAccountCollapsed = false; }
   }
+	
+	 excelcollapse() {
+	    if (this.isExcelCollapsed === false) {
+	      this.isExcelCollapsed = true;
+	    } else { this.isExcelCollapsed = false; }
+	  }
+	
+
 }

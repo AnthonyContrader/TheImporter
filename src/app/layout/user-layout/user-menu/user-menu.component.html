@@ -23,6 +23,18 @@
                         </i> Manage Products </a>
                 </button>
             </div>
+            
+            <button type="button" class="menubtn" data-toggle="collapsebtn"
+				data-target="#excel" (click)="excelcollapse()">
+				<i class="fas fa-users" style="margin-right: 15px"></i>Import Excel
+			</button>
+			
+			<div class="collapsebtn" id="excel" *ngIf="isExcelCollapsed">
+                <button class="menubtn" style="padding-left: 40px; background-color: #334247;">
+                    <a [routerLink]="['/user-dashboard/excel']"> <i class="fas fa-edit" style="margin-right: 10px">
+                        </i> file .xlsx </a>
+                </button>
+            </div>
 
 
 			<button class="menubtn" (click)="logout()">
