@@ -44,6 +44,9 @@ public class ExcelController {
 
 	@PostMapping(value = "/preinsert")
 	public String excelinser(@RequestBody String directory) {
+		
+		String ciao = directory + "sono stato nel controller";
+		
 		this.directory = directory;
 		stringList = new ArrayList<List<String>>();
 		titleRead = new ArrayList<String>();
@@ -53,10 +56,10 @@ public class ExcelController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}*/
-		directory = directory +"sonopassatodalcontroller";
-		directory.trim();
-		System.out.println(directory);
-		return directory;//stringLinst
+		
+		
+		System.out.println(ciao);
+		return ciao;//stringLinst
 
 	}
 
