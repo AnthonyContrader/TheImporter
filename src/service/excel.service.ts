@@ -17,8 +17,8 @@ export class ExcelService extends AbstractService<ExcelDTO>{
 	type: string;
     port: string = '8080';
 
-	preinsert(directory: string): Observable<any> {
-        return this.http.post('http://localhost:' + this.port + '/' + this.type + '/preinsert', directory);
+	preinsert(directory: string): Observable<string> {
+        return this.http.post<any>('http://localhost:' + this.port + '/' + this.type + '/preinsert', directory);
     }
 
 }
