@@ -13,18 +13,25 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import it.contrader.dto.ExcelDTO;
 import it.contrader.dto.ProductDTO;
 import it.contrader.dto.UserDTO;
 import it.contrader.service.ProductService;
 
-public class ExcelController extends AbstractController<ExcelDTO> {
+@RestController
+@RequestMapping("/excel")
+@CrossOrigin(origins = "http://localhost:4200")
+public class ExcelController {
 
 	@Autowired
 	private ProductService productService;
+	
 	private ExcelDTO excelDTO = new ExcelDTO();
 	private String directory;
 
@@ -46,12 +53,13 @@ public class ExcelController extends AbstractController<ExcelDTO> {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		
+		System.out.println(directory);
 		return directory;//stringLinst
 
 	}
 
-	@PostMapping("/insert")
+	@PostMapping(value = "/insert")
 	public Iterable<ProductDTO> insert(@RequestBody int productName, @RequestBody int price, @RequestBody int brand,
 			@RequestBody int description) {
 
