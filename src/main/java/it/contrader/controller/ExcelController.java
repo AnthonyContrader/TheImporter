@@ -48,12 +48,13 @@ public class ExcelController {
 		stringList = new ArrayList<List<String>>();
 		titleRead = new ArrayList<String>();
 
-		try {
+		/*try {
 			stringList = readTitle();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-		
+		}*/
+		directory = directory +"sonopassatodalcontroller";
+		directory.trim();
 		System.out.println(directory);
 		return directory;//stringLinst
 
