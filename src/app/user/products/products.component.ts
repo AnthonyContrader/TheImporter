@@ -10,6 +10,7 @@ import { ProductDTO } from 'src/dto/productdto';
 export class ProductsComponent implements OnInit {
 
   products: ProductDTO[];
+  temp: ProductDTO[];
   producttoinsert: ProductDTO = new ProductDTO();
 
   constructor(private service: ProductService) { }
@@ -19,8 +20,8 @@ export class ProductsComponent implements OnInit {
   }
 
   getProducts() {
-    this.service.getAll().subscribe(products => this.products = products);
-	console.log(this.products[0].productName);
+    this.service.getAll().subscribe(products => this.temp = products);
+	console.log(this.temp[2].productName);
   }
 
   delete(product: ProductDTO) {
