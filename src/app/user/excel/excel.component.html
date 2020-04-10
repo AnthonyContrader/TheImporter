@@ -14,17 +14,33 @@
 
     </div>
     <div class="col-md-10">
-      <table *ngIf="preview.titles">
+      <table *ngIf="preview.titles" align ="left">
         
        		<tr>
         		<th *ngFor="let title of preview.titles">
             		<input [(ngModel)] ="title">
+            		<button >Insert</button>
         		</th>
         	</tr>
         
         
        		<tr>
         		<td *ngFor="let param of preview.line1">
+            		<input [(ngModel)] ="param">
+        		</td>
+        	</tr>
+        	<tr>
+        		<td *ngFor="let param of preview.line2">
+            		<input [(ngModel)] ="param">
+        		</td>
+        	</tr>
+        	<tr>
+        		<td *ngFor="let param of preview.line3">
+            		<input [(ngModel)] ="param">
+        		</td>
+        	</tr>
+        	<tr>
+        		<td *ngFor="let param of preview.line4">
             		<input [(ngModel)] ="param">
         		</td>
         	</tr>
