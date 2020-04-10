@@ -58,7 +58,8 @@ public class ExcelController {
 		}
 		
 		temp.setLines(titleRead);
-		//System.out.println(a);
+		
+		System.out.println(temp.getLines());
 		return temp;//stringLinst
 
 	}
