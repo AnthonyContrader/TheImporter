@@ -18,7 +18,12 @@ export class ExcelComponent implements OnInit {
   constructor(private service: ExcelService) { }
 
   ngOnInit() {
-    
+    var limit = 4;
+	$('input.single-checkbox').on('change', function(evt) {
+   if($(this).siblings(':checked').length >= limit) {
+       this.checked = false;
+   }
+});
   }
 
     preinsert(directoryLetta: string) {
