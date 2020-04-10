@@ -24,7 +24,7 @@ export class ExcelComponent implements OnInit {
     preinsert(directoryLetta: string) {
 	console.log(directoryLetta);
     this.service.preinsert(directoryLetta).subscribe((dirSpring) => {
-																	this.temp = dirSpring, console.log(this.temp.line);
+																	this.temp = dirSpring, console.log(this.temp.lines[0]);
 																	})
 	
 	  	

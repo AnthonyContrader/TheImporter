@@ -10,7 +10,7 @@
  */
 export class StringDTO {
 
-   line: string;
+   lines: string[];
    
 
 }
