@@ -22,5 +22,6 @@ public class StringDTO {
 	List<String> lines;
 	
 	
+	
 
 }

@@ -41,12 +41,14 @@ public class ExcelController {
 	private Map<String, List<String>> title_data = new HashMap<>();
 	private List<ProductDTO> productsList = new ArrayList<ProductDTO>();
 	List<List<String>> stringList = new ArrayList<List<String>>();
+	List<String> a =new ArrayList<String>();
 
 	@PostMapping(value = "/preinsert")
 	public StringDTO excelinser(@RequestBody String directory) {
 		
 		StringDTO temp = new StringDTO();
-		temp.setLine(directory + "sono stato nel controller");
+		a.add(directory + "sono stato nel controller") ;
+		temp.setLines(a);
 		
 		this.directory = directory;
 		stringList = new ArrayList<List<String>>();
@@ -59,7 +61,7 @@ public class ExcelController {
 		}*/
 		
 		
-		System.out.println(temp.getLine());
+		System.out.println(a);
 		return temp;//stringLinst
 
 	}
