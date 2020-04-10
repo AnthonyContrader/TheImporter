@@ -49,6 +49,7 @@ public class ExcelController {
 		StringDTO temp = new StringDTO();
 		System.out.println(directory);
 		this.directory = directory;
+		row1=new ArrayList<String>();
 		stringList = new ArrayList<List<String>>();
 		titleRead = new ArrayList<String>();
 		int counter = 0;
@@ -64,10 +65,11 @@ public class ExcelController {
 			counter++;
 		}
 	//}
-
+		
+		temp.setTitles(titleRead);
 		temp.setLine1(row1);
 		
-		
+		System.out.println(temp.getTitles());
 		System.out.println(temp.getLine1());
 		return temp;//stringLinst
 

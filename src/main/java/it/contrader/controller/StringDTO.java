@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="lines")
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="titles")
 public class StringDTO {
 	
 	
