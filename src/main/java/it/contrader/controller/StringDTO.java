@@ -1,5 +1,6 @@
 package it.contrader.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -14,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="line")
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="lines")
 public class StringDTO {
 	
 	
