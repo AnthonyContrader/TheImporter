@@ -1,4 +1,6 @@
 <div class="container">
+
+	<p>/Users/lorenzocalarota/Desktop/contrader/TheImporter.xlsx</p>
   	
 	<input id="dir" name="dir" placeholder=".xlsx directory" [(ngModel)]="excel.directory">
 	<button (click)="preinsert(excel.directory)">Insert</button>
@@ -12,27 +14,22 @@
 
     </div>
     <div class="col-md-10">
-      <table *ngIf="temp.lines">
-        <tr>
-          <th>
-            product name
-          </th>
-          <th>
-            price
-          </th>
-          <th>
-            brand
-          </th>
-          <th>
-            description
-          </th>
-          <th>
-            Edit
-          </th>
-          <th>
-            User
-          </th>
-        </tr>
+      <table *ngIf="preview.titles">
+        
+       		<tr>
+        		<th *ngFor="let title of preview.titles">
+            		<input [(ngModel)] ="title">
+        		</th>
+        	</tr>
+        
+        
+       		<tr>
+        		<td *ngFor="let param of preview.line1">
+            		<input [(ngModel)] ="param">
+        		</td>
+        	</tr>
+        
+        
 	</table>
     </div>
     <div class="col-md-1">

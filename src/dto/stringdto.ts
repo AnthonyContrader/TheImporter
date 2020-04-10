@@ -10,7 +10,8 @@
  */
 export class StringDTO {
 
-   lines: string[];
+	titles: string[];
+	line1: string[];
    
 
 }

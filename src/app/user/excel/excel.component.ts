@@ -13,7 +13,7 @@ export class ExcelComponent implements OnInit {
 	excel: ExcelDTO = new ExcelDTO();
   //producttoinsert: ProductDTO = new ProductDTO();
 	directory: string;
-	temp: StringDTO;
+	preview: StringDTO;
 
   constructor(private service: ExcelService) { }
 
@@ -23,8 +23,10 @@ export class ExcelComponent implements OnInit {
 
     preinsert(directoryLetta: string) {
 	console.log(directoryLetta);
-    this.service.preinsert(directoryLetta).subscribe((dirSpring) => {
-																	this.temp = dirSpring, console.log(this.temp.lines[0]);
+    this.service.preinsert(directoryLetta).subscribe((prwSpring) => {
+																	this.preview = prwSpring, 
+																	console.log(this.preview.titles[0]),
+																	console.log(this.preview.line1[0]);
 																	})
 	
 	  	
