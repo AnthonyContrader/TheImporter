@@ -1,7 +1,10 @@
 package it.contrader.controller;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 
 import it.contrader.dto.ProductDTO;
 import lombok.AllArgsConstructor;
@@ -16,7 +19,7 @@ public class StringDTO {
 	
 	
 	
-	String line;
+	List<String> lines;
 	
 	
 
