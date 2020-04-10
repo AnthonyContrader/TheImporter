@@ -19,13 +19,38 @@ export class ExcelComponent implements OnInit {
   constructor(private service: ExcelService) { }
 
   ngOnInit() {
+    
+	setInterval(function() {
     var limit = 4;
 	$('input.single-checkbox').on('change', function(evt) {
    if($(this).siblings(':checked').length >= limit) {
        this.checked = false;
    }
 });
+	}, 1000); // Wait 1000ms before running again
+
+
   }
+
+
+
+	check2(){
+		
+	var limit = 4;
+	$('input.single-checkbox').on('change', function(evt) {
+   if($(this).siblings(':checked').length >= limit) {
+       this.checked = false;
+   }
+});
+	}
+
+
+
+
+
+
+
+
 
     preinsert(directoryLetta: string) {
 	console.log(directoryLetta);
@@ -33,9 +58,7 @@ export class ExcelComponent implements OnInit {
 																	this.preview = prwSpring, 
 																	console.log(this.preview.titles[0]),
 																	console.log(this.preview.line1[0]);
-																	})
-	
-	  	
+																	})	  	
 	}
 	
 

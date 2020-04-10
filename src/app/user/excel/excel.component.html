@@ -18,9 +18,9 @@
 	<table *ngIf="preview.titles" align ="left">
         
        		<tr>
-        		<th *ngFor="let title of preview.titles">
+        		<th *ngFor="let title of preview.titles; let i = index">
             		<input disabled="disabled" [(ngModel)] ="title">
-            		<input type="checkbox" >
+            		<input class="single-checkbox" type="checkbox" name="{{i}}" ng-click="check2()">
         		</th>
         	</tr>
         
@@ -54,9 +54,9 @@
 </div>
 
 
+//le checkbox sono identificate da un numero, quindi possiamo far inserire le colonne volute dall'utente e poi raccoglierle
 
 
-<div class="pricing-levels-3">
           <p><strong>Which level would you like? (Select 3 Levels)</strong></p>
           <input class="single-checkbox"type="checkbox" name="vehicle" value="Bike">Level 1<br>
           <input class="single-checkbox" type="checkbox" name="vehicle" value="Bike">Level 2<br>
@@ -65,5 +65,5 @@
           <input class="single-checkbox" type="checkbox" name="vehicle" value="Bike">Level 5<br>
           <input class="single-checkbox" type="checkbox" name="vehicle" value="Bike">Level 6<br>
           <input class="single-checkbox" type="checkbox" name="vehicle" value="Bike">Level 7<br>
-        </div>
+
 
