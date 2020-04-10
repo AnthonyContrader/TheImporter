@@ -1,61 +1,69 @@
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+
 <div class="container">
 
 	<p>/Users/lorenzocalarota/Desktop/contrader/TheImporter.xlsx</p>
   	
-	<input id="dir" name="dir" placeholder=".xlsx directory" [(ngModel)]="excel.directory">
-	<button (click)="preinsert(excel.directory)">Insert</button>
+	<input size="150"  id="dir" name="dir" placeholder=".xlsx directory" [(ngModel)]="excel.directory">
+	<button (click)="preinsert(excel.directory)">Submit</button>
 	
 	
 	
+	<div><br></div>
 	
-	
-  <div class="row mt-5">
-    <div class="col-md-1">
+  
 
-    </div>
-    <div class="col-md-10">
-      <table *ngIf="preview.titles" align ="left">
+	
+	<table *ngIf="preview.titles" align ="left">
         
        		<tr>
         		<th *ngFor="let title of preview.titles">
-            		<input [(ngModel)] ="title">
-            		<button >Insert</button>
+            		<input disabled="disabled" [(ngModel)] ="title">
+            		<input type="checkbox" >
         		</th>
         	</tr>
         
         
        		<tr>
         		<td *ngFor="let param of preview.line1">
-            		<input [(ngModel)] ="param">
+            		<input disabled="disabled" [(ngModel)] ="param">
         		</td>
         	</tr>
         	<tr>
         		<td *ngFor="let param of preview.line2">
-            		<input [(ngModel)] ="param">
+            		<input disabled="disabled" [(ngModel)] ="param">
         		</td>
         	</tr>
         	<tr>
         		<td *ngFor="let param of preview.line3">
-            		<input [(ngModel)] ="param">
+            		<input  disabled="disabled" [(ngModel)] ="param">
         		</td>
         	</tr>
         	<tr>
         		<td *ngFor="let param of preview.line4">
-            		<input [(ngModel)] ="param">
+            		<input disabled="disabled" [(ngModel)] ="param">
         		</td>
         	</tr>
         
         
 	</table>
-    </div>
-    <div class="col-md-1">
-
-    </div>
-  </div>
-
-	
-	
 	
 	
 	
 </div>
+
+
+
+
+<div class="pricing-levels-3">
+          <p><strong>Which level would you like? (Select 3 Levels)</strong></p>
+          <input class="single-checkbox"type="checkbox" name="vehicle" value="Bike">Level 1<br>
+          <input class="single-checkbox" type="checkbox" name="vehicle" value="Bike">Level 2<br>
+          <input class="single-checkbox" type="checkbox" name="vehicle" value="Bike">Level 3<br>
+          <input class="single-checkbox" type="checkbox" name="vehicle" value="Bike">Level 4<br>
+          <input class="single-checkbox" type="checkbox" name="vehicle" value="Bike">Level 5<br>
+          <input class="single-checkbox" type="checkbox" name="vehicle" value="Bike">Level 6<br>
+          <input class="single-checkbox" type="checkbox" name="vehicle" value="Bike">Level 7<br>
+        </div>
+

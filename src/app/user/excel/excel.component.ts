@@ -30,7 +30,8 @@ export class ExcelComponent implements OnInit {
 																	})
 	
 	  	
-}
+	}
+	
 
   clear(){
     this.excel = new ExcelDTO();
