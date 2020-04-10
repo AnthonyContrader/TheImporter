@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ExcelService } from 'src/service/excel.service';
 import { ExcelDTO } from 'src/dto/exceldto';
 import { StringDTO } from 'src/dto/stringdto';
+declare var $: any;
 
 @Component({
   selector: 'app-excel',
