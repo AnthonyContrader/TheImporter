@@ -41,25 +41,34 @@ public class ExcelController {
 	private Map<String, List<String>> title_data = new HashMap<>();
 	private List<ProductDTO> productsList = new ArrayList<ProductDTO>();
 	List<List<String>> stringList = new ArrayList<List<String>>();
+	private List<String> row1 = new ArrayList<String>();
 	
 	@PostMapping(value = "/preinsert")
 	public StringDTO excelinser(@RequestBody String directory) {
 		
 		StringDTO temp = new StringDTO();
-		
+		System.out.println(directory);
 		this.directory = directory;
 		stringList = new ArrayList<List<String>>();
 		titleRead = new ArrayList<String>();
-
+		int counter = 0;
 		try {
 			stringList = readTitle();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		//for (int i = 0; i <= ((stringList.get(0).size() / titleRead.size()) - 1); i++) {
+		for (int j = 0; j <= titleRead.size() - 1; j++) {
+			row1.add(stringList.get(0).get(counter));
+			
+			counter++;
+		}
+	//}
+
+		temp.setLine1(row1);
 		
-		temp.setLines(titleRead);
 		
-		System.out.println(temp.getLines());
+		System.out.println(temp.getLine1());
 		return temp;//stringLinst
 
 	}

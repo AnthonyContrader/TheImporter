@@ -20,7 +20,8 @@ public class StringDTO {
 	
 	
 	
-	List<String> lines;
+	List<String> titles;
+	List<String> line1;
 	
 	
 	
