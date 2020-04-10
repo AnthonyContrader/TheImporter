@@ -22,7 +22,9 @@ public class StringDTO {
 	
 	List<String> titles;
 	List<String> line1;
-	
+	List<String> line2;
+	List<String> line3;
+	List<String> line4;	
 	
 	
 

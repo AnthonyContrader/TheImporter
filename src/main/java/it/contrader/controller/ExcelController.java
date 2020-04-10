@@ -42,6 +42,9 @@ public class ExcelController {
 	private List<ProductDTO> productsList = new ArrayList<ProductDTO>();
 	List<List<String>> stringList = new ArrayList<List<String>>();
 	private List<String> row1 = new ArrayList<String>();
+	private List<String> row2 = new ArrayList<String>();
+	private List<String> row3 = new ArrayList<String>();
+	private List<String> row4 = new ArrayList<String>();
 	
 	@PostMapping(value = "/preinsert")
 	public StringDTO excelinser(@RequestBody String directory) {
@@ -50,6 +53,9 @@ public class ExcelController {
 		System.out.println(directory);
 		this.directory = directory;
 		row1=new ArrayList<String>();
+		row2=new ArrayList<String>();
+		row3=new ArrayList<String>();
+		row4=new ArrayList<String>();
 		stringList = new ArrayList<List<String>>();
 		titleRead = new ArrayList<String>();
 		int counter = 0;
@@ -58,19 +64,34 @@ public class ExcelController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//for (int i = 0; i <= ((stringList.get(0).size() / titleRead.size()) - 1); i++) {
+		for (int i = 0; i <= ((stringList.get(0).size() / titleRead.size()) - 1); i++) {
 		for (int j = 0; j <= titleRead.size() - 1; j++) {
-			row1.add(stringList.get(0).get(counter));
-			
+			if(counter>=6 && counter<=11) {
+				row2.add(stringList.get(0).get(counter));
+			}else if(counter>=12 && counter<=17) {
+				row3.add(stringList.get(0).get(counter));
+			}else if(counter>=18 && counter<=23) {
+				row4.add(stringList.get(0).get(counter));
+			}else if(counter>=0 && counter<=5) {
+				row1.add(stringList.get(0).get(counter));
+			}
 			counter++;
 		}
-	//}
+	}
 		
 		temp.setTitles(titleRead);
 		temp.setLine1(row1);
+		temp.setLine2(row2);
+		temp.setLine3(row3);
+		temp.setLine4(row4);
+		
 		
 		System.out.println(temp.getTitles());
 		System.out.println(temp.getLine1());
+		System.out.println(temp.getLine2());
+		System.out.println(temp.getLine3());
+		System.out.println(temp.getLine4());
+		
 		return temp;//stringLinst
 
 	}
