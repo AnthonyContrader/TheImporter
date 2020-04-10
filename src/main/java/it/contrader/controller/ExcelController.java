@@ -66,13 +66,13 @@ public class ExcelController {
 		}
 		for (int i = 0; i <= ((stringList.get(0).size() / titleRead.size()) - 1); i++) {
 		for (int j = 0; j <= titleRead.size() - 1; j++) {
-			if(counter>=6 && counter<=11) {
+			if(counter>=(titleRead.size()) && counter<=((titleRead.size()*2)-1)) {
 				row2.add(stringList.get(0).get(counter));
-			}else if(counter>=12 && counter<=17) {
+			}else if(counter>=(titleRead.size()*2) && counter<=((titleRead.size()*3)-1)) {
 				row3.add(stringList.get(0).get(counter));
-			}else if(counter>=18 && counter<=23) {
+			}else if(counter>=(titleRead.size()*3) && counter<=((titleRead.size()*4)-1)) {
 				row4.add(stringList.get(0).get(counter));
-			}else if(counter>=0 && counter<=5) {
+			}else if(counter>=0 && counter<=(titleRead.size() - 1)) {
 				row1.add(stringList.get(0).get(counter));
 			}
 			counter++;
@@ -85,7 +85,7 @@ public class ExcelController {
 		temp.setLine3(row3);
 		temp.setLine4(row4);
 		
-		
+		System.out.println(titleRead.size() - 1);
 		System.out.println(temp.getTitles());
 		System.out.println(temp.getLine1());
 		System.out.println(temp.getLine2());
