@@ -96,21 +96,23 @@ public class ExcelController {
 
 	}
 
-	@PostMapping(value = "/insert")
-	public Iterable<ProductDTO> insert(@RequestBody int productName, @RequestBody int price, @RequestBody int brand,
-			@RequestBody int description) {
-
+	@PostMapping(value = "/excelInsert")
+	public StringDTO insert(@RequestBody List<Integer> a) {
+		List<String> b = new ArrayList<String>();
 		List<String> titles = stringList.get(1);
+		StringDTO temp = new StringDTO();
 
-		titleSelected.add(titles.get(productName - 1));
-		titleSelected.add(titles.get(price - 1));
-		titleSelected.add(titles.get(brand - 1));
-		titleSelected.add(titles.get(description - 1));
+		titleSelected.add(titles.get(a.get(0) - 1));
+		titleSelected.add(titles.get(a.get(1) - 1));
+		titleSelected.add(titles.get(a.get(2) - 1));
+		titleSelected.add(titles.get(a.get(3) - 1));
 
 		try {
 			productsList = readTitleSelected();
 		} catch (Exception e) {
-			e.printStackTrace();
+			b.add(e.toString());
+			temp.setTitles(b);
+			return temp;
 		}
 
 		for (ProductDTO u : productsList) {
@@ -118,11 +120,14 @@ public class ExcelController {
 			try {
 				productService.insert(u);
 			} catch (Exception e) { // ricevi questa exception se l'utente non è loggato
-
+				b.add(e.toString());
+				temp.setTitles(b);
+				return temp;
 			}
 		}
-
-		return productService.getAll();
+		b.add("elementi Inserit:"+ productsList.size());
+		temp.setTitles(b);
+		return temp;
 	}
 
 	private Iterator<Row> openFile() throws Exception {
