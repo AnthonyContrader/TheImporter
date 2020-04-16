@@ -20,8 +20,8 @@ import { HttpClient } from '@angular/common/http';
 export class ProductService extends AbstractService<ProductDTO>{
 
   constructor(http: HttpClient) {
-    super(http);
-    this.type = 'product';
+    super(http, "product");
+    this.type = 'api';
   }
 
  

@@ -11,7 +11,7 @@ import { StringDTO } from 'src/dto/stringdto';
 export class ExcelService extends AbstractService<ExcelDTO>{
 
   constructor(http: HttpClient) {
-	super(http);
+	super(http, "excel");
     this.type = 'excel';
  }
 	
