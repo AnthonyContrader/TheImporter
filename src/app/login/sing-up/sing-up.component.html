@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-7">
+      <img src="../../assets/logo.svg" alt="logo">
+    </div>
+    <div class="col-md-5">
+      <form #f="ngForm">
+        <p>Please insert username</p>
+        <div class="form-group">
+          <input class="form-control" type="text" id="user"  placeholder="Username"  (change)="checkUser()">
+        </div>
+        <p>{{validuser}}</p>
+        <p>Please insert e-mail</p>
+        <div class="form-group">
+          <input class="form-control" type="text" id="e-mail"  placeholder="e-mail"  (change)="checkEmail()">
+        </div>
+        <p>{{email}}</p>
+        <p>Please insert password</p>
+        <div class="form-group">
+          <input class="form-control" type="password" id="pass1"  placeholder="password"  (keyup)="checkLenght()">
+        </div>
+        <p>{{lenght}}</p>
+        <p>repete password</p>
+        <div class="form-group">
+          <input class="form-control" type="password" id="pass2"  placeholder="password"  (change)="checkPass()">
+        </div>
+        <p>{{checked}}</p>
+        <button type="submit" (click)="singUp()">Sign Up</button>
+      </form>
+    </div>
+  </div>
+</div>

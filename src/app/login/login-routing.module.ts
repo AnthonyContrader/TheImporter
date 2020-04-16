@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login.component';
+import { SingUpComponent } from './sing-up/sing-up.component';
 
 /**
  * Routing del LoginModule. gestisce il routing per le pagine di login 
@@ -12,7 +13,8 @@ import { LoginComponent } from './login.component';
  * @author Vittorio Valent
  */
 const routes: Routes = [
-  { path:'login', component: LoginComponent }
+  { path:'login', component: LoginComponent },
+  { path:'sing-up', component: SingUpComponent }
 ];
 
 @NgModule({
