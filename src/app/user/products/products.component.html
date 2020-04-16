@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-10">
+      <table>
+        <tr>
+          <th>
+            product name
+          </th>
+          <th>
+            price
+          </th>
+          <th>
+            brand
+          </th>
+          <th>
+            description
+          </th>
+          <th>
+            Edit
+          </th>
+          <th>
+            User
+          </th>
+        </tr>
+        <tr>
+          <td>
+            <input placeholder="product name" [(ngModel)]="producttoinsert.productName">
+          </td>
+          <td>
+            <input type=number placeholder="price" [(ngModel)]="producttoinsert.price">
+          </td>
+          <td>
+            <input  placeholder="brand" [(ngModel)]="producttoinsert.brand">
+          </td>
+          <td>
+            <input placeholder="description" [(ngModel)]="producttoinsert.description">
+          </td>
+          <td>
+            <button (click)="insert(producttoinsert)">Insert</button>
+          </td>
+          <td>
+            <button (click)="clear()">Clear</button>
+          </td>
+        </tr>
+        <tr *ngFor="let product of products">
+          <td>
+            <input [(ngModel)]="product.productName">
+          </td>
+          <td>
+            <input type=number [(ngModel)]="product.price">
+          </td>
+          <td>
+            <input [(ngModel)]="product.brand">
+          </td>
+          <td>
+            <input [(ngModel)]="product.description">
+          </td>
+          <td>
+            <button (click)=update(product)>Save</button>
+          </td>
+          <td>
+            <button (click)="delete(product)">Delete</button>
+          </td>
+        </tr>
+        
+      </table>
+    </div>
+    <div class="col-md-1">
+
+    </div>
+  </div>
+</div>

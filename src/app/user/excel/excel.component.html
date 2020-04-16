@@ -1,0 +1,91 @@
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+
+<div class="container">
+
+	<p>/Users/lorenzocalarota/Desktop/contrader/TheImporter.xlsx</p>
+  	
+	<input size="150"  id="dir" name="dir" placeholder=".xlsx directory" [(ngModel)]="excel.directory">
+	<button (click)="preinsert(excel.directory)">Submit</button>
+	
+	
+	
+	<div><br></div>
+	
+  
+	<div *ngIf="preview.titles">
+	
+	<table  align ="left">
+        
+       		<tr>
+        		<th *ngFor="let title of preview.titles; let i = index">
+            		<input disabled="disabled" [(ngModel)] ="title">
+            		
+        		</th>
+        	</tr>
+        
+        
+       		<tr>
+        		<td *ngFor="let param of preview.line1">
+            		<input disabled="disabled" [(ngModel)] ="param">
+        		</td>
+        	</tr>
+        	<tr>
+        		<td *ngFor="let param of preview.line2">
+            		<input disabled="disabled" [(ngModel)] ="param">
+        		</td>
+        	</tr>
+        	<tr>
+        		<td *ngFor="let param of preview.line3">
+            		<input  disabled="disabled" [(ngModel)] ="param">
+        		</td>
+        	</tr>
+        	<tr>
+        		<td *ngFor="let param of preview.line4">
+            		<input disabled="disabled" [(ngModel)] ="param">
+        		</td>
+        	</tr>
+        
+        
+	</table>
+			
+			
+          	
+    </div>
+    
+    <div> <br></div>
+    <br>
+    <div *ngIf="preview.titles">
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    <p>inserisci i numeri delle colonne volute :</p>
+    		
+          	<input type = number id=col1 placeholder="inserisci la colonna voluta" [(ngModel)]="par1">
+          	<input type = number id=col1 placeholder="inserisci la colonna voluta" [(ngModel)]="par2">
+          	<input type = number id=col1 placeholder="inserisci la colonna voluta" [(ngModel)]="par3">
+          	<input type = number id=col1 placeholder="inserisci la colonna voluta" [(ngModel)]="par4">
+          	
+          	<button  (click)="excelInsert()" >conferma</button>
+          
+         </div> 	
+	
+</div>
+
+
+
+
+
+
