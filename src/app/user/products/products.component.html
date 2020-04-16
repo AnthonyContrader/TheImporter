@@ -27,7 +27,7 @@
         </tr>
         <tr>
           <td>
-            <input placeholder="product name" [(ngModel)]="producttoinsert.productName">
+            <input placeholder="product name" [(ngModel)]="producttoinsert.name">
           </td>
           <td>
             <input type=number placeholder="price" [(ngModel)]="producttoinsert.price">
@@ -47,7 +47,7 @@
         </tr>
         <tr *ngFor="let product of products">
           <td>
-            <input [(ngModel)]="product.productName">
+            <input [(ngModel)]="product.name">
           </td>
           <td>
             <input type=number [(ngModel)]="product.price">

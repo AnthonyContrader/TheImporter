@@ -27,6 +27,7 @@ export class UserService extends AbstractService<UserDTO>{
 
   auth() {
     const user = JSON.parse(localStorage.getItem('currentUser')) as UserDTO;
+	console.log(user.authorities);
     if (user) {
       return 'Bearer ' + user.authorities;
     } else {

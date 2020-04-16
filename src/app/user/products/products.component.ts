@@ -17,15 +17,17 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.getProducts();
-  }
-
-  getProducts() {
-    this.service.getAll().subscribe(products => this.products = products);
 	
   }
 
+  getProducts() {
+	
+	console.log(localStorage.getItem("key"));
+    this.service.getAll().subscribe(products => this.products = products);
+  }
+
   delete(product: ProductDTO) {
-    this.service.delete(product.id).subscribe(() => this.getProducts());
+    this.service.delete(product.id.toString()).subscribe(() => this.getProducts());
   }
 
   update(product: ProductDTO) {

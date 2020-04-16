@@ -23,10 +23,12 @@ export abstract class AbstractService<DTO> implements Service<DTO> {
     }
 
     auth() {
-        const user = JSON.parse(localStorage.getItem('Autoken')) as UserDTO;
-        if (user) {
-          console.log('Bearer ' + user.authorities);
-          return 'Bearer ' + user.authorities;
+        
+		const key = localStorage.getItem('key');
+		console.log("key temp =" + key);
+        if (key) {
+          console.log('Bearer ' + key);
+          return 'Bearer ' + key;
         } else {
           return '';
         }
