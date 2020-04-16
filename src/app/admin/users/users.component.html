@@ -10,10 +10,13 @@
             Username
           </th>
           <th>
-            Password
+            email
           </th>
           <th>
-            Usertype
+            authorities
+          </th>
+          <th>
+            validation
           </th>
           <th>
             Edit
@@ -21,39 +24,18 @@
           <th>
             User
           </th>
-        </tr>
-        <tr>
-          <td>
-            <input placeholder="username" [(ngModel)]="usertoinsert.username">
-          </td>
-          <td>
-            <input placeholder="password" [(ngModel)]="usertoinsert.password">
-          </td>
-          <td>
-            <select placeholder="usertype" [(ngModel)]="usertoinsert.usertype">
-              <option value="ADMIN">ADMIN</option>
-              <option value="USER">USER</option>
-            </select>
-          </td>
-          <td>
-            <button (click)="insert(usertoinsert)">Insert</button>
-          </td>
-          <td>
-            <button (click)="clear()">Clear</button>
-          </td>
-        </tr>
         <tr *ngFor="let user of users">
           <td>
             <input [(ngModel)]="user.login">
           </td>
           <td>
-            <input [(ngModel)]="user.password">
+            <input [(ngModel)]="user.email">
           </td>
           <td>
-            <select [(ngModel)]="user.usertype">
-              <option [selected]="user.usertype===ADMIN" value="ADMIN">ADMIN</option>
-              <option [selected]="user.usertype===USER" value="USER">USER</option>
-            </select>
+            <input [(ngModel)]="user.authorities">
+          </td>
+          <td>
+            <input type="checkbox" [(ngModel)]="user.activated">
           </td>
           <td>
             <button (click)=update(user)>Save</button>

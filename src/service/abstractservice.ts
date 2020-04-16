@@ -50,8 +50,8 @@ export abstract class AbstractService<DTO> implements Service<DTO> {
       });
     }
 
-    delete(id: number): Observable<any> {
-        return this.http.delete('http://localhost:' + this.port + '/' + this.name + '/' + 'api' + '/' + this.type + id, {
+    delete(id: string): Observable<any> {
+        return this.http.delete('http://localhost:' + this.port + '/' + this.name + '/' + this.type +'/'+ id, {
           headers: {
             Authorization : this.auth()
        }
@@ -67,7 +67,7 @@ export abstract class AbstractService<DTO> implements Service<DTO> {
     }
 
     update(dto: DTO): Observable<DTO> {
-        return this.http.put<DTO>('http://localhost:' + this.port + '/' + this.name + '/' + 'api' + '/'  + this.type, dto, {
+        return this.http.put<DTO>('http://localhost:' + this.port + '/' + this.name +  '/'  + this.type, dto, {
           headers: {
             Authorization : this.auth()
        }
