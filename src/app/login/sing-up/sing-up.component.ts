@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { UserService } from 'src/service/user.service';
 import { UserDTO } from 'src/dto/userdto';
+import { ManagedUserVM } from 'src/dto/signupdto';
+import { JsonPipe } from '@angular/common';
+import { ProductService } from 'src/service/product.service';
 
 @Component({
   selector: 'app-sing-up',
@@ -12,15 +15,17 @@ export class SingUpComponent implements OnInit {
   checked: string = "";
   lenght: string = "";
   email: string = "";
-  validuser: string="";
+  validuser: string = "";
   check: boolean;
 
-  users: UserDTO[];
-  usertoinsert: UserDTO = new UserDTO();
+  user: UserDTO;
+  usertoinsert: ManagedUserVM;
+  prova: string="";
 
   constructor(private service: UserService) { }
 
   ngOnInit() {
+    this.service.login(null);
   }
 
 
@@ -52,22 +57,17 @@ export class SingUpComponent implements OnInit {
 
   }
   checkUser(): void {
-    var a = (<HTMLInputElement>document.getElementById("user")).value;
-    this.service.getAll().subscribe(users => this.users = users);
-    this.users.forEach(user => {
-      if(user.login ==a){
-      this.check=false;
-      }
-    });
-    if(this.check){
-      this.validuser="";
-    }else{
-      this.validuser="username in utlizzo";
-    }
+
   }
 
-  singup():void{
-
+  singup(): void {
+    this.usertoinsert=new ManagedUserVM();
+    this.usertoinsert.email=(<HTMLInputElement>document.getElementById("e-mail")).value;
+    this.usertoinsert.login=(<HTMLInputElement>document.getElementById("user")).value;
+    this.usertoinsert.password=(<HTMLInputElement>document.getElementById("pass1")).value;
+    this.usertoinsert.authorities[0]="ROLE_USER";
+    this.service.signup(this.usertoinsert);
+    
   }
 
 

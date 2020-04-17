@@ -52,10 +52,10 @@ export class LoginComponent implements OnInit {
 
         if (user != null) {
           localStorage.setItem('AUTOKEN', JSON.stringify(user));
-          if(user.authorities == "ROLE_ADMIN" ) {
+          if(user.authorities[0] == "ROLE_ADMIN" ) {
             this.router.navigate(['/admin-dashboard']);
           }
-          if(user.authorities == "ROLE_USER") {
+          if(user.authorities[0] == "ROLE_USER") {
             this.router.navigate(['/user-dashboard']);
           }
         }else{
@@ -66,6 +66,9 @@ export class LoginComponent implements OnInit {
       } 
       
       singUp(): void{
+        console.log("sono prima la chiamata del service");
+        this.service.signup(null);
+      console.log("sono dopo la chiamata del service");
         this.router.navigate(['/sing-up']);
       }
 }

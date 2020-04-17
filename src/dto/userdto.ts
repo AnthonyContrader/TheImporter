@@ -1,4 +1,3 @@
-import {Usertype} from './usertype';
 
 /**
  * Classe DTO di User. DEVE essere uguale (stesso nome classe, stessi attributi e stessi nomi) a
@@ -14,20 +13,20 @@ export class UserDTO {
 
     login: string;
 
-    
+
     firstName: string;
 
-    
+
     lastName: string;
 
     email: string;
 
-    
+
     imageUrl: string;
 
     activated: boolean;
 
-    
+
     langKey: string;
 
     createdBy: string;
@@ -38,6 +37,31 @@ export class UserDTO {
 
     lastModifiedDate: any;
 
-    authorities: string;
+    authorities: string[];
+
+    constructor() {
+        this.login = "";
+        this.lastName = "string";
+        this.firstName="string";
+        this.email = "";
+        this.id=0;
+
+        this.imageUrl = "string";
+
+        this.activated = true;
+
+
+        this.langKey = "string";
+
+        this.createdBy = "string";
+
+        this.createdDate = "2020-04-16T15:41:03.999Z";
+
+        this.lastModifiedBy = "sting";
+
+        this.lastModifiedDate = "2020-04-16T15:41:03.999Z";
+        this.authorities = new Array();
+        this.authorities[0] = "";
+    }
 }
 

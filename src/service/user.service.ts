@@ -3,6 +3,7 @@ import { AbstractService } from './abstractservice';
 import { UserDTO } from 'src/dto/userdto';
 import { HttpClient } from '@angular/common/http';
 import { LoginDTO } from 'src/dto/logindto';
+import { ManagedUserVM } from 'src/dto/signupdto';
 
 import { Observable } from 'rxjs';
 
@@ -44,8 +45,14 @@ export class UserService extends AbstractService<UserDTO>{
    }
 
   login(loginDTO: LoginDTO): Observable<UserDTO> {
-    return this.http.post<any>('http://localhost:8080/' + this.name + '/authenticate', loginDTO)
+    console.log("sono prima la chiamata del service1");
+    return this.http.post<any>('http://localhost:8080/' + this.name + '/register',loginDTO);//this.http.post<any>('http://localhost:8080/' + this.name + '/authenticate', loginDTO)
+    console.log("sono dopo la chiamata del service1");
   }
-  
+  signup(signupDTO: ManagedUserVM):Observable<UserDTO> {
+    console.log("sono prima la chiamata del service2");
+    return this.http.post<any>('http://localhost:8080/api/register',signupDTO);
+    console.log("sono dopo la chiamata del service2");
+  }
 
 }
