@@ -66,9 +66,6 @@ export class LoginComponent implements OnInit {
       } 
       
       singUp(): void{
-        console.log("sono prima la chiamata del service");
-        this.service.signup(null).subscribe((token:any) =>{console.log(token)});
-      console.log("sono dopo la chiamata del service");
         this.router.navigate(['/sing-up']);
       }
 }

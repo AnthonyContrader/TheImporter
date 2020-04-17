@@ -5,26 +5,22 @@
     </div>
     <div class="col-md-5">
       <form #f="ngForm">
-        <p>Please insert username</p>
+        <p>Please insert username {{validuser}}</p>
         <div class="form-group">
           <input class="form-control" type="text" id="user"  placeholder="Username"  (change)="checkUser()">
         </div>
-        <p>{{validuser}}</p>
-        <p>Please insert e-mail</p>
+        <p>Please insert e-mail {{email}}</p>
         <div class="form-group">
           <input class="form-control" type="text" id="e-mail"  placeholder="e-mail"  (change)="checkEmail()">
-        </div>
-        <p>{{email}}</p>
-        <p>Please insert password</p>
+        </div>  
+        <p>Please insert password {{lenght}}</p>
         <div class="form-group">
           <input class="form-control" type="password" id="pass1"  placeholder="password"  (keyup)="checkLenght()">
-        </div>
-        <p>{{lenght}}</p>
-        <p>repete password</p>
+        </div>     
+        <p>repete password {{checked}}</p>
         <div class="form-group">
           <input class="form-control" type="password" id="pass2"  placeholder="password"  (change)="checkPass()">
         </div>
-        <p>{{checked}}</p>
         <button type="submit" (click)="singup()">Sign Up</button>
       </form>
     </div>
