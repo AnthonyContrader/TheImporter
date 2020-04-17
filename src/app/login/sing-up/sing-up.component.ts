@@ -25,7 +25,7 @@ export class SingUpComponent implements OnInit {
   constructor(private service: UserService) { }
 
   ngOnInit() {
-    this.service.login(null);
+    //this.service.login(null);
   }
 
 
@@ -66,7 +66,7 @@ export class SingUpComponent implements OnInit {
     this.usertoinsert.login=(<HTMLInputElement>document.getElementById("user")).value;
     this.usertoinsert.password=(<HTMLInputElement>document.getElementById("pass1")).value;
     this.usertoinsert.authorities[0]="ROLE_USER";
-    this.service.signup(this.usertoinsert);
+    this.service.signup(this.usertoinsert).subscribe((token:any) =>{console.log(token)});
     
   }
 

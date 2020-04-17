@@ -46,7 +46,8 @@ export class UserService extends AbstractService<UserDTO>{
 
   login(loginDTO: LoginDTO): Observable<UserDTO> {
     console.log("sono prima la chiamata del service1");
-    return this.http.post<any>('http://localhost:8080/' + this.name + '/register',loginDTO);//this.http.post<any>('http://localhost:8080/' + this.name + '/authenticate', loginDTO)
+	console.log(loginDTO);
+    return this.http.post<any>('http://localhost:8080/' + this.name + '/authenticate', loginDTO);
     console.log("sono dopo la chiamata del service1");
   }
   signup(signupDTO: ManagedUserVM):Observable<UserDTO> {
