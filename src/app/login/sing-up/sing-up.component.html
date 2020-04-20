@@ -4,7 +4,6 @@
       <img src="../../assets/logo.svg" alt="logo">
     </div>
     <div class="col-md-5">
-      <form #f="ngForm">
         <p>Please insert username {{validuser}}</p>
         <div class="form-group">
           <input class="form-control" type="text" id="user"  placeholder="Username"  (change)="checkUser()">
@@ -21,8 +20,7 @@
         <div class="form-group">
           <input class="form-control" type="password" id="pass2"  placeholder="password"  (change)="checkPass()">
         </div>
-        <button type="submit" (click)="singup()">Sign Up</button>
-      </form>
+        <button  (click)="singup()">Sign Up</button>
     </div>
   </div>
 </div>
