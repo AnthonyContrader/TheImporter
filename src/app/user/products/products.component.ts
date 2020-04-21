@@ -43,6 +43,8 @@ export class ProductsComponent implements OnInit {
 
   delete(product: ProductDTO) {
     this.service.delete(product.id.toString()).subscribe(() => this.getProducts(0));
+    this.refresh();
+
   }
 
   update(product: ProductDTO) {
@@ -51,10 +53,14 @@ export class ProductsComponent implements OnInit {
 
   insert(product: ProductDTO) {
     this.service.insert(product).subscribe(() => this.getProducts(0));
+    this.refresh();
   }
 
   clear(){
     this.producttoinsert = new ProductDTO();
   }
 
+  refresh(): void {
+    window.location.reload();
+}
 }
