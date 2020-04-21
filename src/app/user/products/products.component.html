@@ -3,6 +3,9 @@
     <div class="col-md-1">
 
     </div>
+    <div *ngFor="let number of numbers; let i=index">
+      <button (click)="getProducts(i)">{{i}}</button>
+    </div>
     <div class="col-md-10">
       <table>
         <tr>
@@ -33,7 +36,7 @@
             <input type=number placeholder="price" [(ngModel)]="producttoinsert.price">
           </td>
           <td>
-            <input  placeholder="brand" [(ngModel)]="producttoinsert.brand">
+            <input placeholder="brand" [(ngModel)]="producttoinsert.brand">
           </td>
           <td>
             <input placeholder="description" [(ngModel)]="producttoinsert.description">
@@ -65,11 +68,10 @@
             <button (click)="delete(product)">Delete</button>
           </td>
         </tr>
-        
+
       </table>
     </div>
     <div class="col-md-1">
-
     </div>
   </div>
 </div>
