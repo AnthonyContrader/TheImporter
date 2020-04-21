@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ExcelService } from 'src/service/excel.service';
 import { ExcelDTO } from 'src/dto/exceldto';
 import { StringDTO } from 'src/dto/stringdto';
+import { ProductDTO } from 'src/dto/productdto';
 declare var $: any;
 
 @Component({
@@ -15,6 +16,8 @@ export class ExcelComponent implements OnInit {
   //producttoinsert: ProductDTO = new ProductDTO();
 	directory: string;
 	preview: StringDTO;
+	results: ProductDTO[] = [];
+	resultsSize: number = 0;
 	
 	par: number[] = [];
 	par1:number = 0;
@@ -69,8 +72,9 @@ export class ExcelComponent implements OnInit {
 	this.par[3] = this.par4;
 	console.log(this.par);
     this.service.excelInsert(this.par).subscribe((prwSpring) => {
-																	this.preview = prwSpring, 
-																	console.log("ritorno excelInsert: " + this.preview.titles[0])
+																	this.results = prwSpring,
+																	this.resultsSize = this.results.length; 
+																	console.log("ritorno excelInsert: " + this.results)
 																	})	  	
 	}
 	

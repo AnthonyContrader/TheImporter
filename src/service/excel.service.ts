@@ -4,6 +4,7 @@ import { ExcelDTO } from 'src/dto/exceldto';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { StringDTO } from 'src/dto/stringdto';
+import { ProductDTO } from 'src/dto/productdto';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,7 @@ export class ExcelService extends AbstractService<ExcelDTO>{
         });
     }
 
-	excelInsert(par: number[]): Observable<StringDTO> {
+	excelInsert(par: number[]): Observable<ProductDTO[]> {
 		return this.http.post<any>('http://localhost:8080/excel/api/excelInsert', par, {
             headers: {
               Authorization : this.auth()
