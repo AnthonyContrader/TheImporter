@@ -19,11 +19,19 @@ export class ExcelService extends AbstractService<ExcelDTO>{
     port: string = '8080';
 
 	preinsert(directory: string): Observable<StringDTO> {
-		return this.http.post<any>('http://localhost:' + this.port + '/' + this.type + '/preinsert', directory);
+		return this.http.post<any>('http://localhost:8080/excel/api/preinsert', directory, {
+            headers: {
+              Authorization : this.auth()
+         }
+        });
     }
 
 	excelInsert(par: number[]): Observable<StringDTO> {
-		return this.http.post<any>('http://localhost:' + this.port + '/' + this.type + '/excelInsert', par);
+		return this.http.post<any>('http://localhost:8080/excel/api/excelInsert', par, {
+            headers: {
+              Authorization : this.auth()
+         }
+        });
     }
 
 }

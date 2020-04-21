@@ -67,10 +67,10 @@ export class ExcelComponent implements OnInit {
 	this.par[1] = this.par2;
 	this.par[2] = this.par3;
 	this.par[3] = this.par4;
-	console.log(this.par[3]);
+	console.log(this.par);
     this.service.excelInsert(this.par).subscribe((prwSpring) => {
 																	this.preview = prwSpring, 
-																	console.log(this.preview.titles[0])
+																	console.log("ritorno excelInsert: " + this.preview.titles[0])
 																	})	  	
 	}
 	
