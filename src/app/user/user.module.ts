@@ -5,9 +5,10 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { UserRoutingModule } from './user-routing.module';
 import { ProductsComponent } from './products/products.component';
 import { ExcelComponent } from './excel/excel.component';
+import { ProductsexcelComponent } from './productsexcel/productsexcel.component';
 
 @NgModule({
-  declarations: [UserDashboardComponent, ProductsComponent, ExcelComponent],
+  declarations: [UserDashboardComponent, ProductsComponent, ExcelComponent, ProductsexcelComponent],
   imports: [
     CommonModule,
     UserRoutingModule,
