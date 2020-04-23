@@ -14,6 +14,13 @@ export class HistoryService extends AbstractService<HistoryDTO> {
     super(http, "history");
     this.type = 'api';
   }
+  getAll():Observable<HistoryDTO[]>{
+    return this.http.get<HistoryDTO[]>('http://localhost:' + this.port + '/product/' + 'api' + '/' + 'histories' + '/', {
+      headers: {
+        Authorization: this.auth()
+      }
+    });
+  }
 
   delete(id: string): Observable<any> {
     return this.http.delete('http://localhost:' + this.port + '/history/' + 'api' + '/' + 'histories' + '/' + id, {
