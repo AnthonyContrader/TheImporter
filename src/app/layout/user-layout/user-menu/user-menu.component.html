@@ -39,6 +39,18 @@
                         </i> file .xlsx </a>
                 </button>
             </div>
+            
+            <button type="button" class="menubtn" data-toggle="collapsebtn"
+				data-target="#history" (click)="historycollapse()">
+				<i class="fas fa-users" style="margin-right: 15px"></i>History
+			</button>
+			
+			<div class="collapsebtn" id="history" *ngIf="isHistoryCollapsed">
+                <button class="menubtn" style="padding-left: 40px; background-color: #334247;">
+                    <a [routerLink]="['/user-dashboard/history']"> <i class="fas fa-edit" style="margin-right: 10px">
+                        </i> view insert history </a>
+                </button>
+            </div>
 
 
 			<button class="menubtn" (click)="logout()">

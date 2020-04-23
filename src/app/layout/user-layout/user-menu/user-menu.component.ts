@@ -10,6 +10,7 @@ export class UserMenuComponent implements OnInit {
 
   isUserCollapsed = false;
   isExcelCollapsed = false;
+  isHistoryCollapsed = false;
   isAccountCollapsed = false;
 
   constructor(private router: Router) {
@@ -40,6 +41,13 @@ export class UserMenuComponent implements OnInit {
 	      this.isExcelCollapsed = true;
 	    } else { this.isExcelCollapsed = false; }
 	  }
+	
+	 historycollapse() {
+	    if (this.isHistoryCollapsed === false) {
+	      this.isHistoryCollapsed = true;
+	    } else { this.isHistoryCollapsed = false; }
+	  }
+	
 	
 
 }
