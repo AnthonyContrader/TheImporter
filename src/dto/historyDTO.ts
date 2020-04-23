@@ -2,12 +2,12 @@ export class HistoryDTO {
 
 	id: number;
 
-    productId: number;
+    productID: number;
 
-    userId: number;
+    userID: number;
 
     constructor(userid:number,productid:number){
-        this.productId=productid;
-        this.userId=userid;
+        this.productID=productid;
+        this.userID=userid;
     }
 }

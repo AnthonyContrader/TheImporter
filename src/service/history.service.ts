@@ -23,7 +23,7 @@ export class HistoryService extends AbstractService<HistoryDTO> {
   }
 
   insert(dto: HistoryDTO): Observable<any> {
-    return this.http.post('http://localhost:' + this.port + '/history/' + 'api' + '/' + 'histories' + '/', dto, {
+    return this.http.post('http://localhost:' + this.port + '/history/' + 'api' + '/' + 'histories', dto, {
       headers: {
         Authorization: this.auth()
       }
