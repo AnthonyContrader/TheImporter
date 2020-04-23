@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/service/product.service';
 import { ProductDTO } from 'src/dto/productdto';
-import { IntDTO } from 'src/dto/IntDTO';
+import { IntDTO } from 'src/dto/Intdto';
+import { HistoryService } from 'src/service/history.service';
+import { HistoryDTO } from 'src/dto/historyDTO';
+import { UserDTO } from 'src/dto/userdto';
 
 @Component({
   selector: 'app-products',
@@ -11,14 +14,17 @@ import { IntDTO } from 'src/dto/IntDTO';
 export class ProductsComponent implements OnInit {
 
   products: ProductDTO[];
+  product: ProductDTO;
   products1: ProductDTO[];
   numPages:number;
   numbers:number[];
   pages:IntDTO;
+  User:UserDTO;
   temp: ProductDTO[];
   producttoinsert: ProductDTO = new ProductDTO();
+  history: HistoryDTO;
 
-  constructor(private service: ProductService) { }
+  constructor(private service: ProductService,private historyService: HistoryService) { }
 
   ngOnInit() {
     this.getProducts(0);
@@ -52,8 +58,20 @@ export class ProductsComponent implements OnInit {
   }
 
   insert(product: ProductDTO) {
-    this.service.insert(product).subscribe(() => this.getProducts(0));
-    this.refresh();
+    this.service.insert(product).subscribe((product) => {
+      this.product=product;
+      this.User=new UserDTO;
+      this.User=JSON.parse(localStorage.getItem('AUTOKEN'));
+      console.log(this.product.id);
+      this.history=new HistoryDTO(this.User.id,this.product.id);
+      this.history.productId=this.product.id;
+      this.history.userId=this.User.id;
+      console.log(this.history.productId);
+      console.log(this.history.userId);
+      console.log(this.history);
+      this.historyService.insert(this.history).subscribe(()=>{});
+    });
+    //this.refresh();
   }
 
   clear(){

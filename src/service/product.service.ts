@@ -4,7 +4,7 @@ import { ProductDTO } from 'src/dto/productdto';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserDTO } from 'src/dto/userdto';
-import { IntDTO } from 'src/dto/IntDTO';
+import { IntDTO } from 'src/dto/Intdto';
 
 
 
@@ -64,8 +64,8 @@ export class ProductService extends AbstractService<ProductDTO>{
     });
   }
 
-  insert(dto: ProductDTO): Observable<any> {
-    return this.http.post('http://localhost:' + this.port + '/product/' + 'api' + '/' + 'products' + '/', dto, {
+  insert(dto: ProductDTO): Observable<ProductDTO> {
+    return this.http.post<ProductDTO>('http://localhost:' + this.port + '/product/' + 'api' + '/' + 'products' + '/', dto, {
       headers: {
         Authorization: this.auth()
       }

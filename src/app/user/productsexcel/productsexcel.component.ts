@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/service/product.service';
 import { ProductDTO } from 'src/dto/productdto';
-import { IntDTO } from 'src/dto/IntDTO';
+import { IntDTO } from 'src/dto/Intdto';
 import { ExcelService } from 'src/service/excel.service';
 
 @Component({

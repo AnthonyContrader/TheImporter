@@ -46,7 +46,8 @@ export class LoginComponent implements OnInit {
     this.service.login(this.loginDTO).subscribe((token:any) => {
 		localStorage.setItem("AUTOKEN", JSON.stringify({ "authorities": token.id_token }));
 		console.log("token.id_token = " + token.id_token);
-      	localStorage.setItem("currentUser", JSON.stringify({ "authorities": token.id_token }));
+        localStorage.setItem("currentUser", JSON.stringify({ "authorities": token.id_token }));
+        localStorage.setItem("UserDTO",JSON.stringify(token));
 		localStorage.setItem("key", token.id_token);  //questo lo salva effettivamente in sessione globale
       this.service.userLogged(this.loginDTO.username).subscribe((user:UserDTO)=>{
 
