@@ -64,10 +64,10 @@ export class ProductsComponent implements OnInit {
       this.User=JSON.parse(localStorage.getItem('AUTOKEN'));
       console.log(this.product.id);
       this.history=new HistoryDTO(this.User.id,this.product.id);
-      this.history.productId=this.product.id;
-      this.history.userId=this.User.id;
-      console.log(this.history.productId);
-      console.log(this.history.userId);
+      this.history.productID=this.product.id;
+      this.history.userID=this.User.id;
+      console.log(this.history.productID);
+      console.log(this.history.userID);
       console.log(this.history);
       this.historyService.insert(this.history).subscribe(()=>{});
     });
