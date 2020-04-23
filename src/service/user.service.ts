@@ -50,9 +50,9 @@ export class UserService extends AbstractService<UserDTO>{
   signup(signupDTO: ManagedUserVM):Observable<UserDTO> {
     return this.http.post<any>('http://localhost:8080/api/register',signupDTO);
   }
-
-  read(id: number): Observable<UserDTO> { //Ritorno del server 
-    return this.http.get<UserDTO>('http://localhost:' + this.port + '/api/Users' + this.type + id, {
+  
+  findbyid(id: number): Observable<UserDTO> { //Ritorno del server 
+    return this.http.get<UserDTO>('http://localhost:' + this.port + '/' + 'api/usersbyid/' + id, {
       headers: {
         Authorization : this.auth()
    }

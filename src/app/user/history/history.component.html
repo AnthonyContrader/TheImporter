@@ -1,12 +1,9 @@
-
-
-
-
-
-  			<label for="power">Hero Power</label>
-  			<select class="form-control" id="power" required>
-    			<option *ngFor="let pow of listUserID.listid" [value]="pow">{{pow}}</option>
-  			</select>
-      <button type="submit" class="btn btn-success">Submit</button>
-      
-      
+      <div class="container">
+        <div class="form-group">
+            <label for="power">Username</label>
+            <select [(ngModel)]="selectedOption" class="form-control" id="power" required >
+              <option *ngFor="let pow of UserList" [value]="pow.id">{{pow.login}}</option>
+            </select>
+        </div>
+          <button type="submit" class="btn btn-success" (click)="press()">Submit</button>    
+    </div>

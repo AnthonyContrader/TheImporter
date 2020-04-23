@@ -15,7 +15,8 @@ export class HistoryComponent implements OnInit {
 	listHistory: HistoryDTO[] =[];
 	listUserID: LongDTO = new LongDTO();
 	UserList:UserDTO[]=[];
-	
+	pressed:boolean;
+	public selectedOption: string = "1";
 
   constructor(private service: HistoryService,private userservice: UserService) { }
 
@@ -37,13 +38,17 @@ export class HistoryComponent implements OnInit {
 		for (let i = 0; i < historyList.length ; i++){
 			if(!this.listUserID.listid.includes(historyList[i].userID)){
 				this.listUserID.listid[i]=historyList[i].userID;	
-				//this.userservice.read(this.listUserID.listid[i]).subscribe(user =>{
-				//	this.UserList.push(user);
-				//});
+				this.userservice.findbyid(this.listUserID.listid[i]).subscribe(user =>{
+					this.UserList.push(user);
+				});
 			}
 		}
 		
 		console.log("stampo lista utenti ID: "+this.listUserID.listid);
+	}
+
+ 	press(){
+		console.log(this.selectedOption);
 	}
 
 }
