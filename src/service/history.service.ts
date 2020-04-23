@@ -3,6 +3,7 @@ import { HistoryDTO } from 'src/dto/historyDTO';
 import { Observable } from 'rxjs';
 import { AbstractService } from './abstractservice';
 import { HttpClient } from '@angular/common/http';
+import { LongDTO } from 'src/dto/longdto';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,20 @@ export class HistoryService extends AbstractService<HistoryDTO> {
 
   insert(dto: HistoryDTO): Observable<any> {
     return this.http.post('http://localhost:' + this.port + '/history/' + 'api' + '/' + 'histories', dto, {
+      headers: {
+        Authorization: this.auth()
+      }
+    });
+  }
+  SearchByProduct(productId: number): Observable<LongDTO> {
+    return this.http.post<LongDTO>('http://localhost:' + this.port + '/history/' + 'api' + '/' + 'history/SearchByProduct?ProductID='+productId, {
+      headers: {
+        Authorization: this.auth()
+      }
+    });
+  }
+  SearchByUser(Userid: number): Observable<LongDTO> {
+    return this.http.post<LongDTO>('http://localhost:' + this.port + '/history/' + 'api' + '/' + 'history/SearchByUser?UserID='+ Userid, {
       headers: {
         Authorization: this.auth()
       }
