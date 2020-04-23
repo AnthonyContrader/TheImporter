@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HistoryDTO } from 'src/dto/historyDTO';
 import { LongDTO } from 'src/dto/longdto';
 import { HistoryService } from 'src/service/history.service';
+import { UserService } from 'src/service/user.service';
+import { UserDTO } from 'src/dto/userdto';
 
 @Component({
   selector: 'app-history',
@@ -12,9 +14,10 @@ export class HistoryComponent implements OnInit {
 	
 	listHistory: HistoryDTO[] =[];
 	listUserID: LongDTO = new LongDTO();
+	UserList:UserDTO[]=[];
 	
 
-  constructor(private service: HistoryService) { }
+  constructor(private service: HistoryService,private userservice: UserService) { }
 
   ngOnInit() {
 	this.listUserID.costructor();
@@ -34,6 +37,9 @@ export class HistoryComponent implements OnInit {
 		for (let i = 0; i < historyList.length ; i++){
 			if(!this.listUserID.listid.includes(historyList[i].userID)){
 				this.listUserID.listid[i]=historyList[i].userID;	
+				//this.userservice.read(this.listUserID.listid[i]).subscribe(user =>{
+				//	this.UserList.push(user);
+				//});
 			}
 		}
 		
