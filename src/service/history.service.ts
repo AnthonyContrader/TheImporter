@@ -15,7 +15,7 @@ export class HistoryService extends AbstractService<HistoryDTO> {
     this.type = 'api';
   }
   getAll():Observable<HistoryDTO[]>{
-    return this.http.get<HistoryDTO[]>('http://localhost:' + this.port + '/product/' + 'api' + '/' + 'histories' + '/', {
+    return this.http.get<HistoryDTO[]>('http://localhost:' + this.port + '/history/' + 'api' + '/' + 'histories' + '/', {
       headers: {
         Authorization: this.auth()
       }
