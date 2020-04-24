@@ -14,6 +14,9 @@
     <br>
     <div>prodotti inseriti: <input disabled="disabled" [(ngModel)]="resultsSize"> </div>
     <br>
+    <div>
+      <button *ngFor="let number of pages; let i=index" (click)="getPage(i)">{{i}}</button>
+    </div>
     <table>
         <tr>
           <th>
@@ -29,18 +32,18 @@
             description
           </th>
         </tr>
-        <tr *ngFor="let product of productList">
+        <tr *ngFor="let product of subList">
           <td>
-            <input [(ngModel)]="product.name">
+            <input disabled="disabled" [(ngModel)]="product.name">
           </td>
           <td>
-            <input type=number [(ngModel)]="product.price">
+            <input disabled="disabled" type=number [(ngModel)]="product.price">
           </td>
           <td>
-            <input [(ngModel)]="product.brand">
+            <input disabled="disabled" [(ngModel)]="product.brand">
           </td>
           <td>
-            <input [(ngModel)]="product.description">
+            <input  disabled="disabled" [(ngModel)]="product.description">
           </td>
         </tr>
         
@@ -52,4 +55,4 @@
           
           
               
-    </div>
+</div>

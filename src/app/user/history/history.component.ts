@@ -24,6 +24,9 @@ export class HistoryComponent implements OnInit {
 	productsID: LongDTO;
 	productList: ProductDTO[] = [];
 	resultsSize: number;
+	
+	pages:number[] = [];
+	subList:ProductDTO[] = [];
 
   constructor(private service: HistoryService,private userservice: UserService, private excelService: ExcelService) { }
 
@@ -72,7 +75,15 @@ export class HistoryComponent implements OnInit {
 																					this.productList=list;
 																					console.log(this.productList);
 																					this.resultsSize = this.productList.length;
+																					for(let i=0; i<this.productList.length/10; i++){
+																						this.pages.push(i)
+																					}
+																					this.getPage(0);
 																				}) 
+	}
+	
+	getPage(page:number){
+		this.subList = this.productList.slice(page*10,page*10+10);
 	}
 
 }
