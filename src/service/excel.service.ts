@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { StringDTO } from 'src/dto/stringdto';
 import { ProductDTO } from 'src/dto/productdto';
 import { IntDTO } from 'src/dto/Intdto';
+import { LongDTO } from 'src/dto/longdto';
 
 @Injectable({
   providedIn: 'root'
@@ -48,6 +49,15 @@ export class ExcelService extends AbstractService<ExcelDTO>{
   getProducts(numpage: number): Observable<ProductDTO[]> {
 
     return this.http.get<ProductDTO[]>('http://localhost:' + this.port + '/excel/' + 'api' + '/' + 'products?page='+numpage+'&size=5', {
+      headers: {
+        Authorization: this.auth()
+      }
+    });
+  }
+
+	  getProductsInformation(listId:LongDTO): Observable<ProductDTO[]> {
+											
+    return this.http.post<ProductDTO[]>('http://localhost:' + this.port + '/excel/' + 'api' + '/products/' + 'takeproducts', listId, {
       headers: {
         Authorization: this.auth()
       }

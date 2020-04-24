@@ -5,5 +5,51 @@
               <option *ngFor="let pow of UserList" [value]="pow.id">{{pow.login}}</option>
             </select>
         </div>
-          <button type="submit" class="btn btn-success" (click)="press()">Submit</button>    
+          <button type="submit" class="btn btn-success" (click)="press()">Submit</button>
+          
+          
+          
+          <div *ngIf="productList[0]">
+    <br>
+    <br>
+    <div>prodotti inseriti: <input disabled="disabled" [(ngModel)]="resultsSize"> </div>
+    <br>
+    <table>
+        <tr>
+          <th>
+            product name
+          </th>
+          <th>
+            price
+          </th>
+          <th>
+            brand
+          </th>
+          <th>
+            description
+          </th>
+        </tr>
+        <tr *ngFor="let product of productList">
+          <td>
+            <input [(ngModel)]="product.name">
+          </td>
+          <td>
+            <input type=number [(ngModel)]="product.price">
+          </td>
+          <td>
+            <input [(ngModel)]="product.brand">
+          </td>
+          <td>
+            <input [(ngModel)]="product.description">
+          </td>
+        </tr>
+        
+      </table>
+    
+    </div>
+	
+          
+          
+          
+              
     </div>

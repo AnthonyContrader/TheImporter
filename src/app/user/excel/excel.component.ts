@@ -3,6 +3,9 @@ import { ExcelService } from 'src/service/excel.service';
 import { ExcelDTO } from 'src/dto/exceldto';
 import { StringDTO } from 'src/dto/stringdto';
 import { ProductDTO } from 'src/dto/productdto';
+import { UserDTO } from 'src/dto/userdto';
+import { HistoryDTO } from 'src/dto/historyDTO';
+import { HistoryService } from 'src/service/history.service';
 declare var $: any;
 
 @Component({
@@ -24,8 +27,12 @@ export class ExcelComponent implements OnInit {
 	par2:number = 0;
 	par3:number = 0;
 	par4:number = 0;
+	
+	//variabili per l'inserimento di history
+	user:UserDTO;
+	history:HistoryDTO;
 
-  constructor(private service: ExcelService) { }
+  constructor(private service: ExcelService, private historyService: HistoryService) { }
 
   ngOnInit() {
     
@@ -75,6 +82,21 @@ export class ExcelComponent implements OnInit {
 																	this.results = prwSpring,
 																	this.resultsSize = this.results.length; 
 																	console.log("ritorno excelInsert: " + this.results)
+																	
+															      this.user =new UserDTO;
+															      this.user=JSON.parse(localStorage.getItem('AUTOKEN'));
+															      console.log("id utente:" + this.user.id);
+															      console.log("id di un risultato: " + this.results[0].id);
+															      
+																  for(let i =0; i<this.results.length; i++){
+																	  this.history=new HistoryDTO(this.user.id,this.results[i].id);
+																      this.history.productID=this.results[i].id;
+																      this.history.userID=this.user.id;
+																      console.log(this.history.productID);
+																      console.log(this.history.userID);
+																      console.log(this.history);
+															      		this.historyService.insert(this.history).subscribe(()=>{});	
+																   }																	
 																	})	  	
 	}
 	

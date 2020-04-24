@@ -6,6 +6,7 @@ import { UserService } from 'src/service/user.service';
 import { UserDTO } from 'src/dto/userdto';
 import { ProductDTO } from 'src/dto/productdto';
 import { ProductService } from 'src/service/product.service';
+import { ExcelService } from 'src/service/excel.service';
 
 @Component({
   selector: 'app-history',
@@ -22,8 +23,9 @@ export class HistoryComponent implements OnInit {
 	
 	productsID: LongDTO;
 	productList: ProductDTO[] = [];
+	resultsSize: number;
 
-  constructor(private service: HistoryService,private userservice: UserService, private productservice: ProductService) { }
+  constructor(private service: HistoryService,private userservice: UserService, private excelService: ExcelService) { }
 
   ngOnInit() {
 	this.listUserID.costructor();
@@ -62,13 +64,14 @@ export class HistoryComponent implements OnInit {
 	}
 	
 	takeProducts(products: LongDTO){
-		this.productservice.getpages().subscribe((num) => {console.log(num)});
+		this.excelService.getpages().subscribe((num) => {console.log(num)});
 		//this.productsID.listid[0] = 72;
 		//this.productsID.listid[1] = 73;
 		//console.log("modificato: " + this.productsID.listid);
-		this.productservice.getProductsInformation(products).subscribe((list) => {
+		this.excelService.getProductsInformation(products).subscribe((list) => {
 																					this.productList=list;
 																					console.log(this.productList);
+																					this.resultsSize = this.productList.length;
 																				}) 
 	}
 
