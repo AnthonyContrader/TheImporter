@@ -25,9 +25,9 @@ export abstract class AbstractService<DTO> implements Service<DTO> {
     auth() {
         
 		const key = localStorage.getItem('key');
-		console.log("key temp =" + key);
+		//console.log("key temp =" + key);
         if (key) {
-          console.log('Bearer ' + key);
+          //console.log('Bearer ' + key);
           return 'Bearer ' + key;
         } else {
           return '';

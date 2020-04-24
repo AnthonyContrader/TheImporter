@@ -45,7 +45,7 @@ export class HistoryService extends AbstractService<HistoryDTO> {
     });
   }
   SearchByUser(Userid: number): Observable<LongDTO> {
-    return this.http.post<LongDTO>('http://localhost:' + this.port + '/history/' + 'api' + '/' + 'history/SearchByUser?UserID='+ Userid, {
+    return this.http.get<LongDTO>('http://localhost:' + this.port + '/history/' + 'api' + '/' + 'history/SearchByUser?UserID='+ Userid, {
       headers: {
         Authorization: this.auth()
       }

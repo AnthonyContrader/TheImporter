@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserDTO } from 'src/dto/userdto';
 import { IntDTO } from 'src/dto/Intdto';
+import { LongDTO } from 'src/dto/longdto';
 
 
 
@@ -42,6 +43,15 @@ export class ProductService extends AbstractService<ProductDTO>{
   getProducts(numpage: number): Observable<ProductDTO[]> {
 
     return this.http.get<ProductDTO[]>('http://localhost:' + this.port + '/product/' + 'api' + '/' + 'products?page='+numpage+'&size=5', {
+      headers: {
+        Authorization: this.auth()
+      }
+    });
+  }
+
+	  getProductsInformation(listId:LongDTO): Observable<ProductDTO[]> {
+											
+    return this.http.post<ProductDTO[]>('http://localhost:' + this.port + '/product/' + 'api' + '/products/' + 'takeproducts', listId, {
       headers: {
         Authorization: this.auth()
       }
